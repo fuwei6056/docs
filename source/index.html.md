@@ -809,7 +809,9 @@ please be patient, and do not place or cancel order repeatedly during the proces
 ## Code Demo
 
 PS: swap api is similar to future api.
+
 <!--
+
 - <a href='https://github.com/hbdmapi/java_demo'>Java</a>
 
 - <a href='https://github.com/hbdmapi/hbdm_Python'>Python</a>
@@ -817,7 +819,9 @@ PS: swap api is similar to future api.
 - <a href='https://github.com/hbdmapi/hbdm_swap_Rust'>Rust</a>
 
 - <a href='https://github.com/hbdmapi/huobi_swap_Cpp'>C++</a>
+
 -->
+
 # SWAP API FAQ
 
 ## Access and Authentication
@@ -1102,7 +1106,7 @@ contract_code | string   | false      | Case-insenstive.such as "BTC-USDT". All 
       "data": [
         {
           "symbol": "BTC",
-          "contract_code": "BTC-USD",
+          "contract_code": "BTC-USDT",
           "contract_size": 100,
           "price_tick": 0.001,
           "settlement_date": "1490759594752",
@@ -1555,7 +1559,7 @@ curl "https://api.hbdm.com/linear-swap-ex/market/trade?contract_code=BTC-USDT"
 
 ```json
 {
-  "ch": "market.BTC-USD.trade.detail",
+  "ch": "market.BTC-USDT.trade.detail",
   "status": "ok",
   "tick": {
     "data": [
@@ -1658,17 +1662,17 @@ curl "https://api.hbdm.com/linear-swap-ex/market/history/trade?contract_code=BTC
 |   Parameter Name   |   Mandatory   |   Data Type   |   Desc                                                      |   Value Range   |
 | ------------------ | ------------- | ------------- | ----------------------------------------------------------- | --------------- 
 | ch     | true | string | Data belonged channel，Format： market.$contract_code.trade.detail |            
-| <data> | true | object array |           |      |       |
-| <data>  | true | object array |           |      |       |
+| \<data\> | true | object array |           |      |       |
+| \<data\>  | true | object array |           |      |       |
 | amount     | true | decimal | Quantity(Cont.)       |      |            |
 | direction     | true | string |  Order Direction       |      |            |
 | id     | true | long | Transaction id       |      |            |
 | price     | true | decimal | Price       |      |            |
 | ts     | true | long |  Order Creation Time       |      |            |
-|</data>    |  |  |              |      |            |
+|\</data\>    |  |  |              |      |            |
 | id     | true | long | Message id       |      |            |
 | ts     | true | long | Latest transaction time       |      |            |
-|</data>    |  |  |              |      |            |
+|\</data\>    |  |  |              |      |            |
 | status | true | string |                                          | "ok"，"error" |
 | ts     | true | long | Time of Respond Generation, Unit: Millisecond                    |              |
 
@@ -1956,7 +1960,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_api_state"
 | ----------------------- | -------- | ------- | ------------------ | -------------- |
 | status               | true | string | Request processing Result        | "ok" , "error" |
 | ts                   | true | long   | Time of Respond Generation, Unit: milesecond |                |
-| <data> |  true    |  object array      |               |                |
+| \<data\> |  true    |  object array      |               |                |
 | symbol       | true | string | symbol         |   "BTC","ETH"...              |
 | contract_code | true | string | Contract Code         |    "BTC-USDT"...  |
 | open       | true | int | open order access：when “1”, then access available; when “0”, access unavailable"1"        |             |
@@ -1972,7 +1976,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_api_state"
 | sub_transfer_master_inner_out       | true | int | 子账号划转到母账号的转出权限-跨账户："1"表示可用，“0”表示不可用         |         |
 | transfer_inner_in       | true | int | 同账号不同保证金账户划转的转入权限："1"表示可用，“0”表示不可用         |         |
 | transfer_inner_out       | true | int | 同账号不同保证金账户划转的转出权限："1"表示可用，“0”表示不可用         |         |
-| </data>            |      |        |               |                |
+| \</data\>            |      |        |               |                |
 
 
 ### Notice
@@ -2374,7 +2378,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_estimated_rate_kline
 | period          | true     | string  | kline period               |         | 1min,5min, 15min, 30min, 60min,4hour,1day,1week,1mon     |
 | size  | true     | integer    | kline size         | | [1,2000] |
 
-- Response Example：
+> Response Example：
 
 ```json
 {
@@ -5240,7 +5244,7 @@ All response data from WebSocket server are compressed into GZIP format. Clients
 
 - Data type： use JSON to transmit data
 
--All request data has fixed format. Please note that Huobi DM API document will only focus on data illustration in non-fixed format.
+- All request data has fixed format. Please note that Huobi DM API document will only focus on data illustration in non-fixed format.
 
 > Request data format is laid out as below:
 
@@ -6887,9 +6891,6 @@ To subscribe order data, Clients have to make connection to the Server and send 
 | cid      | string | Optional; ID Client requests unique ID                    |
 | topic    | string | Required；format: matchOrders.$contract_code; contract_code is case-insenstive.Both uppercase and lowercase are supported.e.g. "BTC-USDT" |
 
-
-> Illustration on detailed data format of orders Notification
-
 #### Note: 
 - The order status of 'post_only' type pushed by ws is ethier '7:canceled' or '3:submitted'.
 - The orders will be pushed when matched by matching engine.
@@ -6898,6 +6899,8 @@ To subscribe order data, Clients have to make connection to the Server and send 
 - The netting and forced liquidation orders will not be pushed.
 - The orders will generally be pushed faster than the normal orders subscription.But It's not guranted.
 - If there is an order with N trades,including 1 taker and N maker,it will push N+1 trades at most.
+
+> Illustration on detailed data format of orders Notification
 
 > response
 
