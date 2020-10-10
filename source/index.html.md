@@ -35,7 +35,7 @@ search: True
 
 # 更新日志
 
-## 1.1.7 2020年10月10日 【新增：新增订阅系统状态更新推送的 WebSocket 接口】
+## 1.1.7 2020年10月10日 【新增：订阅系统状态更新推送的 WebSocket 接口】
 
 ### 1、新增订阅系统状态更新推送的 WebSocket 接口
   - 接口名称：订阅系统状态更新
@@ -8480,6 +8480,8 @@ client_order_id   |  long |  客户端订单ID  |
 
 # WebSocket 系统状态更新接口
 
+ - 系统状态更新订阅WS地址：wss://api.hbdm.com/center-notification
+ 
 ## 订阅系统状态更新
 
 ### 成功建立和 WebSocket API 的连接之后，向 Server 发送如下格式的数据来请求数据：
