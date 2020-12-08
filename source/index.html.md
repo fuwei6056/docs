@@ -38,7 +38,7 @@ Welcome users, who are dedicated to maker strategy and have created large tradin
 
 # Changelog
 
-## 1.0.4 2020-12-10 【1-33 Added interfaces for cross margin mode. 34-60 Added fields to modify interface】
+## 1.0.4 2020-12-11 【1-33 Added interfaces for cross margin mode. 34-60 Added fields to modify interface】
 
 ### 1、Added Cross Margin Mode Query Information On Tiered Adjustment Factor
 
@@ -4172,16 +4172,16 @@ contract_code | true | string | contract code	 |Case-Insenstive.Both uppercase a
 | ----------------- | ---- | ------- | ------------- | -------------- |
 | status            | true | string  | Request Processing Result        | "ok" , "error" |
 | ts                | true | long    | Time of Respond Generation, Unit: Millisecond |                |
-| <data>          | true     |    object array     |               |                |
+| \<data\>          | true     |    object array     |               |                |
 | sub_uid           | true | long    | sub-account UID        |                |
-| <list>          |   true   |  object array       |               |                |
+| \<list\>          |   true   |  object array       |               |                |
 | margin_mode | true | string | margin mode  | cross: cross margin mode  |
 | margin_account | true | string | margin account  | "USDT"... |
 | margin_asset       | true   | string | margin asset                 |                |
 | margin_balance    | true | decimal | account equity          |                |
 | risk_rate         | true | decimal | margin rate          |                |
-| </list>         |      |         |               |                |
-| </data>         |      |         |               |                |           
+| \</list\>         |      |         |               |                |
+| \</data\>         |      |         |               |                |           
     
 #### Notice
 
@@ -4806,7 +4806,7 @@ contract_code | true | string | contract code	 |Case-Insenstive.Both uppercase a
 
 #### Remarks
 
- - The interface only supports cross margin mode.
+ - The interface supports cross margin mode and isolated margin mode.
 
 ### Request Parameter
 
@@ -4858,7 +4858,7 @@ contract_code | true | string | contract code	 |Case-Insenstive.Both uppercase a
 
 #### Remarks
 
- - The interface only supports cross margin mode.
+ - The interface supports cross margin mode and isolated margin mode.
 
 ### Request Parameter 
 
@@ -5840,14 +5840,14 @@ The return data from Cancel An Order Interface only means that order cancelation
 |   Parameter Name                 |   Mandatory   |   Type   |   Desc                                        |   Value Range   |
 | -------------------------------- | ------------- | -------- | --------------------------------------------- | --------------- |
 | status                           | true          | string   | Request Processing Result                     | "ok" , "error"  |
-| data: \<dict\> |               |          |                                               |                 |
-| errors: \<list\> |               |          |                                               |                 |
+| \<data\> |               |          |                                               |                 |
+| \<errors\> |               |          |                                               |                 |
 | order_id                         | true          | string   | Order ID                                      |                 |
 | err_code                         | true          | int      | failed order error messageError code          |                 |
 | err_msg                          | true          | string      | failed order information                      |                 |
-| \</list\>                        |               |          |                                               |                 |
+| \</errors\>                        |               |          |                                               |                 |
 | successes                        | true          | string   | Successful order                              |                 |
-| \</dict\>                        |               |          |                                               |                 |
+| \</data\>                        |               |          |                                               |                 |
 | ts                               | true          | long     | Time of Respond Generation, Unit: Millisecond |                 |
 
 
@@ -5946,7 +5946,7 @@ No：
 | status                 | true | string  | status: ok,error            |                                          |
 | \<data\> | false     |  object      |                    |                                          |
 | contract_code               | false | string    | contract code      |                                          |
-| margin_mode                |   true   | string | margin mode  | isolated : "isolated" |
+| margin_mode                |   false   | string | margin mode  | isolated : "isolated" |
 | lever_rate               | false | int    | Switched leverage      |                                          |
 | \</data\>            |      |         |                    |                                          |
 | err_code | false | int | error code | |
@@ -5996,11 +5996,11 @@ No：
 | status                 | true | string  | ok/error            |                                          |
 | \<data\> | false     |  object      |                    |                                          |
 | contract_code               | false | string    | contract code      |                                          |
-| margin_mode | true | string | margin mode  | cross: cross margin mode  |
+| margin_mode               | false | string | margin mode  | cross: cross margin mode  |
 | lever_rate               | false | int    | switched leverage      |                                          |
 | \</data\>            |      |         |                    |                                          |
 | err-code | false | int | error code| |
-|err-msg| false| string | error message | |
+| err-msg| false| string | error message | |
 | ts                     | true | long    | timestamp                |                                          |
 
 
@@ -7830,7 +7830,7 @@ Error：
 | total_page   | int | true | Total page
 | current_page | int | true | Current page
 | total_size   | int | true | Total Size
-| \ <orders\> |              |          |                            |                |
+| \<orders\> |              |          |                            |                |
 | symbol |string| true | symbol
 | contract_code | string | true | Contract Code
 | trigger_type | string | true | trigger： `ge` Equal to or Greater than；`le` Less than or Equal to
@@ -7931,11 +7931,11 @@ Error：
 | Parameter Name            | Mandatory  | Type     | Desc                            | Data Value                 |
 | --------------- | ----- | ------ | ----------------------------- | -------------------- |
 | status                     | true         | string   | Request Processing Result               | "ok" , "error" |
-| <data> |  true  | object |  | |
+| \<data\> |  true  | object |  | |
 | total_page |true | int | total page | |
 | current_page | true |int | current page | |
 | total_size | true |int | total size | |
-| <orders>|   true          |    object array      |     订单信息                       |                |
+| \<orders\>|   true          |    object array      |     订单信息                       |                |
 | symbol |true |string | symbol | |
 | contract_code |true | string  | contract code | |
 | margin_mode | true | string | margin mode  | cross: cross margin mode  |
@@ -7961,8 +7961,8 @@ Error：
 | canceled_at | true |long | canceled time| |
 | fail_code | true |int | fail code | |
 | fail_reason | true |string | fail reason | |
-| </orders>                  |              |          |                            |                |
-| </data> |   | |  | |
+| \</orders\>                  |              |          |                            |                |
+| \</data\> |   | |  | |
 | ts                         | true         | long     | Time of Respond Generation, Unit: Millisecond |  |
 
 
@@ -9363,6 +9363,10 @@ direction  |  true  |  string  |  Order direction  |   |
 
 
 ## Request Index Kline Data
+
+#### Remarks
+
+ - The interface supports cross margin mode and isolated margin mode.
 
 ### To subscribe index kline data, the Client has to make connection to the Server and send subscribe request in the format below:
 
@@ -11317,7 +11321,7 @@ To subscribe position updates data, the client has to make connection to the ser
 | ts   | true | long  | server response timestamp   |    |
 | uid   | true | string  | uid  |    |
 | event   | true | string  | event | order.close 、order.match、settlement、order.liquidation、order.cancel、init、snapshot   |
-| <data>   | true | object array |     |    |
+| \<data\>   | true | object array |     |    |
 | symbol   | true | string  | symbol    | "BTC","ETH"...   |
 | contract_code   | true | string  | contract code  |    |
 | margin_mode | true | string | margin mode  | cross: cross margin mode  |
@@ -11335,13 +11339,13 @@ To subscribe position updates data, the client has to make connection to the ser
 | lever_rate   | true | int  | leverage  |    |
 | direction   | true | string  | Transaction direction|   "buy"/"sell"    |
 | last_price   | true | decimal  | latest trade price  |    |
-| </data>   |  |   |     |    |
+| \</data\>   |  |   |     |    |
 
 
 ### Note:
 
  - A regular push of position is performed every 5 sedconds.The event field of the reponse is "snapshot".If there is a push in 5 seconds, snapshot push will be skipped.
- 
+
  - When switching leverage with no positions, the event "switch_lever_rate" will not be pushed by the position topic.
 
 
