@@ -8424,8 +8424,8 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
 | order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
-| err-code              | false  | long   | 错误码                |                      |
-| err-msg              | false  | string   | 错误信息               |                      |
+| err_code              | false  | long   | 错误码                |                      |
+| err_msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
 | successes              | true  | string   | 成功的订单                 |     |
 | \</data\>       |       |        |     |  |
@@ -8474,8 +8474,8 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
 | order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
-| err-code              | false  | long   | 错误码                |                      |
-| err-msg              | false  | string   | 错误信息               |                      |
+| err_code              | false  | long   | 错误码                |                      |
+| err_msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
 | successes              | true  | string   | 成功的订单                 |     |
 | \</data\>       |       |        |     |  |
@@ -8523,8 +8523,8 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
 | order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
-| err-code              | false  | long   | 错误码                |                      |
-| err-msg              | false  | string   | 错误信息               |                      |
+| err_code              | false  | long   | 错误码                |                      |
+| err_msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
 | successes              | true  | string   | 成功的订单                 |     |
 | \</data\>       |       |        |     |  |
@@ -8572,8 +8572,8 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
 | order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
-| err-code              | false  | long   | 错误码                |                      |
-| err-msg              | false  | string   | 错误信息               |                      |
+| err_code              | false  | long   | 错误码                |                      |
+| err_msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
 | successes              | true  | string   | 成功的订单                 |     |
 | \</data\>       |       |        |     |  |
