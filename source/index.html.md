@@ -8233,6 +8233,11 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
  - POST `/linear-swap-api/v1/swap_tpsl_order`
 
+#### 备注
+ - 止盈止损订单都为平仓单。
+ - 该接口仅支持逐仓模式。
+ - 该接口的限频次数为1秒5次。
+
 ### 请求参数
 
 | 参数名称            | 是否必须  | 类型     | 描述                    | 取值范围                                     |
@@ -8247,9 +8252,6 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | sl_order_price   | false | decimal | 	止损委托价格（最优N档委托类型时无需填写价格）                  |  |
 | sl_order_price_type   | false | string | 止损委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
 
-#### 备注：
- - 止盈止损订单都为平仓单。
- - 该接口的限频次数为1秒5次。
 
 > Response
 
@@ -8304,10 +8306,14 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
  - 当用户只设置了止盈或止损时，则对应返回的sl_order/tp_order则为空。
 
 
- ## 【全仓】对仓位设置止盈止损订单
+## 【全仓】对仓位设置止盈止损订单
 
   - POST `/linear-swap-api/v1/swap_cross_tpsl_order`
 
+#### 备注：
+ - 该接口仅支持全仓模式。
+ - 止盈止损订单都为平仓单。
+ - 该接口的限频次数为1秒5次。
 
 ### 请求参数
 
@@ -8322,10 +8328,6 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | sl_trigger_price          | false | decimal | 止损触发价格                  |                            |
 | sl_order_price   | false | decimal | 	止损委托价格（最优N档委托类型时无需填写价格）                  |  |
 | sl_order_price_type   | false | string | 止损委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
-
-#### 备注：
- - 止盈止损订单都为平仓单。
- - 该接口的限频次数为1秒5次。
 
 > Response
 
@@ -8384,16 +8386,16 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
  - POST `/linear-swap-api/v1/swap_tpsl_cancel`
 
+#### 备注
+ - 该接口仅支持逐仓模式。
+ - 该接口的限频次数为1秒5次。
+
 ### 请求参数
 
 | 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
 | ------------- | ----- | ------ | ------------- | ---------------------------------------- |
 | contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
 | order_id | true | string | 止盈止损订单ID（多个订单ID中间以","分隔,一次最多允许撤消10个订单 ）|    |
-
-#### 备注
-
- - 该接口的限频次数为1秒5次。
 
 > Response
 
@@ -8422,8 +8424,8 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
 | order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
-| err_code              | false  | long   | 错误码                |                      |
-| err_msg              | false  | string   | 错误信息               |                      |
+| err-code              | false  | long   | 错误码                |                      |
+| err-msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
 | successes              | true  | string   | 成功的订单                 |     |
 | \</data\>       |       |        |     |  |
@@ -8434,16 +8436,16 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
  - POST `/linear-swap-api/v1/swap_cross_tpsl_cancel`
 
+#### 备注：
+ - 该接口仅支持全仓模式。
+ - 该接口的限频次数为1秒5次。
+
 ### 请求参数
 
 | 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
 | ------------- | ----- | ------ | ------------- | ---------------------------------------- |
 | contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
 | order_id | true | string | 止盈止损订单ID（多个订单ID中间以","分隔,一次最多允许撤消10个订单 ）|    |
-
-#### 备注
-
- - 该接口的限频次数为1秒5次。
 
 > Response
 
@@ -8472,8 +8474,8 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
 | order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
-| err_code              | false  | long   | 错误码                |                      |
-| err_msg              | false  | string   | 错误信息               |                      |
+| err-code              | false  | long   | 错误码                |                      |
+| err-msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
 | successes              | true  | string   | 成功的订单                 |     |
 | \</data\>       |       |        |     |  |
@@ -8484,15 +8486,15 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
  - POST `/linear-swap-api/v1/swap_tpsl_cancelall`
 
+#### 备注
+ - 该接口仅支持逐仓模式。
+ - 该接口的限频次数为1秒5次。
+
 ### 请求参数
 
 | 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
 | ------------- | ----- | ------ | ------------- | ---------------------------------------- |
 | contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
-
-#### 备注
-
- - 该接口的限频次数为1秒5次。
 
 > Response
 
@@ -8521,8 +8523,8 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
 | order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
-| err_code              | false  | long   | 错误码                |                      |
-| err_msg              | false  | string   | 错误信息               |                      |
+| err-code              | false  | long   | 错误码                |                      |
+| err-msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
 | successes              | true  | string   | 成功的订单                 |     |
 | \</data\>       |       |        |     |  |
@@ -8533,15 +8535,15 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
  - POST `/linear-swap-api/v1/swap_cross_tpsl_cancelall`
 
+#### 备注：
+ - 该接口仅支持全仓模式。
+ - 该接口的限频次数为1秒5次。
+
 ### 请求参数
 
 | 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
 | ------------- | ----- | ------ | ------------- | ---------------------------------------- |
 | contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
-
-#### 备注
-
- - 该接口的限频次数为1秒5次。
 
 > Response
 
@@ -8570,8 +8572,8 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
 | order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
-| err_code              | false  | long   | 错误码                |                      |
-| err_msg              | false  | string   | 错误信息               |                      |
+| err-code              | false  | long   | 错误码                |                      |
+| err-msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
 | successes              | true  | string   | 成功的订单                 |     |
 | \</data\>       |       |        |     |  |
@@ -8581,6 +8583,9 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 ## 【逐仓】查询止盈止损订单当前委托
 
  - POST `/linear-swap-api/v1/swap_tpsl_openorders`
+
+#### 备注
+ - 该接口仅支持逐仓模式。
 
 ### 请求参数
 
@@ -8663,6 +8668,9 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
  - POST `/linear-swap-api/v1/swap_cross_tpsl_openorders`
 
+#### 备注：
+ - 该接口仅支持全仓模式。
+
 ### 请求参数
 
 | 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
@@ -8742,6 +8750,9 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 ## 【逐仓】查询止盈止损订单历史委托
 
  - POST `/linear-swap-api/v1/swap_tpsl_hisorders`
+
+#### 备注
+ - 该接口仅支持逐仓模式。
 
 ### 请求参数
 
@@ -8839,6 +8850,9 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
  - POST `linear-swap-api/v1/swap_cross_tpsl_hisorders`
 
+#### 备注：
+ - 该接口仅支持全仓模式。
+
 ### 请求参数
 
 | 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
@@ -8935,6 +8949,9 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
  - POST `/linear-swap-api/v1/swap_relation_tpsl_order`
 
+#### 备注
+ - 该接口仅支持逐仓模式。
+
 ### 请求参数
 
 | 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
@@ -9003,7 +9020,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 | 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
 | --------------- | ----- | ------ | ----------------------------- | -------------------- |
-| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| status          | true <img width=250/>  | string <img width=250/> | 请求处理结果 <img width=1000/>      | "ok" :成功, "error"：失败 |
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | symbol               | true | string  | 品种代码   |                                          |
 | contract_type        | true | string  | 合约类型   | 当周:"this_week", 周:"next_week", 当季:"quarter" ，次季度：“next_quarter”  |
@@ -9057,6 +9074,9 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 ## 【全仓】查询开仓单关联的止盈止损订单详情
 
  - POST `/linear-swap-api/v1/swap_cross_relation_tpsl_order`
+
+#### 备注：
+ - 该接口仅支持全仓模式。
 
 ### 请求参数
 
@@ -9126,7 +9146,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 | 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
 | --------------- | ----- | ------ | ----------------------------- | -------------------- |
-| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| status          | true <img width=250/> | string <img width=250/> | 请求处理结果  <img width=1000/>      | "ok" :成功, "error"：失败 |
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | symbol               | true | string  | 品种代码   |                                          |
 | contract_type        | true | string  | 合约类型   | 当周:"this_week", 周:"next_week", 当季:"quarter" ，次季度：“next_quarter”  |
