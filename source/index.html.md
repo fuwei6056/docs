@@ -36,6 +36,191 @@ search: true
 
 # 更新日志
 
+## V1.0.6 2020年12月30号 【1 新增获取预估结算价接口。2-13 新增止盈止损订单接口。14-35 修改接口,新增字段】
+
+### 1、新增获取预估结算价
+ - 接口名称: 【通用】获取预估结算价
+ - 接口类型: 公共接口
+ - 接口URL: /linear-swap-api/v1/swap_estimated_settlement_price
+
+### 2、新增对仓位设置止盈止损订单
+ - 接口名称: 【逐仓】对仓位设置止盈止损订单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_tpsl_order
+
+### 3、新增对仓位设置止盈止损订单
+ - 接口名称: 【全仓】对仓位设置止盈止损订单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_tpsl_order
+
+### 4、新增止盈止损订单撤单接口
+ - 接口名称: 【逐仓】止盈止损订单撤单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_tpsl_cancel
+
+### 5、新增止盈止损订单撤单接口
+ - 接口名称: 【全仓】止盈止损订单撤单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_tpsl_cancel
+
+### 6、新增止盈止损订单全部撤单接口
+ - 接口名称: 【逐仓】止盈止损订单全部撤单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_tpsl_cancelall
+
+### 7、新增止盈止损订单全部撤单接口
+ - 接口名称: 【全仓】止盈止损订单全部撤单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_tpsl_cancelall
+
+### 8、新增查询止盈止损订单当前委托接口
+ - 接口名称: 【逐仓】查询止盈止损订单当前委托
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_tpsl_openorders
+
+### 9、新增查询止盈止损订单当前委托接口
+ - 接口名称: 【全仓】查询止盈止损订单当前委托
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_tpsl_openorders
+
+### 10、新增查询止盈止损订单历史委托接口
+ - 接口名称: 【逐仓】查询止盈止损订单历史委托
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_tpsl_hisorders
+
+### 11、新增查询止盈止损订单历史委托接口
+ - 接口名称: 【全仓】查询止盈止损订单历史委托
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_tpsl_hisorders
+
+### 12、新增查询开仓单关联的止盈止损订单详情接口
+ - 接口名称: 【逐仓】查询开仓单关联的止盈止损订单详情
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_relation_tpsl_order
+
+### 13、新增查询开仓单关联的止盈止损订单详情接口
+ - 接口名称: 【全仓】查询开仓单关联的止盈止损订单详情
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_relation_tpsl_order
+
+### 14、修改合约下单接口（新增选填入参：tp_trigger_price（止盈触发价格）、tp_order_price（止盈委托价格）、tp_order_price_type（止盈委托类型）、sl_trigger_price（止损触发价格）、sl_order_price（止损委托价格）、sl_order_price_type（止损委托类型）。）
+ - 接口名称: 【逐仓】合约下单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_order
+
+### 15、修改合约下单接口（新增选填入参：tp_trigger_price（止盈触发价格）、tp_order_price（止盈委托价格）、tp_order_price_type（止盈委托类型）、sl_trigger_price（止损触发价格）、sl_order_price（止损委托价格）、sl_order_price_type（止损委托类型）。）
+ - 接口名称: 【全仓】合约下单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_order
+
+### 16、修改合约批量下单接口（在入参orders_data中新增选填参数：tp_trigger_price（止盈触发价格）、tp_order_price（止盈委托价格）、tp_order_price_type（止盈委托类型）、sl_trigger_price（止损触发价格）、sl_order_price（止损委托价格）、sl_order_price_type（止损委托类型）。）
+ - 接口名称: 【逐仓】合约批量下单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_batchorder
+
+### 17、修改合约批量下单接口（在入参orders_data中新增选填参数：tp_trigger_price（止盈触发价格）、tp_order_price（止盈委托价格）、tp_order_price_type（止盈委托类型）、sl_trigger_price（止损触发价格）、sl_order_price（止损委托价格）、sl_order_price_type（止损委托类型）。）
+ - 接口名称: 【全仓】合约批量下单
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_batchorder
+
+### 18、修改获取合约订单信息接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【逐仓】获取合约订单信息
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_order_info
+
+### 19、修改获取合约订单信息接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【全仓】获取合约订单信息
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_order_info
+
+### 20、修改获取订单明细信息接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【逐仓】获取订单明细信息	
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_order_detail
+
+### 21、修改获取订单明细信息接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【全仓】获取订单明细信息	
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_order_detail
+
+### 22、修改获取合约当前未成交委托接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【逐仓】获取合约当前未成交委托
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_openorders
+
+### 23、修改获取合约当前未成交委托接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【全仓】获取合约当前未成交委托
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_openorders
+
+### 24、修改获取合约历史委托接口（新增入参：sort_by(表示：排序字段，可选值为“create_date”，“update_time”)。新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),update_time（表示：订单的更新时间）,在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【逐仓】获取合约历史委托
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_hisorders
+
+### 25、修改获取合约历史委托接口（新增入参：sort_by(表示：排序字段，可选值为“create_date”，“update_time”)。新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),update_time（表示：订单的更新时间）,在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【全仓】获取合约历史委托
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_hisorders
+
+### 26、修改订阅订单成交数据接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【逐仓】订阅订单成交数据
+ - 接口类型: 私有接口
+ - 订阅主题: orders.$contract_code
+
+### 27、修改订阅订单成交数据接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【全仓】订阅订单成交数据
+ - 接口类型: 私有接口
+ - 订阅主题: orders_cross.$contract_code
+
+### 28、修改订阅订单撮合数据接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【逐仓】订阅订单撮合数据	
+ - 接口类型: 私有接口
+ - 订阅主题: matchOrders.$contract_code
+
+### 29、修改订阅订单撮合数据接口（新增返回参数：is_tpsl(表示是否设置止盈止损，1：是；0：否),在返回参数order_source订单来源新增枚举值（tpsl:止盈止损触发））
+ - 接口名称: 【全仓】订阅订单撮合数据	
+ - 接口类型: 私有接口
+ - 订阅主题: matchOrders_cross.$contract_code
+
+### 30、修改获取计划委托历史委托接口（新增入参：sort_by(表示：排序字段，可选值为“create_date”，“update_time”)。新增返回参数：update_time（表示：订单的更新时间））
+ - 接口名称: 【逐仓】获取计划委托历史委托	
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_trigger_hisorders
+
+### 31、修改获取计划委托历史委托接口（新增入参：sort_by(表示：排序字段，可选值为“create_date”，“update_time”)。新增返回参数：update_time（表示：订单的更新时间））
+ - 接口名称: 【全仓】获取计划委托历史委托	
+ - 接口类型: 私有接口
+ - 接口URL: /linear-swap-api/v1/swap_cross_trigger_hisorders
+
+### 32、修改获取当前可用合约总持仓量（在返回参数data中新增trade_volume：最近24小时成交量（张），trade_amount：最近24小时成交量（币）trade_turnover：最近24小时成交额、这三个字段 ）
+ - 接口名称: 【通用】获取当前可用合约总持仓量
+ - 接口类型: 公共接口
+ - 接口URL: /linear-swap-api/v1/swap_open_interest
+
+### 33、修改订阅Market Detail数据（在返参tick中新增ask表示卖一，bid表示买一。）
+ - 接口名称: 【通用】订阅Market Detail数据
+ - 接口类型: 公共接口
+ - 订阅主题: market.$contract_code.detail
+
+### 34、修改获取合约信息（在返参data下新增delivery_time，表示交割时间（毫秒时间戳））
+ - 接口名称: 【通用】获取合约信息
+ - 接口类型: 公共接口
+ - 接口URL: /linear-swap-api/v1/swap_contract_info
+
+### 35、修改订阅合约信息变动（在返参data下新增delivery_time，表示交割时间（毫秒时间戳））
+ - 接口名称: 【通用】订阅合约信息变动
+ - 接口类型: 公共接口
+ - 订阅主题: public.$contract_code.contract_info
+
+
+## 1.0.5 2020年12月18日 【新增：订阅系统状态更新推送的 WebSocket 接口】
+
+### 1、新增订阅系统状态更新推送的 WebSocket 接口
+  - 接口名称：【通用】订阅系统状态更新
+  - 接口类型: 公共接口
+  - 订阅主题：public.$service.heartbeat
+
 ## 1.0.4 2020年12月11日 【1-33 新增全仓模式接口。34-60 修改接口,新增字段】
 
 ### 1、新增全仓模式查询平台阶梯调整系数
@@ -332,7 +517,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_account_info
+  - 接口URL：/linear-swap-api/v1/swap_account_info
 
 ### 38、查询单个子账户资产信息接口新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -340,7 +525,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_sub_account_info
+  - 接口URL：/linear-swap-api/v1/swap_sub_account_info
 
 ### 39、查询用户账户和持仓信息新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -348,7 +533,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_account_position_info
+  - 接口URL：/linear-swap-api/v1/swap_account_position_info
 
 ### 40、查询母账户下所有子账户资产信息新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -356,7 +541,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_sub_account_list
+  - 接口URL：/linear-swap-api/v1/swap_sub_account_list
 
 ### 41、获取用户持仓信息新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -364,7 +549,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_position_info
+  - 接口URL：/linear-swap-api/v1/swap_position_info
 
 ### 42、获取单个子账户持仓信息新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -372,7 +557,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_sub_position_info
+  - 接口URL：/linear-swap-api/v1/swap_sub_position_info
 
 ### 43、查询财务记录接口新增入参字段（新增入参contract_code：表示合约代码）
 
@@ -380,7 +565,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_financial_record
+  - 接口URL：/linear-swap-api/v1/swap_financial_record
 
 ### 44、获取订单明细信息新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -388,7 +573,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_order_detail
+  - 接口URL：/linear-swap-api/v1/swap_order_detail
 
 ### 45、获取合约当前未成交委托新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -396,7 +581,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_openorders
+  - 接口URL：/linear-swap-api/v1/swap_openorders
 
 ### 46、获取合约历史委托新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -404,7 +589,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_hisorders
+  - 接口URL：/linear-swap-api/v1/swap_hisorders
 
 ### 47、获取历史成交记录新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -412,7 +597,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_matchresults
+  - 接口URL：/linear-swap-api/v1/swap_matchresults
 
 ### 48、获取计划委托当前委托新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -420,7 +605,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_trigger_openorders
+  - 接口URL：/linear-swap-api/v1/swap_trigger_openorders
 
 ### 49、获取计划委托历史委托新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -428,7 +613,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_trigger_hisorders
+  - 接口URL：/linear-swap-api/v1/swap_trigger_hisorders
 
 ### 50、获取用户合约划转限制新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -436,7 +621,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_transfer_limit  
+  - 接口URL：/linear-swap-api/v1/swap_transfer_limit  
 
 ### 51、获取用户合约持仓量限制新增返回字段（在返参中新增margin_mode字段，表示保证金模式）
 
@@ -444,7 +629,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_position_limit
+  - 接口URL：/linear-swap-api/v1/swap_position_limit
 
 ### 52、获取用户当前合约杠杆倍数新增返回字段（在返参中新增margin_mode字段，表示保证金模式）
 
@@ -452,7 +637,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_available_level_rate  
+  - 接口URL：/linear-swap-api/v1/swap_available_level_rate  
 
 ### 53、切换杠杆新增返回字段（在返参中新增margin_mode字段，表示保证金模式）
 
@@ -460,7 +645,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_switch_lever_rate
+  - 接口URL：/linear-swap-api/v1/swap_switch_lever_rate
 
 ### 54、订阅订单成交数据新增返回字段（在返参中新增margin_account字段：表示保证金账户；以及margin_mode字段：表示保证金模式）
 
@@ -516,7 +701,7 @@ search: true
 
   - 接口类型：私有接口
 
-  - 接口URL：linear-swap-api/v1/swap_order_info
+  - 接口URL：/linear-swap-api/v1/swap_order_info
 
 ## 1.0.3 2020年12月2日 【修改获取订单明细信息接口（查询无成交撤单数据时，如果不传“created_at”和“order_type”参数，由原来的只能查询到最近12小时数据，改为只能查询到最近2小时数据）；修改获取合约历史委托接口（查询无成交撤单数据时，由原来的只保留最近24小时数据，改为只保留2小时数据。）】
 
@@ -590,48 +775,49 @@ search: true
 
   权限类型  |    接口数据类型   |  接口模式 | 请求方法      |          类型  |   描述                     |   需要验签  |
 ----------- |  ------------------ | ------------- |---------------------------------------- |  ---------- |  ------------------------------- |  --------------  |
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_contract_info                             | GET    |      【通用】获取合约信息                        |       否          |
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_index                                     | GET    |      【通用】获取合约指数信息                    |       否          |                     
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_price_limit                               | GET    |      【通用】获取合约最高限价和最低限价          |       否          |           
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_open_interest                             | GET    |      【通用】获取当前可用合约总持仓量            |       否          |            
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_risk_info                                 | GET    |      【通用】查询合约风险准备金和预估分摊比例    |       否          |
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_insurance_fund                            | GET    |      【通用】获取风险准备金历史数据              |       否          |
-读取  | 基础信息接口 |  逐仓   | linear-swap-api/v1/swap_adjustfactor                              | GET    |      【逐仓】查询平台阶梯调整系数                |       否          |
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_his_open_interest                         | GET    |      【通用】获取平台持仓量                      |       否          |
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_elite_account_ratio                       | GET    |      【通用】精英账户多空持仓对比-账户数         |       否          |
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_elite_position_ratio                      | GET    |      【通用】精英账户多空持仓对比-持仓量         |       否          |
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_liquidation_orders                        | GET    |      【通用】获取强平订单                        |       否          |
-读取  | 基础信息接口 |  通用   | linear-swap-api/v1/swap_settlement_records                        | GET    |      【通用】平台历史结算记录                    |       否          |
-读取  | 基础信息接口 |  逐仓   | linear-swap-api/v1/swap_api_state                                 | GET    |      【逐用】查询系统状态                        |       否          |
-读取  | 市场行情接口 |  通用   | linear-swap-api/v1/swap_funding_rate                              | GET    |      【通用】获取合约的资金费率                  |       否          |
-读取  | 市场行情接口 |  通用   | linear-swap-api/v1/swap_historical_funding_rate                   | GET    |      【通用】获取合约的历史资金费率              |       否          |
-读取  | 市场行情接口 |  通用   | linear-swap-ex/market/depth                                       | GET    |      【通用】获取行情深度数据                    |       否          |
-读取  | 市场行情接口 |  通用   | linear-swap-ex/market/history/kline                               | GET    |      【通用】获取K线数据                         |       否          |
-读取  | 市场行情接口 |  通用   | linear-swap-ex/market/detail/merged                               | GET    |      【通用】获取聚合行情                        |       否          |
-读取  | 市场行情接口 |  通用   | index/market/history/linear_swap_basis                            | GET    |      【通用】获取基差数据                        |       否          |
-读取  | 市场行情接口 |  通用   | index/market/history/linear_swap_premium_index_kline              | GET    |      【通用】获取溢价指数K线数据                 |       否          |
-读取  | 市场行情接口 |  通用   | index/market/history/linear_swap_estimated_rate_kline             | GET    |      【通用】获取预测资金费率的K线数据           |       否          |
-读取  | 市场行情接口 |  通用   | linear-swap-ex/market/trade                                       | GET    |      【通用】获取市场最近成交记录                |       否          |
-读取  | 市场行情接口 |  通用   | linear-swap-ex/market/history/trade                               | GET    |      【通用】批量获取最近的交易记录               |     否         |
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_contract_info                             | GET    |      【通用】获取合约信息                        |       否          |
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_index                                     | GET    |      【通用】获取合约指数信息                    |       否          |                     
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_price_limit                               | GET    |      【通用】获取合约最高限价和最低限价          |       否          |           
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_open_interest                             | GET    |      【通用】获取当前可用合约总持仓量            |       否          |            
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_risk_info                                 | GET    |      【通用】查询合约风险准备金和预估分摊比例    |       否          |
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_insurance_fund                            | GET    |      【通用】获取风险准备金历史数据              |       否          |
+读取  | 基础信息接口 |  逐仓   | /linear-swap-api/v1/swap_adjustfactor                              | GET    |      【逐仓】查询平台阶梯调整系数                |       否          |
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_his_open_interest                         | GET    |      【通用】获取平台持仓量                      |       否          |
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_elite_account_ratio                       | GET    |      【通用】精英账户多空持仓对比-账户数         |       否          |
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_elite_position_ratio                      | GET    |      【通用】精英账户多空持仓对比-持仓量         |       否          |
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_liquidation_orders                        | GET    |      【通用】获取强平订单                        |       否          |
+读取  | 基础信息接口 |  通用   | /linear-swap-api/v1/swap_settlement_records                        | GET    |      【通用】平台历史结算记录                    |       否          |
+读取  | 基础信息接口 |  逐仓   | /linear-swap-api/v1/swap_api_state                                 | GET    |      【逐仓】查询系统状态                        |       否          |
+读取  | 市场行情接口 |  通用   | /linear-swap-api/v1/swap_funding_rate                              | GET    |      【通用】获取合约的资金费率                  |       否          |
+读取  | 市场行情接口 |  通用   | /linear-swap-api/v1/swap_historical_funding_rate                   | GET    |      【通用】获取合约的历史资金费率              |       否          |
+读取  | 市场行情接口 |  通用   | /linear-swap-ex/market/depth                                       | GET    |      【通用】获取行情深度数据                    |       否          |
+读取  | 市场行情接口 |  通用   | /linear-swap-ex/market/history/kline                               | GET    |      【通用】获取K线数据                         |       否          |
+读取  | 市场行情接口 |  通用   | /linear-swap-ex/market/detail/merged                               | GET    |      【通用】获取聚合行情                        |       否          |
+读取  | 市场行情接口 |  通用   | /index/market/history/linear_swap_basis                            | GET    |      【通用】获取基差数据                        |       否          |
+读取  | 市场行情接口 |  通用   | /index/market/history/linear_swap_premium_index_kline              | GET    |      【通用】获取溢价指数K线数据                 |       否          |
+读取  | 市场行情接口 |  通用   | /index/market/history/linear_swap_estimated_rate_kline             | GET    |      【通用】获取预测资金费率的K线数据           |       否          |
+读取  | 市场行情接口 |  通用   | /linear-swap-ex/market/trade                                       | GET    |      【通用】获取市场最近成交记录                |       否          |
+读取  | 市场行情接口 |  通用   | /linear-swap-ex/market/history/trade                               | GET    |      【通用】批量获取最近的交易记录               |     否         |
+读取  | 市场行情接口  | 通用  | /linear-swap-api/v1/swap_estimated_settlement_price                 | GET    |     【通用】获取预估结算价      |      否          |
 读取  | 基础信息接口 |  全仓    | /linear-swap-api/v1/swap_cross_adjustfactor                          | GET    |     【全仓】查询平台阶梯调整系数                                                |       否          |
 读取  | 基础信息接口 |  全仓    | /linear-swap-api/v1/swap_cross_transfer_state                        | GET    |     【全仓】查询系统划转权限                        |       否          |
 读取  | 基础信息接口 |  全仓    | /linear-swap-api/v1/swap_cross_trade_state                           | GET    |     【全仓】查询系统交易权限                        |       否          |
-读取  | 账户接口    |  逐仓  |  linear-swap-api/v1/swap_account_info                              | POST   |      【逐仓】获取用户的合约账户信息               |     是         |
-读取  | 账户接口    |  逐仓  |  linear-swap-api/v1/swap_position_info                             | POST   |      【逐仓】获取用户的合约持仓信息               |     是         |
-读取  | 账户接口    |  逐仓  |  linear-swap-api/v1/swap_available_level_rate                      | POST   |      【逐仓】查询用户可用杠杆倍数          |     是         |
-读取  | 账户接口    |  逐仓  |  linear-swap-api/v1/swap_sub_account_list                          | POST   |      【逐仓】查询母账户下所有子账户资产信息       |     是         |
-读取  | 账户接口    |  逐仓  |  linear-swap-api/v1/swap_sub_account_info                          | POST   |      【逐仓】查询母账户下的单个子账户资产信息     |     是         |
-读取  | 账户接口    |  逐仓  |  linear-swap-api/v1/swap_sub_position_info                         | POST   |      【逐仓】查询母账户下的单个子账户持仓信息     |     是         |
-读取  | 账户接口    |  通用  |  linear-swap-api/v1/swap_financial_record                          | POST   |      【通用】查询用户财务记录                     |     是         |
-读取  | 账户接口    |  通用  |  linear-swap-api/v1/swap_order_limit                               | POST   |      【通用】获取用户的合约下单量限制             |     是         |
-读取  | 账户接口    |  通用  |  linear-swap-api/v1/swap_fee                                       | POST   |      【通用】获取用户的合约手续费费率             |     是         |
-读取  | 账户接口    |  逐仓 |  linear-swap-api/v1/swap_transfer_limit                            | POST   |      【逐仓】获取用户的合约划转限制               |     是         |
-读取  | 账户接口    |  逐仓  |  linear-swap-api/v1/swap_position_limit                            | POST   |      【逐仓】获取用户的合约持仓量限制             |     是         |
-读取  | 账户接口    |  逐仓  |  linear-swap-api/v1/swap_account_position_info                     | POST   |      【逐仓】获取用户资产和持仓信息               |     是         |
-交易  | 账户接口    |  通用  |  linear-swap-api/v1/swap_master_sub_transfer                       | POST   |      【通用】母子账户划转                         |     是         |
-读取  | 账户接口    |  通用  |  linear-swap-api/v1/swap_master_sub_transfer_record                | POST   |      【通用】获取母账户下的所有母子账户划转记录   |     是         |
-交易  | 账户接口    |  通用  |  linear-swap-api/v1/swap_transfer_inner                            | POST   |      【通用】同账号不同保证金账户的划转           |     是         |
-读取  | 账户接口    |  通用  |  linear-swap-api/v1/swap_api_trading_status                        | GET    |      【通用】获取用户API指标禁用信息              |     是         |
+读取  | 账户接口    |  逐仓  |  /linear-swap-api/v1/swap_account_info                              | POST   |      【逐仓】获取用户的合约账户信息               |     是         |
+读取  | 账户接口    |  逐仓  |  /linear-swap-api/v1/swap_position_info                             | POST   |      【逐仓】获取用户的合约持仓信息               |     是         |
+读取  | 账户接口    |  逐仓  |  /linear-swap-api/v1/swap_available_level_rate                      | POST   |      【逐仓】查询用户可用杠杆倍数          |     是         |
+读取  | 账户接口    |  逐仓  |  /linear-swap-api/v1/swap_sub_account_list                          | POST   |      【逐仓】查询母账户下所有子账户资产信息       |     是         |
+读取  | 账户接口    |  逐仓  |  /linear-swap-api/v1/swap_sub_account_info                          | POST   |      【逐仓】查询母账户下的单个子账户资产信息     |     是         |
+读取  | 账户接口    |  逐仓  |  /linear-swap-api/v1/swap_sub_position_info                         | POST   |      【逐仓】查询母账户下的单个子账户持仓信息     |     是         |
+读取  | 账户接口    |  通用  |  /linear-swap-api/v1/swap_financial_record                          | POST   |      【通用】查询用户财务记录                     |     是         |
+读取  | 账户接口    |  通用  |  /linear-swap-api/v1/swap_order_limit                               | POST   |      【通用】获取用户的合约下单量限制             |     是         |
+读取  | 账户接口    |  通用  |  /linear-swap-api/v1/swap_fee                                       | POST   |      【通用】获取用户的合约手续费费率             |     是         |
+读取  | 账户接口    |  逐仓 |   /linear-swap-api/v1/swap_transfer_limit                            | POST   |      【逐仓】获取用户的合约划转限制               |     是         |
+读取  | 账户接口    |  逐仓  |  /linear-swap-api/v1/swap_position_limit                            | POST   |      【逐仓】获取用户的合约持仓量限制             |     是         |
+读取  | 账户接口    |  逐仓  |  /linear-swap-api/v1/swap_account_position_info                     | POST   |      【逐仓】获取用户资产和持仓信息               |     是         |
+交易  | 账户接口    |  通用  |  /linear-swap-api/v1/swap_master_sub_transfer                       | POST   |      【通用】母子账户划转                         |     是         |
+读取  | 账户接口    |  通用  |  /linear-swap-api/v1/swap_master_sub_transfer_record                | POST   |      【通用】获取母账户下的所有母子账户划转记录   |     是         |
+交易  | 账户接口    |  通用  |  /linear-swap-api/v1/swap_transfer_inner                            | POST   |      【通用】同账号不同保证金账户的划转           |     是         |
+读取  | 账户接口    |  通用  |  /linear-swap-api/v1/swap_api_trading_status                        | GET    |      【通用】获取用户API指标禁用信息              |     是         |
 读取  | 账户接口    |  全仓  |  /linear-swap-api/v1/swap_cross_account_info                          | POST    |     【全仓】获取用户的合约账户信息              |       是          |
 读取  | 账户接口    |  全仓  |  /linear-swap-api/v1/swap_cross_position_info                         | POST    |     【全仓】获取用户的合约持仓信息               |       是          |
 读取  | 账户接口    |  全仓  |  /linear-swap-api/v1/swap_cross_sub_account_list                      | POST    |     【全仓】查询母账户下所有子账户资产信息       |       是          |
@@ -640,23 +826,23 @@ search: true
 读取  | 账户接口    |  全仓  |  /linear-swap-api/v1/swap_cross_transfer_limit                        | POST    |     【全仓】获取用户的合约划转限制           |       是          |
 读取  | 账户接口    |  全仓  |  /linear-swap-api/v1/swap_cross_position_limit                        | POST    |     【全仓】获取用户的合约持仓量限制        |       是          |
 读取  | 账户接口    |  全仓  |  /linear-swap-api/v1/swap_cross_account_position_info                 | POST    |     【全仓】获取用户资产和持仓信息          |       是          |
-读取  | 账户接口    |  全仓  |  linear-swap-api/v1/swap_cross_available_level_rate                   | POST    |     【全仓】获取用户当前合约杠杆倍数        |       是          |
-交易  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_order                                     | POST   |      【逐仓】合约下单                             |     是         |
-交易  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_batchorder                                | POST   |      【逐仓】合约批量下单                         |     是         |
-交易  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_switch_lever_rate                         | POST   |      【逐仓】切换杠杆                          |     是         |
-交易  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_cancel                                    | POST   |      【逐仓】撤销合约订单                         |     是         |
-交易  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_cancelall                                 | POST   |      【逐仓】撤销全部合约单                       |     是         |
-读取  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_order_info                                | POST   |      【逐仓】获取用户的合约订单信息               |     是         |
-读取  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_order_detail                              | POST   |      【逐仓】获取用户的合约订单明细信息           |     是         |
-读取  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_openorders                                | POST   |      【逐仓】获取用户的合约当前未成交委托         |     是         |
-读取  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_hisorders                                 | POST   |      【逐仓】获取用户的合约历史委托               |     是         |
-读取  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_matchresults                              | POST   |      【逐仓】获取用户的合约历史成交记录           |     是         |
-交易  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_lightning_close_position                  | POST   |      【逐仓】合约闪电平仓下单                     |     是         |
-交易  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_trigger_order                             | POST   |      【逐仓】合约计划委托下单                     |     是          |
-交易  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_trigger_cancel                            | POST   |      【逐仓】合约计划委托撤单                     |     是         |
-交易  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_trigger_cancelall                         | POST   |      【逐仓】合约计划委托全部撤单                 |     是         |
-读取  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_trigger_openorders                        | POST   |      【逐仓】获取计划委托当前委托                 |     是         |
-读取  | 交易接口    |  逐仓  |  linear-swap-api/v1/swap_trigger_hisorders                         | POST   |      【逐仓】获取计划委托历史委托                 |     是         |
+读取  | 账户接口    |  全仓  |  /linear-swap-api/v1/swap_cross_available_level_rate                   | POST    |     【全仓】获取用户当前合约杠杆倍数        |       是          |
+交易  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_order                                     | POST   |      【逐仓】合约下单                             |     是         |
+交易  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_batchorder                                | POST   |      【逐仓】合约批量下单                         |     是         |
+交易  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_switch_lever_rate                         | POST   |      【逐仓】切换杠杆                          |     是         |
+交易  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_cancel                                    | POST   |      【逐仓】撤销合约订单                         |     是         |
+交易  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_cancelall                                 | POST   |      【逐仓】撤销全部合约单                       |     是         |
+读取  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_order_info                                | POST   |      【逐仓】获取用户的合约订单信息               |     是         |
+读取  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_order_detail                              | POST   |      【逐仓】获取用户的合约订单明细信息           |     是         |
+读取  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_openorders                                | POST   |      【逐仓】获取用户的合约当前未成交委托         |     是         |
+读取  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_hisorders                                 | POST   |      【逐仓】获取用户的合约历史委托               |     是         |
+读取  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_matchresults                              | POST   |      【逐仓】获取用户的合约历史成交记录           |     是         |
+交易  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_lightning_close_position                  | POST   |      【逐仓】合约闪电平仓下单                     |     是         |
+交易  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_trigger_order                             | POST   |      【逐仓】合约计划委托下单                     |     是          |
+交易  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_trigger_cancel                            | POST   |      【逐仓】合约计划委托撤单                     |     是         |
+交易  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_trigger_cancelall                         | POST   |      【逐仓】合约计划委托全部撤单                 |     是         |
+读取  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_trigger_openorders                        | POST   |      【逐仓】获取计划委托当前委托                 |     是         |
+读取  | 交易接口    |  逐仓  |  /linear-swap-api/v1/swap_trigger_hisorders                         | POST   |      【逐仓】获取计划委托历史委托                 |     是         |
 交易  | 交易接口    |  全仓  |  /linear-swap-api/v1/swap_cross_switch_lever_rate                     | POST    |     【全仓】切换杠杆         |       是          |
 交易  | 交易接口    |  全仓  |  /linear-swap-api/v1/swap_cross_order                                 | POST    |     【全仓】合约下单           |       是          |
 交易  | 交易接口    |  全仓  |  /linear-swap-api/v1/swap_cross_batchorder                            | POST    |     【全仓】合约批量下单        |       是          |
@@ -673,6 +859,18 @@ search: true
 交易  | 交易接口    |  全仓  |  /linear-swap-api/v1/swap_cross_trigger_cancelall                     | POST    |     【全仓】合约计划委托全部撤单       |       是          |
 读取  | 交易接口    |  全仓  |  /linear-swap-api/v1/swap_cross_trigger_openorders                    | POST    |     【全仓】获取计划委托当前委托       |       是          |
 读取  | 交易接口    |  全仓  |  /linear-swap-api/v1/swap_cross_trigger_hisorders                     | POST    |     【全仓】获取计划委托历史委托       |       是          |
+交易  | 交易接口  | 逐仓 |  /linear-swap-api/v1/swap_tpsl_order                           | POST    |     【逐仓】对仓位设置止盈止损订单       |       是          |
+交易  | 交易接口  | 逐仓 |  /linear-swap-api/v1/swap_tpsl_cancel                           | POST    |    【逐仓】止盈止损订单撤单       |       是          |
+交易  | 交易接口  | 逐仓 |  /linear-swap-api/v1/swap_tpsl_cancelall                       | POST    |     【逐仓】止盈止损订单全部撤单       |       是          |
+读取  | 交易接口  | 逐仓 |  /linear-swap-api/v1/swap_tpsl_openorders                      | POST    |     【逐仓】止盈止损订单当前委托       |       是          |
+读取  | 交易接口  | 逐仓 |  /linear-swap-api/v1/swap_tpsl_hisorders                       | POST    |     【逐仓】止盈止损订单历史委托       |       是          |
+读取  | 交易接口  | 逐仓 |  /linear-swap-api/v1/swap_relation_tpsl_order                  | POST    |     【逐仓】查询开仓单关联的止盈止损订单       |       是          |
+交易  | 交易接口  | 全仓 |  /linear-swap-api/v1/swap_cross_tpsl_order                           | POST    |     【全仓】对仓位设置止盈止损订单       |       是          |
+交易  | 交易接口  | 全仓 |  /linear-swap-api/v1/swap_cross_tpsl_cancel                           | POST    |    【全仓】止盈止损订单撤单       |       是          |
+交易  | 交易接口  | 全仓 |  /linear-swap-api/v1/swap_cross_tpsl_cancelall                       | POST    |     【全仓】止盈止损订单全部撤单       |       是          |
+读取  | 交易接口  | 全仓 |  /linear-swap-api/v1/swap_cross_tpsl_openorders                      | POST    |     【全仓】止盈止损订单当前委托       |       是          |
+读取  | 交易接口  | 全仓 |  /linear-swap-api/v1/swap_cross_tpsl_hisorders                       | POST    |     【全仓】止盈止损订单历史委托       |       是          |
+读取  | 交易接口  | 全仓 |  /linear-swap-api/v1/swap_cross_relation_tpsl_order                  | POST    |     【全仓】查询开仓单关联的止盈止损订单       |       是          |
 交易  | 账户接口    |  通用  |  https://api.huobi.pro/v2/account/transfer                         | POST   |      【通用】现货-USDT本位永续账户间进行资金的划转              |     是        |
 
 ## 访问地址
@@ -832,7 +1030,7 @@ api.hbdm.com\n
 
 * 公开行情接口和用户私有接口都有访问次数限制
 
-* 普通用户，需要密钥的私有接口，每个UID 3秒最多45次请求(该UID的所有币种的合约的所有私有接口共享3秒45次的额度)
+* 普通用户，需要密钥的私有接口，每个UID 3秒最多 72 次请求(交易接口3秒最多 36 次请求，查询接口3秒最多 36 次请求) (该UID的所有币种和不同到期日的合约的所有私有接口共享该限制) 
 
 * 其他非行情类的公开接口，比如获取指数信息，限价信息，交割结算、平台持仓信息等，所有用户都是每个IP3秒最多120次请求（所有该IP的非行情类的公开接口请求共享3秒120次的额度）
 
@@ -871,9 +1069,9 @@ api.hbdm.com\n
 
 ## 撤单率限制【暂未启用】
 
-- 当用户通过API在10分钟内特定订单价格类型的委托单总笔数大于或等于3000笔时，系统会自动计算撤单率，如果撤单率大于99%，则禁止该用户通过API特定价格类型进行下单5分钟；
+- 当用户通过API在10分钟内特定订单价格类型的委托单总笔数大于或等于3000笔时，系统会自动计算撤单率，如果撤单率大于99%，则禁止该用户通过API特定价格类型进行下单5分钟（如果下单会报：1084  您的合约API挂单接口被禁用,请于{0} (GMT+8) 后再试）；
 
-- 当API用户在1小时的总禁用次数达到3次时，则禁止用户通过API特定价格类型进行下单30分钟，待解禁恢复访问后，总禁用次数重置，且之前周期统计过的次数不计入新周期的总禁用次数;
+- 当API用户在1小时的总禁用次数达到3次时，则禁止用户通过API特定价格类型进行下单30分钟（如果下单会报：1084  您的合约API挂单接口被禁用,请于{0} (GMT+8) 后再试），待解禁恢复访问后，总禁用次数重置，且之前周期统计过的次数不计入新周期的总禁用次数;
 
 - 其他客户端挂撤单以及API撤单将不受影响，每次禁用会以短信和邮件形式通知；
 
@@ -923,6 +1121,24 @@ api.hbdm.com\n
 
   - 5、适当延长策略轮询时间。
 
+
+## 停服维护
+
+当该业务系统停服维护期间，除了以下2个提供给用户查询系统状态的接口能够正常使用外（<a href='https://docs.huobigroup.com/docs/usdt_swap/v1/cn/#cd63bde415'>获取当前系统状态</a>、<a href='https://docs.huobigroup.com/docs/usdt_swap/v1/cn/#bef5ec9210'>查询系统是否可用</a>），该业务所有rest接口都会固定返回响应报文:`{"status": "maintain"}`。websocket推送接口在停服维护时，除了WebSocket系统状态更新的推送接口可以正常调用外（<a href='https://docs.huobigroup.com/docs/usdt_swap/v1/cn/#b200f80f2c'>WebSocket系统状态更新接口</a>），其他推送接口都会返回1006的错误码。
+
+>Response
+
+```json
+{
+    "status": "maintain"
+}
+``` 
+
+#### 2个接口为：
+ - 查询系统是否可用：https://api.hbdm.com/heartbeat/
+ - statuspage查询系统状态：https://status-linear-swap.huobigroup.com/api/v2/summary.json
+
+除了以上两个rest接口获取系统维护停服信息外，也可以通过订阅WebSocket系统状态更新接口获取系统维护停服信息
 
 ## 获取当前系统状态
 
@@ -1136,13 +1352,13 @@ curl "https://status-linear-swap.huobigroup.com/api/v2/summary.json"
 | ------------------ | ------------------ | ------------- | 
 | status             | string                   | "ok" 或 "error"... 
 | \<data\>             | dict object                 | 
-| heartbeat             | int                   | 交割合约 1: 可用 0: 不可用 
-| swap_heartbeat             | int                   | 币本位永续 1: 可用 0: 不可用 
+| heartbeat             | int                   | 交割合约 1: 可用 0: 不可用(即停服维护) 
+| swap_heartbeat             | int                   | 币本位永续 1: 可用 0: 不可用(即停服维护) 
 | estimated_recovery_time             | long                   | null: 正常. 交割合约预计恢复时间， 单位:毫秒
 | swap_estimated_recovery_time             | long                   | null: 正常. 币本位永续合约预计恢复时间，单位：毫秒.
-| option_heartbeat             | int                   | 期权合约 1: 可用 0: 不可用 
+| option_heartbeat             | int                   | 期权合约 1: 可用 0: 不可用(即停服维护) 
 | option_estimated_recovery_time             | long                   | null: 正常. 期权合约预计恢复时间，单位：毫秒.
-| linear_swap_heartbeat             | long                   | USDT本位永续 1: 可用 0: 不可用
+| linear_swap_heartbeat             | long                   | USDT本位永续 1: 可用 0: 不可用(即停服维护)
 | linear_swap_estimated_recovery_time             | long                   | null: 正常. USDT本位永续合约预计恢复时间，单位：毫秒.
 | \</data\>             |                  | 
 
@@ -1198,204 +1414,220 @@ curl "https://status-linear-swap.huobigroup.com/api/v2/summary.json"
 错误代码	 | 错误描述|
 ----- | ---------------------- |
 403	|	无效身份                |
-1000|	系统异常                |
-1001|	系统未准备就绪             |
-1002|	查询异常                |
-1003|	操作redis异常           |
-1004|	系统繁忙，请稍后重试    |
-1010|	用户不存在               |
-1011|	用户会话不存在             |
-1012|	用户账户不存在             |
-1013|	合约品种不存在             |
-1014|	合约不存在               |
-1015|	指数价格不存在             |
-1016|	对手价不存在              |
-1017|	查询订单不存在             |
-1018|	主账号不存在             |
-1019|	主账号不在开通子账号白名单里             |
-1020|	您的子账号数量已超出限制，请联系客服             |
-1021|	开户失败。您的主账号尚未开通合约交易权限，请前往开通             |
-1030|	请求参数输入错误                |
-1031|	非法的报单来源             |
-1032|	访问次数超出限制            |
-1033|	合约周期字段值错误           |
-1034|	报单价格类型字段值错误         |
-1035|	报单方向字段值错误           |
-1036|	报单开平字段值错误           |
-1037|	杠杆倍数不符合要求           |
-1038|	报单价格不符合最小变动价        |
-1039|	报单价格超出限制            |
-1040|	报单数量不合法             |
-1041|	报单数量超出限制            |
-1042|	超出多头持仓限制            |
-1043|	超出多头持仓限制            |
-1044|	超出平台持仓限制            |
-1045|	杠杆倍数与所持有仓位的杠杆不符合    |
-1046|	持仓未初始化              |
-1047|	可用保证金不足             |
-1048|	持仓量不足               |
-1049|	市价单不支持               |
-1050|	客户报单号重复             |
-1051|	没有可撤订单              |
-1052|	超出批量数目限制            |
-1053|	无法获取合约的最新价格区间       |
-1054|	无法获取合约的最新价          |
-1055|	平仓时权益不足             |
-1056|	结算中无法下单和撤单          |
-1057|	暂停交易中无法下单和撤单        |
-1058|	停牌中无法下单和撤单          |
-1059|	交割中无法下单和撤单          |
-1060|	此合约在非交易状态中，无法下单和撤单  |
-1061|	订单不存在，无法撤单          |
-1062|	撤单中，无法重复撤单          |
-1063|	订单已成交，无法撤单          |
-1064|	报单主键冲突              |
-1065|	客户报单号不是整数           |
-1066|	字段不能为空              |
-1067|	字段不合法               |
-1068|	导出错误                |
-1069|	报单价格不合法             |
-1070|	数据为空，无法导出          |
-1071|	订单已撤，无法撤单             |
-1072|	卖出价必须低于指定USD             |
-1073|	仓位异常，请联系客服             |
-1074|	下单异常，请联系客服             |
-1075|	您的下单价格成交后可能会导致强平，请修改下单价格             |
-1076|	盘口无数据，请稍后再试             |
-1077|	交割结算中，当前品种资金查询失败            |
-1078|	交割结算中，部分品种资金查询失败             |
-1079|	交割結算中，当前品种持仓查询失败            |
-1080|	交割結算中，部分品种持仓查询失败            |
-1081|	未完成的计划委托单超限             |
-1082|	触发类型参数错误            |
-1083|您的仓位已进入强平接管，暂时无法下单 |
-1084|您的合约API挂单接口被禁用，请于(GMT+8) 后再试 |
-1085|计划委托下单失败，请修改价格再次下单或联系客服 |
-1086|{0}合约暂时限制{1}端开仓，请联系客服 |
-1087|{0}合约暂时限制{1}端平仓，请联系客服 |
-1088|{0}合约暂时限制{1}端撤单，请联系客服 | 
-1089|{0}合约暂时限制划转，请联系客服  |
-1090|保证金率小于0, 无法下单|
-1091|账户权益小于0, 无法下单|
-1092  |  闪电平仓取盘口第{0}档的价格, 下单后将导致账户权益小于0 , 请改为手动输入价格或使用对手价下单  | 
-1093  |  闪电平仓取盘口第{0}档的价格, 下单后将导致担保资产率小于0 , 请改为手动输入价格或使用对手价下单  | 
-1094  |  倍数不能为空, 请切换倍数或联系客服  | 
-1095  |  合约处于非交易状态, 暂时无法切换倍数  | 
-1100|	用户没有开仓权限            |
-1101|	用户没有平仓权限            |
-1102|	用户没有入金权限            |
-1103|	用户没有出金权限            |
-1104|	合约交易权限,当前禁止交易       |
-1105|	合约交易权限,当前只能平仓       |
-1106|合约状态异常，无法出入金 |
-1108|服务异常，请稍后再试 |
-1109|子账号没有开仓权限，请联系客服 |
-1110|子账号没有平仓权限，请联系客服 |
-1111|子账号没有入金权限，请联系客服 |
-1112|子账号没有出金权限，请联系客服 |
-1113|子账号没有交易权限，请登录主账号授权 |
-1114|子账号没有划转权限，请登录主账号授权 |
-1115|您没有访问此子账号的权限 |
-1200|	登录错误                |
-1220|	用户尚未开通合约交易          |
-1221|	开户资金不足              |
-1222|	开户天数不足              |
-1223|	开户VIP等级不足           |
-1224|	开户国家限制              |
-1225|	开户不成功               |
-1226|合约已开户，无法重复开户 |
-1227|火币合约暂不支持子账户，请返回退出子账户，切换主账户登录|
-1228|未开户，无法同意协议 |
-1229|重复同意协议|
-1230|您尚未做风险认证|
-1231|您尚未做身份认证|
-1232|您上传的图片格式/大小不符合要求，请重新上传 | 
-1233  |  您尚未开通高倍数协议 (使用高倍数请先使用主账号登录web或APP端同意高倍数协议)  | 
-1234  |  {0}合约开仓委托订单数量不得超过{1}        | 
-1235  |  {0}合约平仓委托订单数量不得超过{1}  | 
-1250|	无法获取HT_token        |
-1251|	BTC折合资产无法获取         |
-1252|	现货资产无法获取            |
-1253|签名验证错误 |
-1300|划转失败 |
-1301|可划转余额不足 |
-1302|系统划转错误 |
-1303|单笔转出的数量不能低于{0}{1} |
-1304|单笔转出的数量不能高于{0}{1} |
-1305|单笔转入的数量不能低于{0}{1} |
-1306|单笔转入的数量不能高于{0}{1} |
-1307|您当日累计转出量超过{0}{1}, 暂无法转出 |
-1308|您当日累计转入量超过{0}{1}, 暂无法转入|
-1309|您当日累计净转出量超过{0}{1}, 暂无法转出|
-1310|您当日累计净转入量超过{0}{1}, 暂无法转入|
-1311|超过平台当日累计最大转出量限制, 暂无法转出|
-1312|超过平台当日累计最大转入量限制, 暂无法转入|
-1313|超过平台当日累计最大净转出量限制, 暂无法转出|
-1314|超过平台当日累计最大净转入量限制, 暂无法转入|
-1315|划转类型错误|
-1316|划转冻结失败|
-1317|划转解冻失败|
-1318|划转确认失败|
-1319|查询可划转金额失败|
-1320|此合约在非交易状态中, 无法进行系统划转|
-1321|划转失败, 请稍后重试或联系客服|
-1322|划转金额必须大于0|
-1323|服务异常, 划转失败, 请稍后再试|
-1325|设置交易单位失败| 
-1326|获取交易单位失败|
-1327|无划转权限, 划转失败, 请联系客服|
-1328|无划转权限, 划转失败, 请联系客服|
-1329|无划转权限, 划转失败, 请联系客服|
-1330|无划转权限, 划转失败, 请联系客服|
-1331|超出划转精度限制(8位), 请修改后操作|
-1332  |  永续合约不存在  | 
-1333  |  开通跟单吃单协议失败  | 
-1334  |  查询跟单吃单协议失败  |   
-1335  |  查询跟单吃单二次确认设置失败  | 
-1336  |  更新跟单吃单二次确认设置失败  | 
-1337  |  查询跟单吃单设置失败  | 
-1338  |  更新跟单吃单设置失败  | 
-1339  |  昵称含有不合法词汇, 请修改      | 
-1340  |  昵称已被使用, 请修改     | 
-1341  |  报名阶段已结束    | 
-1342  |  子账号无法设置昵称  | 
-12001|无效的提交时间|
-12002|错误的签名版本|
-12003|错误的签名方法|
-12004|密钥已经过期|
-12005|ip地址错误|
-12006|提交时间不能为空|
-12007|公钥错误|
-12008|校验失败|
-12009|用户被锁定或不存在|
+1000  | 系统异常
+1001  | 系统未准备就绪
+1002  | 查询异常
+1003  | 操作redis异常
+1004  | 系统繁忙,请稍后再试
+1010  | 用户不存在
+1011  | 用户会话不存在,请重试
+1012  | 账户不存在
+1013  | 合约品种不存在
+1014  | 合约不存在
+1015  | 指数价格不存在
+1016  | 对手价不存在
+1017  | 查询订单不存在
+1018  | 主账号不存在
+1019  | 主账号不在开通子账号白名单里
+1020  | 您的子账号数量已超出限制,请联系客服
+1021  | 开户失败。您的主账号尚未开通合约交易权限,请前往开通
+1030  | 输入错误
+1031  | 非法的请求来源
+1032  | 访问次数超出限制
+1033  | 合约周期字段值错误
+1034  | 报单价格类型字段值错误
+1035  | 报单方向字段值错误
+1036  | 报单开平字段值错误
+1037  | 倍数不符合要求,请联系客服
+1038  | 下单价格超出精度限制,请修改后下单
+1039  | 买入价必须低于{0}{1},卖出价必须高于{2}{3}
+1040  | 下单数量不能为空或者不能小于0, 请修改后下单
+1041  | 下单数量超出限制 ({0}张),请修改后下单
+1042  | 下单数量+挂单数量+持仓数量超过了单用户多仓持仓限制({0}张),请修改后下单
+1043  | 下单数量+挂单数量+持仓数量超过了单用户空仓持仓限制({0}张), 请修改后下单
+1044  | 触发平台限仓,请修改后下单
+1045  | 当前有挂单,无法切换倍数
+1046  | 当前合约持仓不存在
+1047  | 可用担保资产不足
+1048  | 可平量不足
+1049  | 暂不支持市价开仓
+1050  | 客户报单号重复
+1051  | 没有可撤销的订单
+1052  | 批量撤单、下单的订单数量超过平台限制数量
+1053  | 无法获取最新价格区间
+1054  | 无法获取最新价
+1055  | 价格不合理, 下单后将导致账户权益小于0 , 请修改价格后下单
+1056  | 结算中,暂时无法下单/撤单
+1057  | 暂停交易中,暂时无法下单
+1058  | 停牌中,暂时无法下单
+1059  | 交割中,暂时无法下单/撤单
+1060  | 合约处于非交易状态,暂时无法下单
+1061  | 订单不存在
+1062  | 撤单中,请耐心等待
+1063  | 订单已成交
+1064  | 报单主键冲突
+1065  | 客户报单号不是整数
+1066  | {0}字段不能为空
+1067  | {0}字段不合法
+1068  | 导出错误
+1069  | 价格不合理
+1070  | 数据为空,无法导出
+1071  | 订单已撤,无法撤单
+1072  | 卖出价必须低于{0}{1}
+1073  | 仓位异常,请联系客服
+1074  | 下单异常,请联系客服
+1075  | 价格不合理, 下单后将导致担保资产率小于0 , 请修改价格后下单
+1076  | 盘口无数据,请稍后再试
+1077  | 交割结算中,当前品种资金查询失败
+1078  | 交割结算中,部分品种资金查询失败
+1079  | 交割结算中,当前品种持仓查询失败
+1080  | 交割结算中,部分品种持仓查询失败
+1081  | {0}合约计划委托订单数量不得超过{1}
+1082  | 触发类型参数错误
+1083  | 您的仓位已进入强平接管,暂时无法下单
+1084  | 您的合约API挂单接口被禁用,请于{0} (GMT+8) 后再试
+1085  | 计划委托下单失败,请修改价格再次下单或联系客服
+1086  | {0}合约暂时限制{1}端开仓,请联系客服
+1087  | {0}合约暂时限制{1}端平仓,请联系客服
+1088  | {0}合约暂时限制{1}端撤单,请联系客服
+1089  | {0}账户暂时限制划转,请联系客服
+1090  | 担保资产率小于0, 无法下单
+1091  | 账户权益小于0, 无法下单
+1092  | 闪电平仓取盘口第{0}档的价格, 下单后将导致账户权益小于0 , 请改为手动输入价格或使用对手价下单
+1093  | 闪电平仓取盘口第{0}档的价格, 下单后将导致担保资产率小于0 , 请改为手动输入价格或使用对手价下单
+1094  | 倍数不能为空, 请切换倍数或联系客服
+1095  | 合约处于非交易状态, 暂时无法切换倍数
+1100  | 您没有开仓权限,请联系客服
+1101  | 您没有平仓权限,请联系客服
+1102  | 您没有转入权限,请联系客服
+1103  | 您没有转出权限,请联系客服
+1104  | 合约交易受限,当前禁止交易
+1105  | 合约交易受限,当前只能平仓
+1106  | 合约交割结算中,暂时无法划转
+1108  | Dubbo调用异常
+1109  | 子账号没有开仓权限,请联系客服
+1110  | 子账号没有平仓权限,请联系客服
+1111  | 子账号没有入金权限,请联系客服
+1112  | 子账号没有出金权限,请联系客服
+1113  | 子账号没有交易权限,请登录主账号授权
+1114  | 子账号没有划转权限,请登录主账号授权
+1115  | 您没有访问此子账号的权限
+1200  | 登录失败,请重试
+1220  | 您尚未开通合约交易,无访问权限
+1221  | 币币账户总资产不满足合约开通条件
+1222  | 开户天数不满足合约开通条件
+1223  | VIP等级不满足合约开通条件
+1224  | 您所在的国家/地区不满足合约开通条件
+1225  | 开通合约失败
+1226  | 合约已开户,无法重复开户
+1227  | 火币合约暂不支持子账户,请返回退出子账户,切换主账户登录
+1228  | 您尚未开通合约交易, 请先开通
+1229  | 重复同意协议
+1230  | 您尚未做风险认证
+1231  | 您尚未做身份认证
+1232  | 您上传的图片格式/大小不符合要求,请重新上传
+1233  | 您尚未开通高倍数协议 (使用高倍数请先使用主账号登录web或APP端同意高倍数协议)
+1234  | {0}合约开仓委托订单数量不得超过{1}
+1235  | {0}合约平仓委托订单数量不得超过{1}
+1250  | 无法获取HT_token
+1251  | 无法获取BTC净资产,请稍后再试
+1252  | 无法获取币币账户资产,请稍后再试
+1253  | 签名验证错误
+1254  | 子账号无权限开通合约，请前往web端登录主账号开通
+1300  | 划转失败
+1301  | 可划转余额不足
+1302  | 系统划转错误
+1303  | 单笔转出的数量不能低于{0}{1}
+1304  | 单笔转出的数量不能高于{0}{1}
+1305  | 单笔转入的数量不能低于{0}{1}
+1306  | 单笔转入的数量不能高于{0}{1}
+1307  | 您当日累计转出量超过{0}{1}, 暂无法转出
+1308  | 您当日累计转入量超过{0}{1}, 暂无法转入
+1309  | 您当日累计净转出量超过{0}{1}, 暂无法转出
+1310  | 您当日累计净转入量超过{0}{1}, 暂无法转入
+1311  | 超过平台当日累计最大转出量限制, 暂无法转出
+1312  | 超过平台当日累计最大转入量限制, 暂无法转入
+1313  | 超过平台当日累计最大净转出量限制, 暂无法转出
+1314  | 超过平台当日累计最大净转入量限制, 暂无法转入
+1315  | 划转类型错误
+1316  | 划转冻结失败
+1317  | 划转解冻失败
+1318  | 划转确认失败
+1319  | 查询可划转金额失败
+1320  | 此合约在非交易状态中, 无法进行系统划转
+1321  | 划转失败, 请稍后重试或联系客服
+1322  | 划转金额必须大于0
+1323  | 服务异常, 划转失败, 请稍后再试
+1325  | 设置交易单位失败
+1326  | 获取交易单位失败
+1327  | 无划转权限, 划转失败, 请联系客服
+1328  | 无划转权限, 划转失败, 请联系客服
+1329  | 无划转权限, 划转失败, 请联系客服
+1330  | 无划转权限, 划转失败, 请联系客服
+1331  | 超出划转精度限制(8位), 请修改后操作
+1332  | 永续合约不存在
+1333  | 开通跟单吃单协议失败
+1334  | 查询跟单吃单协议失败
+1335  | 查询跟单吃单二次确认设置失败
+1336  | 更新跟单吃单二次确认设置失败
+1337  | 查询跟单吃单设置失败
+1338  | 更新跟单吃单设置失败
+1339  | 昵称含有不合法词汇, 请修改
+1340  | 昵称已被使用, 请修改
+1341  | 报名阶段已结束
+1342  | 子账号无法设置昵称
+1343  | 指标失效, 请重新设置
+1344  | 抱歉, 目前可最多对{0}个合约创建行情提醒
+1345  | 抱歉, {0}合约目前可最多创建{1}个提醒
+1346  | 该指标已存在, 请勿重复设置
+1347  | {0}参数错误, 请修改
+1348  | 该合约不支持全仓模式
+1349  | 委托单倍数与当前持仓的倍数不符, 请先切换倍数
+1401  | 委托价必须小于行权价
+1403  | {0}合约止盈止损订单的委托数量不得超过{1}  
+1404  | 止盈止损订单仅支持与开仓订单绑定 
+1405  | 止盈价不得{0}{1}{2} 
+1406  | 您的抽奖次数已用完 
+1407  | 止损价不得{0}{1}{2}  
+12001  | 无效的提交时间
+12002  | 错误的签名版本
+12003  | 错误的签名方法
+12004  | 密钥已经过期
+12005  | ip地址错误
+12006  | 提交时间不能为空
+12007  | 公钥错误
+12008  | 校验失败
+12009  | 用户被锁定或不存在
 
 ## API 最佳实践
 
-### 1、linear-swap-api/v1/swap_hisorders 历史委托查询接口：
+### 1、/linear-swap-api/v1/swap_hisorders 历史委托查询接口：
 
-- 为了保证时效性和降低延迟，强烈建议用户使用linear-swap-api/v1/swap_order_info获取用户订单信息接口来查询订单信息，获取合约订单信息接口从内存里面查询，无延迟，接口响应速度更快。
+- 为了保证时效性和降低延迟，强烈建议用户使用/linear-swap-api/v1/swap_order_info获取用户订单信息接口来查询订单信息，获取合约订单信息接口从内存里面查询，无延迟，接口响应速度更快。
 
-- 如果用户一定要使用linear-swap-api/v1/swap_hisorders 历史委托查询接口，请尽量输入更多的查询条件，trade_type（推荐传0查询全部）、type、status、create_date尽量都输入，并且查询日期create_date参数输入尽量小的整数，最好只查询一天的数据；
+- 如果用户一定要使用/linear-swap-api/v1/swap_hisorders 历史委托查询接口，请尽量输入更多的查询条件，trade_type（推荐传0查询全部）、type、status、create_date尽量都输入，并且查询日期create_date参数输入尽量小的整数，最好只查询一天的数据；
 
  
 
-### 2、linear-swap-api/v1/swap_matchresults 获取历史成交记录接口：
+### 2、/linear-swap-api/v1/swap_matchresults 获取历史成交记录接口：
 
 - 为了提升查询的性能和响应速度，查询条件 trade_type（推荐传0查询全部） 、contract_code 、create_date 尽量都输入，并且create_date输入尽量小的整数，最好只查询一天的数据；
 
  
 
-### 3、linear-swap-api/v1/swap_financial_record 查询用户财务记录接口：
+### 3、/linear-swap-api/v1/swap_financial_record 查询用户财务记录接口：
 
 - 为了提升查询的性能和响应速度，查询条件type（推荐不填查询全部）、create_date，尽量都输入，并且查询日期create_date参数输入尽量小的整数，最好只查询一天的数据；
 
  
 
-### 4、linear-swap-api/v1/swap_order_detail 获取订单明细接口：
+### 4、/linear-swap-api/v1/swap_order_detail 获取订单明细接口：
+
+- 请求参数没有带上created_at等参数查询订单时，可能会发生查询结果延迟。建议您在使用此接口时请求字段带上：created_at（下单时间戳）和 order_type(订单类型，默认填1)，会直接查询数据库，查询结果会更及时。
 
 - 查询条件created_at使用13位long类型时间戳（包含毫秒时间），如果输入准确的时间戳，查询性能将会提升。
 
-- 例如:"2019/10/18 10:26:22"转换为时间戳为：1571365582123。也可以直接从swap_order下单接口返回报文中的ts中获取时间戳作为参数查询接口linear-swap-api/v1/swap_order_detail获取订单明细，同时created_at禁止传0；；
+- 例如:"2019/10/18 10:26:22"转换为时间戳为：1571365582123。也可以直接从swap_order下单接口返回报文中的ts中获取时间戳作为参数查询接口/linear-swap-api/v1/swap_order_detail获取订单明细，同时created_at禁止传0；；
 
  
 
@@ -1429,9 +1661,9 @@ curl "https://status-linear-swap.huobigroup.com/api/v2/summary.json"
 `}`
  
 
-### 6、linear-swap-api/v1/swap_order合约下单和linear-swap-api/v1/swap_batchorder合约批量下单接口：
+### 6、/linear-swap-api/v1/swap_order合约下单和/linear-swap-api/v1/swap_batchorder合约批量下单接口：
 
-- 推荐传参数client_order_id（用户级别唯一），主要防止下单和批量下单接口由于网络或其它原因接口超时或者没有返回，可以根据client_order_id通过请求接口linear-swap-api/v1/swap_order_info来快速获取订单是否下单正常或者快速获取订单信息。
+- 推荐传参数client_order_id（用户级别唯一），主要防止下单和批量下单接口由于网络或其它原因接口超时或者没有返回，可以根据client_order_id通过请求接口/linear-swap-api/v1/swap_order_info来快速获取订单是否下单正常或者快速获取订单信息。
 
 
 ## 代码实例
@@ -1508,6 +1740,10 @@ USDT本位永续签名过程和币本位永续、交割类似，除了参考以�
 
 10. websocket构建签名与restful类似，websocket构建json请求的数据不需要URL编码。
 
+11. 签名时所带Host应与请求接口时Host相同。如果您使用了代理，代理可能会改变请求Host，可以尝试去掉代理；您使用的网络连接库可能会把端口包含在Host内，可以尝试在签名用到的Host中包含端口，如“api.hbdm.com:443"
+
+12. Api Key 与 Secret Key中是否存在隐藏特殊字符，影响签名.
+
 ### Q7: 公开行情根据ip限速，需要私钥的根据uid限速是吗？
 
 是的。私有的根据UID来限速，不是根据API—KEY限速，母子帐号是分开分别限速，互不影响。
@@ -1528,7 +1764,7 @@ USDT本位永续签名过程和币本位永续、交割类似，除了参考以�
 
 ### Q3: 有没有历史K线数据或者历史的公开市场逐笔成交数据？
 
-历史K线数据可以通过API接口linear-swap-ex/market/history/kline去获取，只填写from,to参数，不写size参数，最多只能获取连续两年的数据。
+历史K线数据可以通过API接口/linear-swap-ex/market/history/kline去获取，只填写from,to参数，不写size参数，最多只能获取连续两年的数据。
 
 历史的公开市场逐笔成交数据目前没有，您可以通过订阅market.$contract_code.trade.detail来本地进行存储。
 
@@ -1607,7 +1843,7 @@ market.$contract_code.depth.$type是全量数据，market.$contract_code.depth.s
 
 (4) 同一个websocket连接，增量数据version是递增的；如果 version不递增，您需要重新订阅并重新维护本地全量数据；
 
-### Q14:获取合约的历史资金费率（swap-api/v1/swap_historical_funding_rate）返回字段中“当期资金费率（funding_rate）”和“实际资金费率（realized_rate）”的区别？
+### Q14:获取合约的历史资金费率（/linear-swap-api/v1/swap_historical_funding_rate）返回字段中“当期资金费率（funding_rate）”和“实际资金费率（realized_rate）”的区别？
 
 在正常情况下当期资金费率和实际资金费率是相等的。只有在支付资金费率会导致用户爆仓时，会少收或不收资金费率（少收或不收的资金费率值就是实际资金费率）。当期资金费率不变。
 
@@ -1640,7 +1876,7 @@ market.$contract_code.depth.$type是全量数据，market.$contract_code.depth.s
 
 ### Q3: 同样的order id 和 match id，可以有N多个Trade，比如，用户是一笔大的taker单，吃掉了N个maker的订单，那么，就会对应有N个trade，如何标识这些不同的trade？
 
-订单明细信息接口linear-swap-api/v1/swap_order_detail返回的的字段id是全局唯一的交易标识。如果一个maker单，分多次match掉的话是每次推送只推match的部分，撮合一笔推送一笔。
+订单明细信息接口/linear-swap-api/v1/swap_order_detail返回的的字段id是全局唯一的交易标识。如果一个maker单，分多次match掉的话是每次推送只推match的部分，撮合一笔推送一笔。
 
 ### Q4: USDT本位永续合约交易全链路延时多少？
 
@@ -1668,15 +1904,20 @@ WS订阅私有账户，订单，仓位时，请注意也要定时维护好心跳
 
 ### Q10: API撤单成功为什么查询订单却是成交？
 
-请注意撤单成功或者下单成功只代表您撤单命令或者下单命令的成功，并不代表订单已经撤销，您可以通过该接口linear-swap-api/v1/swap_order_info去查询订单状态。
+请注意撤单成功或者下单成功只代表您撤单命令或者下单命令的成功，并不代表订单已经撤销，您可以通过该接口/linear-swap-api/v1/swap_order_info去查询订单状态。
 
 ### Q11: API查询订单状态为10是否一定失败？
 
-通过linear-swap-api/v1/swap_order_info查询订单状态，如果status为10，表示订单失败，不会成功。
+通过/linear-swap-api/v1/swap_order_info查询订单状态，如果status为10，表示订单失败，不会成功。
 
 ### Q12: API一般从撤单开始到撤单成功需要多久？
 
-撤单命令执行成功一般几十ms，实际撤单状态要查询订单状态linear-swap-api/v1/swap_order_info获取。
+撤单命令执行成功一般几十ms，实际撤单状态要查询订单状态/linear-swap-api/v1/swap_order_info获取。
+
+### Q13: 获取历史强平订单的方法？
+
+需要获取历史强平订单，可以通过：获取合约历史委托（/linear-swap-api/v1/swap_hisorders【逐仓】或/linear-swap-api/v1/swap_cross_hisorders【全仓】）、获取历史成交记录（/linear-swap-api/v1/swap_matchresults【逐仓】或/linear-swap-api/v1/swap_cross_matchresults【全仓】）这两个接口中的返回字段order_source(订单来源)来判断，当order_source返回的为“risk”说明这个订单就是被强平的订单。
+
 
 ## 错误码相关
 
@@ -1698,7 +1939,7 @@ WS订阅私有账户，订单，仓位时，请注意也要定时维护好心跳
 
 2、全仓模式与逐仓模式使用不同的保证金账户，资产互相独立，可同时进行两个模式的交易，也可同时拥有两个模式的仓位。例如在BTC-USDT合约市场下，全仓模式交易的保证金账户为USDT，而逐仓模式交易的保证金账户为BTC-USDT。
 
-3、API用户可通过API接口【获取合约信息：linear-swap-api/v1/swap_contract_info】的support_margin_mode字段（合约支持的保证金模式），来查看合约是否支持全仓模式或逐仓模式。
+3、API用户可通过API接口【获取合约信息：/linear-swap-api/v1/swap_contract_info】的support_margin_mode字段（合约支持的保证金模式），来查看合约是否支持全仓模式或逐仓模式。
 
 4、API接口分为三种模式类型，【全仓】、【逐仓】和【通用】，这三个模式类型标注在API接口名称以及接口列表上。其中【全仓】表示该API接口仅支持全仓模式使用，【逐仓】表示该API接口仅支持逐仓模式调用，【通用】则表示该API接口不区分全仓和逐仓，即逐仓模式和全仓模式均可调用。
 
@@ -1706,7 +1947,7 @@ WS订阅私有账户，订单，仓位时，请注意也要定时维护好心跳
 
   您在反馈API错误时，需要附上您的请求URL，请求request的原始的完整body以及完整请求URL参数，服务器的回复response的原始完整log。如果是websocket订阅，需要您提供订阅的地址，订阅的主题，server推送的原始完整log。
 
-  如果是订单相关问题，在使用API订单查询接口linear-swap-api/v1/swap_order_info请求后保留返回的完整log，并提供您的UID以及订单号。
+  如果是订单相关问题，在使用API订单查询接口/linear-swap-api/v1/swap_order_info请求后保留返回的完整log，并提供您的UID以及订单号。
 
 
 # 合约市场行情接口
@@ -1715,7 +1956,7 @@ WS订阅私有账户，订单，仓位时，请注意也要定时维护好心跳
 
 ###  示例
 
-- GET `linear-swap-api/v1/swap_contract_info`
+- GET `/linear-swap-api/v1/swap_contract_info`
 
 ```shell
 
@@ -1747,6 +1988,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_contract_info?contract_code=B
             "price_tick": 0.100000000000000000,
             "create_date": "20201021",
             "contract_status": 1,
+            "delivery_time": "",
             "settlement_date": "1603699200000",
             "support_margin_mode": "all"
         }
@@ -1766,6 +2008,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_contract_info?contract_code=B
 | contract_size  | true | decimal | 合约面值，即1张合约对应多少标的币种（如BTC-USDT合约则面值单位就是BTC） | 0.1，0.01... |
 | price_tick  | true | decimal | 合约价格最小变动精度 | 0.001, 0.01... |
 | settlement_date  | true | string  | 合约下次结算时间    | 时间戳，如"1490759594752"  |
+| delivery_time	  | true | string  | 交割时间（合约无需交割时，该字段值为空字符串），单位：毫秒   |  |
 | create_date   | true | string  | 合约上市日期    | 如"20180706" |
 | contract_status      | true | int     | 合约状态  | 合约状态: 0:已下市、1:上市、2:待上市、3:停牌，4:待开盘、5:结算中、6:交割中、7:结算完成、8:交割完成 |
 | support_margin_mode | true | string | 合约支持的保证金模式  | cross：全仓模式；isolated：逐仓模式；all：全逐仓都支持 |
@@ -1776,7 +2019,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_contract_info?contract_code=B
 
 ###  示例
 
-- GET `linear-swap-api/v1/swap_index`
+- GET `/linear-swap-api/v1/swap_index`
 
 ```shell
 
@@ -1826,7 +2069,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_index?contract_code=BTC-USDT"
 
 ###  示例
 
-- GET `linear-swap-api/v1/swap_price_limit`
+- GET `/linear-swap-api/v1/swap_price_limit`
 
 ```shell
 
@@ -1877,7 +2120,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_price_limit?contract_code=BTC
 
 ###  示例
 
-- GET `linear-swap-api/v1/swap_open_interest`
+- GET `/linear-swap-api/v1/swap_open_interest`
 
 ```shell
 
@@ -1906,7 +2149,10 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_open_interest?contract_code=B
             "amount": 2.017000000000000000,
             "symbol": "BTC",
             "value": 26376.309000000000000000,
-            "contract_code": "BTC-USDT"
+            "contract_code": "BTC-USDT",
+            "trade_amount": 1.42,
+            "trade_volume": 142,
+            "trade_turnover": 7.847622
         }
     ],
     "ts": 1603694760141
@@ -1924,6 +2170,9 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_open_interest?contract_code=B
 | amount               | true | decimal | 持仓量(币)       | |
 | volume               | true | decimal | 持仓量(张)        | |
 | value               | true | decimal | 总持仓额（单位为合约的计价币种，如USDT）      | |
+| trade_amount               | true | decimal | 最近24小时成交量（币）（最近24（当前时间-24小时）小时成交量币）	      | |
+| trade_volume               | true | decimal | 最近24小时成交量（张）（最近24（当前时间-24小时）小时成交量张）   | |
+| trade_turnover               | true | decimal | 最近24小时成交额	（当前时间-24小时）小时成交额）       | |
 | \</data\>   |      |         |       ||
 | ts                   | true | long    | 响应生成时间点，单位：毫秒 | |
 
@@ -1936,7 +2185,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_open_interest?contract_code=B
 
 ###  示例
 
-- GET `linear-swap-ex/market/depth`
+- GET `/linear-swap-ex/market/depth`
 
 ```shell
 
@@ -2046,7 +2295,7 @@ curl "https://api.hbdm.com/linear-swap-ex/market/depth?contract_code=BTC-USDT&ty
 
 ###  示例
 
-- GET `linear-swap-ex/market/history/kline`
+- GET `/linear-swap-ex/market/history/kline`
 
 ```shell
 
@@ -2140,7 +2389,7 @@ curl "https://api.hbdm.com/linear-swap-ex/market/history/kline?contract_code=BTC
 
 ###  示例
 
-- GET `linear-swap-ex/market/detail/merged`
+- GET `/linear-swap-ex/market/detail/merged`
 
 ```shell
 
@@ -2235,7 +2484,7 @@ curl "https://api.hbdm.com/linear-swap-ex/market/detail/merged?contract_code=BTC
 
 ###  示例
 
-- GET `linear-swap-ex/market/trade`
+- GET `/linear-swap-ex/market/trade`
 
 ```shell
 
@@ -2319,7 +2568,7 @@ curl "https://api.hbdm.com/linear-swap-ex/market/trade?contract_code=BTC-USDT"
 
 ###  示例
 
-- GET `linear-swap-ex/market/history/trade`
+- GET `/linear-swap-ex/market/history/trade`
 
 ```shell
 
@@ -2404,7 +2653,7 @@ curl "https://api.hbdm.com/linear-swap-ex/market/history/trade?contract_code=BTC
 
 ## 【通用】查询合约风险准备金余额和预估分摊比例
 
-- GET `linear-swap-api/v1/swap_risk_info`
+- GET `/linear-swap-api/v1/swap_risk_info`
 
 ```shell
 
@@ -2453,7 +2702,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_risk_info?contract_code=BTC-U
 
 ## 【通用】查询合约风险准备金余额历史数据
 
-- GET `linear-swap-api/v1/swap_insurance_fund`
+- GET `/linear-swap-api/v1/swap_insurance_fund`
 
 ```shell
 
@@ -2516,7 +2765,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_insurance_fund?contract_code=
 
 ## 【逐仓】查询平台阶梯调整系数
 
-- GET `linear-swap-api/v1/swap_adjustfactor`
+- GET `/linear-swap-api/v1/swap_adjustfactor`
 
 ```shell
 
@@ -2599,7 +2848,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_adjustfactor?contract_code=BT
 
 ## 【全仓】查询平台阶梯调整系数
 
- - GET `linear-swap-api/v1/swap_cross_adjustfactor`
+ - GET `/linear-swap-api/v1/swap_cross_adjustfactor`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -2690,7 +2939,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_adjustfactor?contract_code=BT
 
 ### 实例
 
-- GET `linear-swap-api/v1/swap_his_open_interest`
+- GET `/linear-swap-api/v1/swap_his_open_interest`
 
 ```shell
 
@@ -2756,7 +3005,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_his_open_interest?contract_co
 
 ## 【通用】精英账户多空持仓对比-账户数
 
-- GET `linear-swap-api/v1/swap_elite_account_ratio`
+- GET `/linear-swap-api/v1/swap_elite_account_ratio`
 
 ```shell
 
@@ -2816,7 +3065,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_elite_account_ratio?contract_
 
 ## 【通用】精英账户多空持仓对比-持仓量
 
-- GET `linear-swap-api/v1/swap_elite_position_ratio`
+- GET `/linear-swap-api/v1/swap_elite_position_ratio`
 
 ```shell
 
@@ -2874,7 +3123,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_elite_position_ratio?contract
 
 ## 【逐仓】查询系统状态
 
-- GET `linear-swap-api/v1/swap_api_state`
+- GET `/linear-swap-api/v1/swap_api_state`
 
 ```shell
 
@@ -2952,7 +3201,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_api_state?contract_code=BTC-U
 
 ## 【全仓】查询系统划转权限
 
- - GET `linear-swap-api/v1/swap_cross_transfer_state`
+ - GET `/linear-swap-api/v1/swap_cross_transfer_state`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -3014,7 +3263,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_api_state?contract_code=BTC-U
 
 ## 【全仓】查询系统交易权限
 
- - GET `linear-swap-api/v1/swap_cross_trade_state`
+ - GET `/linear-swap-api/v1/swap_cross_trade_state`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -3065,7 +3314,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_api_state?contract_code=BTC-U
 
 ## 【通用】获取合约的资金费率
 
-- GET `linear-swap-api/v1/swap_funding_rate`
+- GET `/linear-swap-api/v1/swap_funding_rate`
 
 ```shell
 
@@ -3119,7 +3368,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_funding_rate?contract_code=BT
 
 ## 【通用】获取合约的历史资金费率
 
-- GET `linear-swap-api/v1/swap_historical_funding_rate`
+- GET `/linear-swap-api/v1/swap_historical_funding_rate`
 
 ```shell
 
@@ -3188,7 +3437,7 @@ curl "https://api.hbdm.com/linear-swap-api/v1/swap_historical_funding_rate?contr
 
 ## 【通用】获取强平订单
 
-- GET `linear-swap-api/v1/swap_liquidation_orders`
+- GET `/linear-swap-api/v1/swap_liquidation_orders`
 
 ```shell
 
@@ -3453,7 +3702,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_estimated_rate_kline
 
 ## 【通用】获取基差数据
 
-- GET `index/market/history/linear_swap_basis`
+- GET `/index/market/history/linear_swap_basis`
 
 ```shell
 
@@ -3509,13 +3758,61 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 | status | true | string | 请求处理结果                          | "ok" , "error" | |
 | ts | true  | long | 生成时间 |  |
 
+
+## 【通用】获取预估结算价
+
+ - GET `/linear-swap-api/v1/swap_estimated_settlement_price`
+
+#### 备注
+ - 该接口支持全仓模式和逐仓模式
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | false  | string | 合约代码，不填返回所有合约     |      "BTC-USDT" ...                                        |
+
+> Response
+
+```json
+{
+    "status": "ok",
+    "data": [
+        {
+            "contract_code": "BTC-USDT",
+            "estimated_settlement_price": 22500.1,
+            "settlement_type": "settlement"
+        }
+    ],
+    "ts": 1608629011106
+}
+```
+
+### 返回参数
+
+| 参数名称                   | 是否必须 | 类型      | 描述                 | 取值范围                                     |
+| ---------------------- | ---- | ------- | ------------------ | ---------------------------------------- |
+| status                 | true | string  | 请求处理结果             |                                          |
+| \<data\> | true     |  object  array      |                    |                                          |
+| contract_code          | true | string  | 合约代码               | "BTC-USDT" ...                          |
+| estimated_settlement_price              | true | decimal  |  本期预估结算价/预估交割价（结算类型为交割时为预估交割价；结算时为预估结算价；）  |                                  |
+| settlement_type        | true | string | 本期结算类型         |  “delivery”：交割，“settlement”：结算            |
+| \</data\>            |      |         |                    |                                          |
+| ts                     | true | long    | 接口响应时间（毫秒）                |                                          |
+
+#### 备注
+- 结算类型为结算时，预估结算价字段（estimated_settlement_price）在结算前10分钟到结算开始才计算和更新展示，其他时间点（包括结算中）则estimated_settlement_price为空，其他字段正常展示。
+- 结算类型为交割时，预估交割价字段（estimated_settlement_price）在交割前10分钟到交割开始才计算和更新展示，其他时间点（包括交割中）则estimated_settlement_price为空，其他字段正常展示。
+- 每6秒计算并更新一次预估结算价。
+
+
 # 合约资产接口
 
 ## 【逐仓】获取用户账户信息
 
 ###  示例
 
-- POST  `linear-swap-api/v1/swap_account_info`
+- POST  `/linear-swap-api/v1/swap_account_info`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -3586,12 +3883,12 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【全仓】获取用户账户信息
 
- - PSOT 'linear-swap-api/v1/swap_cross_account_info'
+ - POST `/linear-swap-api/v1/swap_cross_account_info`
 
 #### 备注
  - 该接口仅支持全仓模式。
 
- ### 请求参数
+### 请求参数
 
 | 参数名称   | 是否必须  | 类型     | 描述   | 取值范围         |
 | ------ | ----- | ------ | ---- | ---------------------------- |
@@ -3682,7 +3979,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ###  示例
 
-- POST `linear-swap-api/v1/swap_position_info`
+- POST `/linear-swap-api/v1/swap_position_info`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -3757,7 +4054,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【全仓】获取用户持仓信息
 
- - POST `linear-swap-api/v1/swap_cross_position_info`
+ - POST `/linear-swap-api/v1/swap_cross_position_info`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -3826,7 +4123,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【逐仓】查询用户账户和持仓信息
 
-- post `linear-swap-api/v1/swap_account_position_info`
+- post `/linear-swap-api/v1/swap_account_position_info`
   
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -3940,7 +4237,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【全仓】查询用户账户和持仓信息
 
- - POST `linear-swap-api/v1/swap_cross_account_position_info`
+ - POST `/linear-swap-api/v1/swap_cross_account_position_info`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -4090,7 +4387,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【逐仓】查询母账户下所有子账户资产信息
 
-- POST `linear-swap-api/v1/swap_sub_account_list`
+- POST `/linear-swap-api/v1/swap_sub_account_list`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -4154,7 +4451,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【全仓】查询母账户下所有子账户资产信息   
 
- - POST `linear-swap-api/v1/swap_cross_sub_account_list`
+ - POST `/linear-swap-api/v1/swap_cross_sub_account_list`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -4212,7 +4509,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【逐仓】查询单个子账户资产信息
 
-- POST ` linear-swap-api/v1/swap_sub_account_info`
+- POST `/linear-swap-api/v1/swap_sub_account_info`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -4289,7 +4586,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
   
 ## 【全仓】查询单个子账户资产信息
 
-  - POST `linear-swap-api/v1/swap_cross_sub_account_info`  
+  - POST `/linear-swap-api/v1/swap_cross_sub_account_info`  
     
 #### 备注
  - 该接口仅支持全仓模式。
@@ -4391,7 +4688,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【逐仓】查询单个子账户持仓信息
 
-- POST `linear-swap-api/v1/swap_sub_position_info`
+- POST `/linear-swap-api/v1/swap_sub_position_info`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -4463,7 +4760,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【全仓】查询单个子账户持仓信息
 
- - POST `linear-swap-api/v1/swap_cross_sub_position_info`
+ - POST `/linear-swap-api/v1/swap_cross_sub_position_info`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -4534,7 +4831,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【通用】查询用户财务记录
 
-- POST `linear-swap-api/v1/swap_financial_record`
+- POST `/linear-swap-api/v1/swap_financial_record`
 
 #### 备注
  - 该接口支持全仓模式和逐仓模式
@@ -4607,7 +4904,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 查询用户结算记录
 
- - POST `swap-api/v1/swap_user_settlement_records`
+ - POST `/swap-api/v1/swap_user_settlement_records`
 
 ### 请求参数
 
@@ -4724,7 +5021,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【逐仓】查询用户可用杠杆倍数
 
-- POST `linear-swap-api/v1/swap_available_level_rate`
+- POST `/linear-swap-api/v1/swap_available_level_rate`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -4767,7 +5064,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【全仓】查询用户可用杠杆倍数
 
- - POST `linear-swap-api/v1/swap_cross_available_level_rate`
+ - POST `/linear-swap-api/v1/swap_cross_available_level_rate`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -4810,7 +5107,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【通用】查询用户当前的下单量限制
 
-- POST `linear-swap-api/v1/swap_order_limit`
+- POST `/linear-swap-api/v1/swap_order_limit`
 
 #### 备注
  - 该接口支持全仓模式和逐仓模式
@@ -4862,7 +5159,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【通用】查询用户当前的手续费费率
 
-- POST `linear-swap-api/v1/swap_fee`
+- POST `/linear-swap-api/v1/swap_fee`
 
 #### 备注
  - 该接口支持全仓模式和逐仓模式
@@ -4913,7 +5210,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【逐仓】查询用户当前的划转限制
 
-- POST `linear-swap-api/v1/swap_transfer_limit`
+- POST `/linear-swap-api/v1/swap_transfer_limit`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -4974,7 +5271,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【全仓】查询用户当前的划转限制
 
- - POST `linear-swap-api/v1/swap_cross_transfer_limit`
+ - POST `/linear-swap-api/v1/swap_cross_transfer_limit`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -5031,7 +5328,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【逐仓】用户持仓量限制的查询
 
-- post `linear-swap-api/v1/swap_position_limit`
+- post `/linear-swap-api/v1/swap_position_limit`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -5078,7 +5375,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【全仓】用户持仓量限制的查询
 
- - POST `linear-swap-api/v1/swap_cross_position_limit`
+ - POST `/linear-swap-api/v1/swap_cross_position_limit`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -5132,7 +5429,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【通用】母子账户划转
 
-- post `linear-swap-api/v1/swap_master_sub_transfer`
+- post `/linear-swap-api/v1/swap_master_sub_transfer`
 
 #### 备注
  - 该接口支持全仓模式和逐仓模式
@@ -5179,7 +5476,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【通用】获取母账户下的所有母子账户划转记录
 
-- post `linear-swap-api/v1/swap_master_sub_transfer_record`
+- post `/linear-swap-api/v1/swap_master_sub_transfer_record`
 
 #### 备注
  - 该接口支持全仓模式和逐仓模式
@@ -5188,7 +5485,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 | 参数名称   | 是否必须  | 类型     | 描述   | 取值范围      |
 | ------ | ----- | ------ | ---- | ---------------------------- |
-| margin_account | true | string | 保证金账户	 |  "BTC-USDT"... |
+| margin_account | true | string | 保证金账户	 |  "BTC-USDT"，"USDT"... |
 | transfer_type | false | string | 划转类型，不填查询全部类型,【查询多类型中间用，隔开】 | 34:转出到子账号合约账户;  35:从子账号合约账户转入; |
 | create_date | true | int | 日期 | 可随意输入正整数，如果参数超过90则默认查询90天的数据 |
 | page_index | false | int | 页码，不填默认第1页 | 1 |
@@ -5249,7 +5546,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【通用】同账号不同保证金账户的划转
 
-- post `linear-swap-api/v1/swap_transfer_inner`
+- post `/linear-swap-api/v1/swap_transfer_inner`
 
 #### 备注
  - 该接口支持全仓模式和逐仓模式
@@ -5294,7 +5591,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【通用】获取用户的API指标禁用信息
 
-- get `linear-swap-api/v1/swap_api_trading_status`
+- get `/linear-swap-api/v1/swap_api_trading_status`
 
 #### 备注
  - 该接口支持全仓模式和逐仓模式
@@ -5374,7 +5671,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ###  示例
 
-- POST  `linear-swap-api/v1/swap_order`
+- POST  `/linear-swap-api/v1/swap_order`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -5384,13 +5681,19 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 | 参数名              | 参数类型    | 必填    | 描述    | 取值范围 |
 | ---------------- | ------- | ----- | ---------------------------------------- | -----------|
 | contract_code     | string <img width=250/>  | true  <img width=250/> | 合约代码 <img width=1000/> | "BTC-USDT"...                           |
-| client_order_id  | long    | false | 客户自己填写和维护，必须为数字                          | |
+| client_order_id  | long    | false | 客户自己填写和维护，必须为数字,请注意必须小于等于9223372036854775807   | |
 | price            | decimal | false | 价格                                       | |
 | volume           | long    | true  | 委托数量(张)                                  | |
 | direction        | string  | true  | 仓位方向 | "buy":买 "sell":卖 |
 | offset           | string  | true  | 开平方向    | "open":开 "close":平 |
 | lever_rate       | int     | true  | 杠杆倍数[“开仓”若有10倍多单，就不能再下20倍多单;首次使用高倍杠杆(>20倍)，请使用主账号登录web端同意高倍杠杆协议后，才能使用接口下高倍杠杆(>20倍)]             |   |
 | order_price_type | string  | true  | 订单报价类型 | "limit":限价 "opponent":对手价 "post_only":只做maker单,post only下单只受用户持仓数量限制,optimal_5：最优5档、optimal_10：最优10档、optimal_20：最优20档，ioc:IOC订单，fok：FOK订单, "opponent_ioc": 对手价-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
+| tp_trigger_price   | decimal | false  | 止盈触发价格                  |                            |
+| tp_order_price   |  decimal | false | 	止盈委托价格（最优N档委托类型时无需填写价格）                  |  |
+| tp_order_price_type   | string |  false | 止盈委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
+| sl_trigger_price          | decimal | false | 止损触发价格                  |                            |
+| sl_order_price   | decimal |  false | 	止损委托价格（最优N档委托类型时无需填写价格）                  |  |
+| sl_order_price_type   |  string | false | 止损委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
 
 ####  备注
 
@@ -5441,7 +5744,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 
 ## 【全仓】合约下单
 
- - POST `linear-swap-api/v1/swap_cross_order`
+ - POST `/linear-swap-api/v1/swap_cross_order`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -5451,13 +5754,19 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 | 参数名           | 必填  | 参数类型 | 描述                                             | 取值范围                                                     |
 | ---------------- | ----- | -------- | ------------------------------------------------ | ------------------------------------------------------------ |
 | contract_code    | true  | string   | 合约代码                                         | "BTC-USDT"...                    |
-| client_order_id  | false | long     | 客户自己填写和维护，必须为数字                   |                                                              |
+| client_order_id  | false | long     | 客户自己填写和维护，必须为数字,请注意必须小于等于9223372036854775807 |                                                              |
 | price            | false | decimal  | 价格                                             |                                                              |
 | volume           | true  | long     | 委托数量(张)                                     |                                                              |
 | direction        | true  | string   | 仓位方向                                         | "buy":买 "sell":卖                                           |
 | offset           | true  | string   | 开平方向                                         | "open":开 "close":平                                         |
 | lever_rate       | true  | int      | 杠杆倍数,“开仓”若有10倍多单，就不能再下20倍多单;首次使用高倍杠杆(>20倍)，请使用主账号登录web端同意高倍杠杆协议后，才能使用接口下高倍杠杆(>20倍)] |                                                              |
 | order_price_type | true  | string   | 订单报价类型                                     | "limit":限价 "opponent":对手价 "post_only":只做maker单,post only下单只受用户持仓数量限制,optimal_5：最优5档、optimal_10：最优10档、optimal_20：最优20档，ioc:IOC订单，fok：FOK订单, "opponent_ioc": 对手价-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
+| tp_trigger_price   | decimal | false  | 止盈触发价格                  |                            |
+| tp_order_price   |  decimal | false | 	止盈委托价格（最优N档委托类型时无需填写价格）                  |  |
+| tp_order_price_type   | string |  false | 止盈委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
+| sl_trigger_price          | decimal | false | 止损触发价格                  |                            |
+| sl_order_price   | decimal |  false | 	止损委托价格（最优N档委托类型时无需填写价格）                  |  |
+| sl_order_price_type   |  string | false | 止损委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
 
 ####  备注
 
@@ -5508,7 +5817,7 @@ order_id返回是18位，nodejs和javascript默认解析18有问题，nodejs和j
 
 ###  示例
 
-- POST  `linear-swap-api/v1/swap_batchorder`
+- POST  `/linear-swap-api/v1/swap_batchorder`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -5524,13 +5833,19 @@ orders_data  | List\<Object\>   |    |    |
 | 参数名  |    参数类型   |  必填   |  描述  |   取值范围   |
 | -------- | -------------- |  ---------- | ---------- | ---------- |
 | contract_code        | true <img width=250/> | string <img width=250/>  |  合约代码 <img width=1000/>  |        "BTC-USDT"...          |
-| client_order_id       |  false   |  long| 客户自己填写和维护，必须为数字                          |      |
+| client_order_id       |  false   |  long| 客户自己填写和维护，必须为数字,请注意必须小于等于9223372036854775807  |      |
 | price       |false  | decimal | 价格 |      |
 | volume   | true    |  long | 委托数量(张)  |      |
 | direction   |true   |  string | 仓位方向   |  "buy":买 "sell":卖    |
 | offset   | true  |  string |   开平方向    |  "open":开 "close":平    |
 | lever_rate     |  true    | int  | 杠杆倍数[“开仓”若有10倍多单，就不能再下20倍多单;首次使用高倍杠杆(>20倍)，请使用主账号登录web端同意高倍杠杆协议后，才能使用接口下高倍杠杆(>20倍)]             |      |
 | order_price_type            |  true |  string | 订单报价类型  | "limit":限价 "opponent":对手价 "post_only":只做maker单,post only下单只受用户持仓数量限制,optimal_5：最优5档、optimal_10：最优10档、optimal_20：最优20档，ioc:IOC订单，fok：FOK订单, "opponent_ioc": 对手价-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
+| tp_trigger_price   | decimal | false  | 止盈触发价格                  |                            |
+| tp_order_price   |  decimal | false | 	止盈委托价格（最优N档委托类型时无需填写价格）                  |  |
+| tp_order_price_type   | string |  false | 止盈委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
+| sl_trigger_price          | decimal | false | 止损触发价格                  |                            |
+| sl_order_price   | decimal |  false | 	止损委托价格（最优N档委托类型时无需填写价格）                  |  |
+| sl_order_price_type   |  string | false | 止损委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
 
 ###  备注
 
@@ -5593,7 +5908,7 @@ orders_data  | List\<Object\>   |    |    |
 
 ## 【全仓】合约批量下单 
 
- - POST `linear-swap-api/v1/swap_cross_batchorder`
+ - POST `/linear-swap-api/v1/swap_cross_batchorder`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -5604,13 +5919,19 @@ orders_data  | List\<Object\>   |    |    |
 | --------------- | ---- | ------ | ---------------------- | -------------- |
 | \<orders_data\>   | true | object array |     |  |
 | contract_code        | true | string   |  合约代码      |        "BTC-USDT"...          |
-| client_order_id       |  false   |  long| 客户自己填写和维护，必须为数字                          |      |
+| client_order_id       |  false   |  long| 客户自己填写和维护，必须为数字,请注意必须小于等于9223372036854775807  |      |
 | price       |false  | decimal | 价格 |      |
 | volume   | true    |  long | 委托数量(张)  |      |
 | direction   |true   |  string | 仓位方向   |  "buy":买 "sell":卖    |
 | offset   | true  |  string |   开平方向    |  "open":开 "close":平    |
 | lever_rate     |  true    | int  | 杠杆倍数,“开仓”若有10倍多单，就不能再下20倍多单;首次使用高倍杠杆(>20倍)，请使用主账号登录web端同意高倍杠杆协议后，才能使用接口下高倍杠杆(>20倍)]            |      |
 | order_price_type            |  true |  string | 订单报价类型  | "limit":限价 "opponent":对手价 "post_only":只做maker单,post only下单只受用户持仓数量限制,optimal_5：最优5档、optimal_10：最优10档、optimal_20：最优20档，ioc：IOC订单，fok：FOK订单,"opponent_ioc": 对手价-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
+| tp_trigger_price   | decimal | false  | 止盈触发价格                  |                            |
+| tp_order_price   |  decimal | false | 	止盈委托价格（最优N档委托类型时无需填写价格）                  |  |
+| tp_order_price_type   | string |  false | 止盈委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
+| sl_trigger_price          | decimal | false | 止损触发价格                  |                            |
+| sl_order_price   | decimal |  false | 	止损委托价格（最优N档委托类型时无需填写价格）                  |  |
+| sl_order_price_type   |  string | false | 止损委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
 | \</orders_data\>     |         |       |   |      |
 
 ####  备注
@@ -5673,7 +5994,7 @@ orders_data  | List\<Object\>   |    |    |
 
 ###  示例
 
-- POST `linear-swap-api/v1/swap_cancel`
+- POST `/linear-swap-api/v1/swap_cancel`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -5688,9 +6009,11 @@ orders_data  | List\<Object\>   |    |    |
 
 #### 备注：
 
-order_id和client_order_id都可以用来撤单，同时只可以设置其中一种，如果设置了两种，默认以order_id来撤单。
+ - order_id和client_order_id都可以用来撤单，同时只可以设置其中一种，如果设置了两种，默认以order_id来撤单。
 
-撤单接口返回结果只代表撤单命令发送成功，建议根据订单查询接口查询订单的状态来确定订单是否已真正撤销。
+ - 撤单接口返回结果只代表撤单命令发送成功，建议根据订单查询接口查询订单的状态来确定订单是否已真正撤销。
+ 
+ - client_order_id，24小时有效，超过24小时的订单根据client_order_id将查询不到。
 
 > Response:
 
@@ -5718,19 +6041,19 @@ order_id和client_order_id都可以用来撤单，同时只可以设置其中一
 参数名称  |  是否必须  |  类型  |  描述  |  取值范围  |
 ---------------------------- | -------------- | ---------- | -------------------------------------------------- | ---------------- |
 status  |  true  |  string  |  请求处理结果  | "ok" , "error"  | 
-\<data\>(属性名称: data)  |    |    |    |    |  
-\<list\>(属性名称: errors)  |    |    |    |    |  
+\<data\>  |    |    |    |    |  
+\<errors\>  |    |    |    |    |  
 order_id  |    true  |  string  |  订单ID  |    |   
 err_code  |   true  |  int  |   错误码  |    |   
 err_msg  |  true  |  string  |  错误信息  |    | 
-\</list\>  |    |    |    |    |
+\</errors\>  |    |    |    |    |
 successes  |   true  |  string  |  撤销成功的订单的order_id或client_order_id列表  |   |
 \</data\>  |    |    |    |    |
 ts  |  true  |  long  |  响应生成时间点，单位：毫秒  |   |
 
 ## 【全仓】撤销订单
 
- - POST `linear-swap-api/v1/swap_cross_cancel`
+ - POST `/linear-swap-api/v1/swap_cross_cancel`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -5743,12 +6066,14 @@ ts  |  true  |  long  |  响应生成时间点，单位：毫秒  |   |
 | client_order_id | false | string | 客户订单ID(多个订单ID中间以","分隔,一次最多允许撤消10个订单) |      |
 | contract_code          | true  | string | 合约代码                       |    "BTC-USDT" ...  |
 
-###备注：
+### 备注：
 
  - order_id和client_order_id都可以用来撤单，同时只可以设置其中一种，如果设置了两种，默认以order_id来撤单。
 
  - 撤单接口返回结果只代表撤单命令发送成功，建议根据订单查询接口查询订单的状态来确定订单是否已真正撤销。
-
+ 
+ - client_order_id，24小时有效，超过24小时的订单根据client_order_id将查询不到。
+ 
 > Response
 
 ```json
@@ -5774,7 +6099,7 @@ ts  |  true  |  long  |  响应生成时间点，单位：毫秒  |   |
 | 参数名称                   | 是否必须 | 类型     | 描述                                 | 取值范围           |
 | ---------------------- | ---- | ------ | ---------------------------------- | -------------- |
 | status                 | true | string | 请求处理结果                             | "ok" , "error" |
-| \<data\> |  true    |   object array      |        |    |
+| \<data\> |  true    |   object       |        |    |
 | \<errors\>|  true    | object array       |                                    |                |
 | order_id               | true | string | 订单ID                               |                |
 | err_code               | true | int    | 错误码                                |                |
@@ -5788,7 +6113,7 @@ ts  |  true  |  long  |  响应生成时间点，单位：毫秒  |   |
 
 ###  示例
 
-- POST  `linear-swap-api/v1/swap_cancelall`
+- POST  `/linear-swap-api/v1/swap_cancelall`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -5819,19 +6144,19 @@ ts  |  true  |  long  |  响应生成时间点，单位：毫秒  |   |
 参数名称  |  是否必须   |  类型  |  描述  |  取值范围  |
 ---------------------------- | -------------- | ---------- | ---------------------------- | ---------------- |
 status  |  true  |  string  |  请求处理结果  | "ok" , "error"  | 
-\<data\>(属性名称: data)  |    |    |    |    |
-\<list\>(属性名称: errors)  |    |    |    |    |
+\<data\>  |    |    |    |    |
+\<errors\>  |    |    |    |    |
 order_id  |    true  |  string  |  订单id  |   | 
 err_code  |    true  |  int  |   订单失败错误码  |   |   
 err_msg  |  true  |  string  |   订单失败信息  |    | 
-\</list\>    |    |    |    |    |
+\</errors\>    |    |    |    |    |
 successes  |    true  |  string  |  成功的订单  |    |   
 \</data\>    |    |    |    |    |
 ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   | 
 
 ## 【全仓】全部撤单
 
- - POST `linear-swap-api/v1/swap_cross_cancelall`
+ - POST `/linear-swap-api/v1/swap_cross_cancelall`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -5927,7 +6252,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 
 ## 【全仓】切换杠杆
 
- - POST `linear-swap-api/v1/swap_cross_switch_lever_rate`
+ - POST `/linear-swap-api/v1/swap_cross_switch_lever_rate`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -5977,7 +6302,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 
 ###  示例
 
-- POST  `linear-swap-api/v1/swap_order_info`
+- POST  `/linear-swap-api/v1/swap_order_info`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -6032,7 +6357,8 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
             "canceled_at": 0,
             "margin_asset": "USDT",
             "margin_mode": "isolated",
-            "margin_account": "BTC-USDT"
+            "margin_account": "BTC-USDT",
+            "is_tpsl": 0
         }
     ],
     "ts": 1603703631815
@@ -6067,18 +6393,19 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 | profit               | true | decimal | 收益     |        |
 | status               | true | int     | 订单状态   | (1准备提交 2准备提交 3已提交 4部分成交 5部分成交已撤单 6全部成交 7已撤单 11撤单中) |
 | order_type           | true | int  | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
-| order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
+| order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发 ） |
 | fee_asset         | true | string  | 手续费币种   | （"USDT"...）|
 | liquidation_type               | true     | string    | 结算类型 0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管           |  |
 | canceled_at               | true     | long    |撤单时间           |  |
 | margin_account | true | string | 保证金账户  | 比如“BTC-USDT” |
 | margin_mode | true | string | 保证金模式  |isolated：逐仓模式 |
+| is_tpsl | true | int | 是否设置止盈止损  | 1：是；0：否 |
 | \</data\>        |      |         |        |         |
 | ts                   | true | long    | 时间戳    |      |
 
 ## 【全仓】获取合约订单信息
 
- - PSOT `linear-swap-api/v1/swap_cross_order_info`
+ - POST `/linear-swap-api/v1/swap_cross_order_info`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -6092,6 +6419,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 | contract_code          | true  | string | 合约代码 |"BTC-USDT"...                       |
 
 ####  备注：
+ - 最多只能查询4小时内的撤单信息。
 
  - order_id和client_order_id都可以用来查询，同时只可以设置其中一种，如果设置了两种，默认以order_id来查询。结算后，会把结束状态的订单（5部分成交已撤单 6全部成交 7已撤单）删除掉。
 
@@ -6130,7 +6458,8 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
             "canceled_at": 0,
             "margin_asset": "USDT",
             "margin_account": "USDT",
-            "margin_mode": "cross"
+            "margin_mode": "cross",
+            "is_tpsl"：0
         }
     ],
     "ts": 1606975356655
@@ -6166,10 +6495,11 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 | profit               | true | decimal | 收益     |        |
 | status               | true | int     | 订单状态   | (1准备提交 2准备提交 3已提交 4部分成交 5部分成交已撤单 6全部成交 7已撤单 11撤单中) |
 | order_type           | true | int  | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
-| order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
+| order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发） |
 | fee_asset         | true | string  | 手续费币种   | （"USDT"...）|
 | liquidation_type               | true     | string    | 结算类型 0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管           |  |
 | canceled_at               | true     | long    |撤单时间           |  |
+| is_tpsl               | true     | int    | 是否设置止盈止损           | 1：是；0：否  |
 | \</data\>        |      |         |        |         |
 | ts                   | true | long    | 时间戳    |      |
 
@@ -6177,7 +6507,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 
 ###  示例
 
-- POST `linear-swap-api/v1/swap_order_detail`
+- POST `/linear-swap-api/v1/swap_order_detail`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -6256,7 +6586,8 @@ created_at禁止传0。
         "trade_volume": 1.000000000000000000,
         "margin_asset": "USDT",
         "margin_mode": "isolated",
-        "margin_account": "BTC-USDT"
+        "margin_account": "BTC-USDT",
+        "is_tpsl": 0
     },
     "ts": 1603703678477
 }
@@ -6278,7 +6609,7 @@ created_at禁止传0。
 | price                   | true | decimal | 委托价格        |  |
 | created_at              | true | long    | 创建时间        |  |
 | canceled_at              | true | long     | 撤单时间        |        |
-| order_source            | true | string  | 订单来源        |    |
+| order_source            | true | string  | 订单来源        | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发）   |
 | order_price_type        | true | string  | 订单报价类型      | "limit":限价，"opponent":对手价，"post_only":只做maker单,post only下单只受用户持仓数量限制，"lightning":闪电平仓，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档，"fok":FOK订单，"ioc":IOC订单, "opponent_ioc": 对手价-IOC下单，"lightning_ioc": 闪电平仓-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"lightning_fok"：闪电平仓-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen           | true | decimal | 冻结保证金       |    |
@@ -6302,6 +6633,7 @@ created_at禁止传0。
 | total_size              | true | int     | 总条数         |      |
 | margin_account | true | string | 保证金账户  | 比如“BTC-USDT” |
 | margin_mode | true | string | 保证金模式  | isolated：逐仓模式 |
+| is_tpsl | true | int | 是否设置止盈止损  | 1：是；0：否 |
 | \<trades\>  |  true    |   object array      |        |   |      |
 | id                | true | string    | 全局唯一的交易标识       |   |
 | trade_id                | true | long    | 与linear-swap-api/v1/swap_matchresults返回结果中的match_id一样，是撮合结果id， 非唯一，可重复，注意：一个撮合结果代表一个taker单和N个maker单的成交记录的集合，如果一个taker单吃了N个maker单，那这N笔trade都是一样的撮合结果id   |  |
@@ -6317,7 +6649,7 @@ created_at禁止传0。
 
 ## 【全仓】获取订单明细信息
 
- - POST `linear-swap-api/v1/swap_cross_order_detail`
+ - POST `/linear-swap-api/v1/swap_cross_order_detail`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -6332,6 +6664,16 @@ created_at禁止传0。
 | order_type | false  | int    | 订单类型|  1:报单 、 2:撤单 、 3:强平、4:交割     |
 | page_index | false | int    | 第几页,不填第一页                    |      |
 | page_size  | false | int    | 不填默认20，不得多于50                |      |
+
+### 备注
+
+获取订单明细接口查询撤单数据时，如果传“created_at”和“order_type”参数则能查询最近24小时数据，如果不传“created_at”和“order_type”参数只能查询到最近2小时数据。
+
+order_id返回是18位，nodejs和javascript默认解析18有问题，nodejs和javascript里面JSON.parse默认是int，超过18位的数字用json-bigint的包解析。
+
+created_at使用13位long类型时间戳（包含毫秒时间），如果输入准确的时间戳，查询性能将会提升。例如:"2019/10/18 10:26:22"转换为时间戳为：1571365582123。也可以直接从swap_order下单接口返回的ts中获取时间戳查询对应的订单。
+
+created_at禁止传0。
 
 > Response
 
@@ -6384,7 +6726,8 @@ created_at禁止传0。
         "trade_volume": 1,
         "margin_asset": "USDT",
         "margin_account": "USDT",
-        "margin_mode": "cross"
+        "margin_mode": "cross",
+        "is_tpsl": 0
     },
     "ts": 1606975532569
 }
@@ -6406,7 +6749,7 @@ created_at禁止传0。
 | volume                  | true | decimal | 委托数量        | |
 | price                   | true | decimal | 委托价格        |  |
 | created_at              | true | long    | 创建时间        |  |
-| order_source            | true | string  | 订单来源        |    |
+| order_source            | true | string  | 订单来源        | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发） |
 | order_price_type        | true | string  | 订单报价类型      |  "limit":限价，"opponent":对手价，"post_only":只做maker单,post only下单只受用户持仓数量限制，"lightning":闪电平仓，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档，"fok":FOK订单，"ioc":IOC订单, "opponent_ioc": 对手价-IOC下单，"lightning_ioc": 闪电平仓-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"lightning_fok"：闪电平仓-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen           | true | decimal | 冻结保证金       |    |
@@ -6426,6 +6769,7 @@ created_at禁止传0。
 | trade_avg_price               | true     | decimal    | 成交均价             |  |
 | trade_turnover               | true     | decimal    | 成交总金额，即sum（每一笔成交张数 * 合约面值*成交价格）        |  |
 | trade_volume               | true     | decimal    | 成交总数量           |  |
+| is_tpsl               | true     | int    | 是否设置止盈止损           | 1：是；0：否 |
 | total_page              | true | int     | 总共页数        |  |
 | current_page            | true | int     | 当前页数        |    |
 | total_size              | true | int     | 总条数         |      |
@@ -6446,7 +6790,7 @@ created_at禁止传0。
 
 ###  示例
 
-- POST `linear-swap-api/v1/swap_openorders`  
+- POST `/linear-swap-api/v1/swap_openorders`  
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -6494,7 +6838,8 @@ created_at禁止传0。
                 "canceled_at": null,
                 "margin_asset": "USDT",
                 "margin_mode": "isolated",
-                "margin_account": "BTC-USDT"
+                "margin_account": "BTC-USDT",
+                "is_tpsl": 0
             }
         ],
         "total_page": 2,
@@ -6510,7 +6855,7 @@ created_at禁止传0。
 参数名称  |   是否必须  |  类型   |  描述  |   取值范围  |
 -------------------------- | -------------- | ---------- | --------------------------------------------------------------- | ------------------------------------------------------ |
 status  |  true <img width=250/> |  string  |  请求处理结果 <img width=1000/>  | <img width=1100/>   |
-\<dict\>(属性名称: data)  |    |    |    |    |   
+\<data\>  |    |    |    |    |   
 \<orders\>              |    |    |    |    |   
 symbol  |  true  |  string  |  品种代码  |    |  
 contract_code  |  true  |  string  |  合约代码  |  "BTC-USDT" ...  |
@@ -6534,21 +6879,22 @@ margin_frozen  |  true  |  decimal    |  冻结保证金  |    |
 margin_asset   | true   | string | 保证金币种（计价币种）                 |                |
 profit  |  true  |  decimal   | 收益  |    |  
 status  |  true  |  int  |   订单状态  |  (3未成交 4部分成交 5部分成交已撤单 6全部成交 7已撤单)  |  
-order_source|   true  |  string  |  订单来源|    |
+order_source|   true  |  string  |  订单来源| （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发） |
 liquidation_type|   true  |  string  | 强平类型	 |    |
 canceled_at|   true  |  long  |  撤单时间 |    |
 margin_mode | true | string | 保证金模式  | isolated：逐仓模式 |
 margin_account | true | string | 保证金账户  | 比如“BTC-USDT” |
+is_tpsl | true | int | 是否设置止盈止损  | 1：是；0：否 |
 \</orders\>  |    |    |    |    |
 total_page  |  true  |  int  |   总页数  |    |
 current_page  |   true  |  int  |   当前页  |    |
 total_size  |  true  |  int  |   总条数  |    |
-\</dict\>  |    |    |    |    |
+\</data\>  |    |    |    |    |
 ts  |    true  |  long  |  时间戳  |    |
 
 ## 【全仓】获取合约当前未成交委托
 
- - POST `linear-swap-api/v1/swap_cross_openorders`
+ - POST `/linear-swap-api/v1/swap_cross_openorders`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -6595,7 +6941,8 @@ ts  |    true  |  long  |  时间戳  |    |
                 "canceled_at": null,
                 "margin_asset": "USDT",
                 "margin_account": "USDT",
-                "margin_mode": "cross"
+                "margin_mode": "cross",
+                "is_tpsl": 0
             }
         ],
         "total_page": 1,
@@ -6611,7 +6958,7 @@ ts  |    true  |  long  |  时间戳  |    |
 | 参数名称                 | 是否必须 | 类型      | 描述                                       | 取值范围                                     |
 | -------------------- | ---- | ------- | ---------------------------------------- | ---------------------------------------- |
 | status               | true <img width=250/> | string  | 请求处理结果   <img width=1000/>      |                                          |
-| <data> | true     |    object     |                   |                                          |
+| \<data\> | true     |    object     |                   |                                          |
 | symbol               | true | string  | 品种代码                                     |                                          |
 | contract_code        | true | string  | 合约代码                                     | "BTC-USDT" ...                          |
 | margin_mode | true | string | 保证金模式  | cross：全仓模式； |
@@ -6619,14 +6966,14 @@ ts  |    true  |  long  |  时间戳  |    |
 | volume               | true | decimal | 委托数量                                     |                                          |
 | price                | true | decimal | 委托价格                                     |                                          |
 | order_price_type     | true | string  | 订单报价类型 |   "limit":限价，"opponent":对手价，"post_only":只做maker单,post only下单只受用户持仓数量限制，"lightning":闪电平仓，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档，"fok":FOK订单，"ioc":IOC订单, "opponent_ioc": 对手价-IOC下单，"lightning_ioc": 闪电平仓-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"lightning_fok"：闪电平仓-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单  |
-| order_type         | true | int  | 订单类型，1:报单 、 2:撤单 、 3:强平、4:交割        |        |
-| direction            | true | string  | "buy":买 "sell":卖                         |                                          |
-| offset               | true | string  | "open":开 "close":平                       |                                          |
+| order_type         | true | int  | 订单类型        |   1:报单 、 2:撤单 、 3:强平、4:交割      |
+| direction            | true | string  |买卖方向   | "buy":买 "sell":卖                         |                                        
+| offset               | true | string  | 开平方向   |  "open":开 "close":平                       |                                 
 | lever_rate           | true | int     | 杠杆倍数                                     |                       |
 | order_id             | true | long    | 订单ID    | |
 | order_id_str             | true | string    | string格式的订单ID                                     |      |
 | client_order_id      | true | long    | 客户订单ID                                   |                                          |
-| order_source         | true | string  | 订单来源                                     |        |
+| order_source         | true | string  | 订单来源                                     | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发）  |
 | created_at           | true | long    | 订单创建时间                                   |                                          |
 | trade_volume         | true | decimal | 成交总数量                                     |                                          |
 | trade_turnover       | true | decimal | 成交总金额，即sum（每一笔成交张数*合约面值*成交价格）                                    |                                          |
@@ -6639,7 +6986,8 @@ ts  |    true  |  long  |  时间戳  |    |
 | status               | true | int     | 订单状态                                     | (3未成交 4部分成交 5部分成交已撤单 6全部成交 7已撤单)         |
 | liquidation_type              | true | string     | 强平类型    |      |
 | canceled_at              | true | long     | 撤单时间        |        |
-| </data>            |      |         |                     |      |
+| is_tpsl              | true | int     | 是否设置止盈止损        |  1：是；0：否      |
+| \</data\>            |      |         |                     |      |
 | total_page           | true | int     | 总页数                                      |                                          |
 | current_page         | true | int     | 当前页                                      |                                          |
 | total_size           | true | int     | 总条数                                      |                                          |
@@ -6647,7 +6995,7 @@ ts  |    true  |  long  |  时间戳  |    |
 
 ## 【逐仓】获取合约历史委托
 
-- POST `linear-swap-api/v1/swap_hisorders` 
+- POST `/linear-swap-api/v1/swap_hisorders` 
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -6663,7 +7011,8 @@ status  |    true  |  string  |   订单状态  |  可查询多个状态，"3,4,
 create_date |  true  |  int  |   日期  |   可随意输入正整数，如果参数超过90则默认查询90天的数据 |
 page_index  |  false  |  int  |   |  页码，不填默认第1页  |  1  | 
 page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得多于50  |
-
+sort_by | false  | string | 排序字段（降序），不填默认按照create_date降序 | create_date |  "create_date"：按订单创建时间进行降序，"update_time"：按订单更新时间进行降序|
+ 
 ### 备注：
 
 - 所有已撤销且无成交的API限价订单记录只保留最近2小时。
@@ -6686,6 +7035,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
                 "volume": 1.000000000000000000,
                 "price": 13100.000000000000000000,
                 "create_date": 1603704221118,
+                "update_time": 1603704221118,
                 "order_source": "web",
                 "order_price_type": 6,
                 "order_type": 1,
@@ -6701,7 +7051,8 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
                 "liquidation_type": "0",
                 "margin_asset": "USDT",
                 "margin_mode": "isolated",
-                "margin_account": "BTC-USDT"
+                "margin_account": "BTC-USDT",
+                "is_tpsl": 0
             }
         ],
         "total_page": 10,
@@ -6729,7 +7080,8 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | volume                 | true | decimal | 委托数量   |   |
 | price                  | true | decimal | 委托价格   |    |
 | create_date            | true | long    | 创建时间   |     |
-| order_source           | true | string  | 订单来源   |    |
+| update_time            | true | long    | 订单更新时间，单位：毫秒	   |     |
+| order_source           | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发） |
 | order_price_type       | true | int  | 订单报价类型 | 	1：限价单（limit），2：市价单（market），3：对手价（opponent），4：闪电平仓（lightning），5：计划委托（trigger），6：post_only ，7：最优5档（optimal_5） ，8：最优10档（optimal_10） ，9：最优20档（optimal_20），10：FOK ，11：IOC ，12：对手价_IOC（opponent_ioc），13：闪电平仓_IOC（lightning_ioc），14：最优5档_IOC（optimal_5_ioc），15：最优10档_IOC（optimal_10_ioc），16：最优20档_IOC（optimal_20_ioc），17：对手价_FOK（opponent_fok），18：闪电平仓_FOK（lightning_fok），19：最优5档_FOK（optimal_5_fok），40：最优10档_FOK（optimal_10_fok），41：最优20档_FOK（optimal_20_fok）。    |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen          | true | decimal | 冻结保证金  |   |
@@ -6744,6 +7096,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | liquidation_type              | true | string     | 强平类型        |  0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管 |
 | margin_mode | true | string | 保证金模式  | isolated：逐仓模式 |
 | margin_account | true | string | 保证金账户  | 比如“BTC-USDT” |
+| is_tpsl | true | int | 是否设置止盈止损  | 1：是；0：否 |
 | \</orders\>     |      |         |        |                          |
 | current_page           | true | int     | 当前页    |      |
 | total_page             | true | int     | 总页数    |    |
@@ -6753,7 +7106,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【全仓】获取合约历史委托
 
- - POST `linear-swap-api/v1/swap_cross_hisorders`
+ - POST `/linear-swap-api/v1/swap_cross_hisorders`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -6769,6 +7122,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | create_date | true  | int    | 日期，可随意输入正整数，如果参数超过90则默认查询90天的数据          |                          |
 | page_index  | false | int    |   页码，不填默认第1页           |                               |
 | page_size   | false | int    | 每页条数，不填默认20       | 不得多于50 |
+| sort_by | false  | string | 排序字段（降序），不填默认按照create_date降序 |  "create_date"：按订单创建时间进行降序，"update_time"：按订单更新时间进行降序|
 
 ###备注：
  所有已撤销且无成交的API限价订单记录只保留最近2小时。
@@ -6790,6 +7144,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
                 "volume": 1,
                 "price": 80,
                 "create_date": 1606975980467,
+                "update_time": 1606975980467,
                 "order_source": "api",
                 "order_price_type": 1,
                 "order_type": 1,
@@ -6805,7 +7160,8 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
                 "liquidation_type": "0",
                 "margin_asset": "USDT",
                 "margin_mode": "cross",
-                "margin_account": "USDT"
+                "margin_account": "USDT",
+                "is_tpsl": 0
             }
         ],
         "total_page": 6,
@@ -6830,12 +7186,13 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | margin_mode | true | string | 保证金模式  | cross：全仓模式； |
 | margin_account | true | string | 保证金账户  | 比如“USDT” |
 | lever_rate             | true | int     | 杠杆倍数   |    |
-| direction              | true | string  | 买卖方 | "buy":买 "sell":卖  |
+| direction              | true | string  | 买卖方向 | "buy":买 "sell":卖  |
 | offset                 | true | string  | 开平方向   | "open":开 "close":平   |
 | volume                 | true | decimal | 委托数量   |   |
 | price                  | true | decimal | 委托价格   |    |
 | create_date            | true | long    | 创建时间   |     |
-| order_source           | true | string  | 订单来源   |    |
+| update_time            | true | long    | 订单更新时间，单位：毫秒   |     |
+| order_source           | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发）   |
 | order_price_type       | true | int  | 订单报价类型 | 1：限价单（limit），2：市价单（market），3：对手价（opponent），4：闪电平仓（lightning），5：计划委托（trigger），6：post_only ，7：最优5档（optimal_5） ，8：最优10档（optimal_10） ，9：最优20档（optimal_20），10：FOK ，11：IOC ，12：对手价_IOC（opponent_ioc），13：闪电平仓_IOC（lightning_ioc），14：最优5档_IOC（optimal_5_ioc），15：最优10档_IOC（optimal_10_ioc），16：最优20档_IOC（optimal_20_ioc），17：对手价_FOK（opponent_fok），18：闪电平仓_FOK（lightning_fok），19：最优5档_FOK（optimal_5_fok），40：最优10档_FOK（optimal_10_fok），41：最优20档_FOK（optimal_20_fok）。       |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen          | true | decimal | 冻结保证金  |   |
@@ -6848,6 +7205,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | order_type             | true | int     | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
 | fee_asset         | true | string  | 手续费币种       |  （"USDT"...）      |
 | liquidation_type              | true | string     | 强平类型        |  0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管 |
+| is_tpls              | true | int     | 是否设置止盈止损        |  1：是；0：否 |
 | \</orders\>     |      |         |        |                          |
 | current_page           | true | int     | 当前页    |      |
 | total_page             | true | int     | 总页数    |    |
@@ -6857,7 +7215,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【逐仓】获取历史成交记录
 
-- POST `linear-swap-api/v1/swap_matchresults`
+- POST `/linear-swap-api/v1/swap_matchresults`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -6923,9 +7281,9 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | order_id               | true | long    | 订单ID               |   |
 | order_id_str      | true | string    | string格式的订单ID   |       |
 | symbol                 | true | string  | 品种代码               | |
-| order_source           | true | string  | 订单来源   |   |
+| order_source           | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发）  |
 | contract_code          | true | string  | 合约代码               | "BTC-USDT" ...                          |
-| direction              | true | string  |  买卖方向  |       "buy":买 "sell":卖                                   |
+| direction              | true | string  | 买卖方向  |       "buy":买 "sell":卖                                   |
 | offset                 | true | string  | 开平方向 |    "open":开 "close":平          |
 | trade_volume           | true | decimal | 成交数量               |     |
 | trade_price            | true | decimal | 成交价格               |  |
@@ -6941,15 +7299,13 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | current_page           | true | int     | 当前页                |  |
 | total_page             | true | int     | 总页数                |    |
 | total_size             | true | int     | 总条数                |      |
-| \</data\            |      |         |                    |     |
+| \</data\>           |      |         |                    |     |
 | ts                     | true | long    | 时间戳                |    |
 
-### 备注
-- 如果不传page_index和page_size，默认只查第一页的20条数据，详情请看参数说明
 
 ## 【全仓】获取历史成交记录
 
- - POST `linear-swap-api/v1/swap_cross_matchresults`
+ - POST `/linear-swap-api/v1/swap_cross_matchresults`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -7016,7 +7372,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | order_id               | true | long    | 订单ID               |   |
 | order_id_str      | true | string    | string格式的订单ID   |       |
 | symbol                 | true | string  | 品种代码               | |
-| order_source           | true | string  | 订单来源   |   |
+| order_source           | true | string  | 订单来源   |  （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
 | contract_code          | true | string  | 合约代码               | "BTC-USDT" ...                          |
 | direction              | true | string  |  买卖方向  |       "buy":买 "sell":卖                                   |
 | offset                 | true | string  | 开平方向 |    "open":开 "close":平          |
@@ -7037,7 +7393,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【逐仓】闪电平仓下单
 
-- POST `linear-swap-api/v1/swap_lightning_close_position`
+- POST `/linear-swap-api/v1/swap_lightning_close_position`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -7049,8 +7405,13 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | contract_code          | true | string | 合约代码                  | "BTC-USDT"...                           |
 | volume          | true  | long | 委托数量（张）               |                                          |
 | direction       | true  | string | 买卖方向      |        “buy”:买，“sell”:卖       |
-| client_order_id | false | long | （API）客户自己填写和维护，必须保持唯一 | |
+| client_order_id | false | long | （API）客户自己填写和维护，必须保持唯一,请注意必须小于等于9223372036854775807 | |
 | order_price_type | false | string | 订单报价类型 |不填，默认为“闪电平仓”，"lightning"：闪电平仓，"lightning_ioc"：闪电平仓-IOC，"lightning_fok"：闪电平仓-FOK |
+
+#### 备注
+ - 闪电平仓，是指在对手价平仓的基础上，实行'最优30档'成交，即用户发出的平仓订单能够迅速以30档范围内对手方价格进行成交，未成交部分自动转为限价委托单。
+
+ - client_order_id，24小时有效，超过24小时的订单根据client_order_id将查询不到。
 
 > Response:
 
@@ -7097,7 +7458,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【全仓】闪电平仓下单
 
- - POST `linear-swap-api/v1/swap_cross_lightning_close_position`
+ - POST `/linear-swap-api/v1/swap_cross_lightning_close_position`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -7109,13 +7470,13 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | contract_code          | true | String | 合约代码                  | "BTC-USDT"...                           |
 | volume          | true  | decimal | 委托数量（张）               |                                          |
 | direction       | true  | String | 买卖方向      |        “buy”:买，“sell”:卖       |
-| client_order_id | false | long | （API）客户自己填写和维护，必须保持唯一 | |
+| client_order_id | false | long | （API）客户自己填写和维护，必须保持唯一,请注意必须小于等于9223372036854775807 | |
 | order_price_type | false | string | 订单报价类型 |不填，默认为“闪电平仓”，"lightning"：闪电平仓，"lightning_ioc"：闪电平仓-IOC，"lightning_fok"：闪电平仓-FOK |
 
 #### 备注
  - 闪电平仓，是指在对手价平仓的基础上，实行'最优30档'成交，即用户发出的平仓订单能够迅速以30档范围内对手方价格进行成交，未成交部分自动转为限价委托单。
 
- - 闪电平仓的平仓价格具备可预期的效果，避免在行情急涨急跌时订单无法成交时造成用户损失。
+ - client_order_id，24小时有效，超过24小时的订单根据client_order_id将查询不到。
 
 > Response
 
@@ -7137,15 +7498,15 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | --------------- | ----- | ------ | ----------------------------- | -------------------- |
 | status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
 | ts              | true  | long   | 响应生成时间点，单位：毫秒                 |                      |
-| <data>        |   true    |   object     |                               | 字典                   |
+| \<data\>        |   true    |   object     |                               | 字典                   |
 | order_id        | true  | long | 订单ID[用户级别的，不同的用户order_id可能相同] |                      |
 | order_id_str        | true  | string | String类型订单ID |                      |
 | client_order_id | false | int | 用户自己的订单id                     |                      |
-| </data>       |       |        |     |  |
+| \</data\>       |       |        |     |  |
 
 ## 【逐仓】合约计划委托下单
 
-- POST `linear-swap-api/v1/swap_trigger_order`
+- POST `/linear-swap-api/v1/swap_trigger_order`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -7230,7 +7591,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【全仓】合约计划委托下单
 
- - POST `linear-swap-api/v1/swap_cross_trigger_order`
+ - POST `/linear-swap-api/v1/swap_cross_trigger_order`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -7285,7 +7646,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【逐仓】合约计划委托撤单
 
-- POST `linear-swap-api/v1/swap_trigger_cancel`
+- POST `/linear-swap-api/v1/swap_trigger_cancel`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -7337,7 +7698,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【全仓】合约计划委托撤单
 
- - POST `linear-swap-api/v1/swap_cross_trigger_cancel`
+ - POST `/linear-swap-api/v1/swap_cross_trigger_cancel`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -7385,7 +7746,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【逐仓】合约计划委托全部撤单
 
-- POST `linear-swap-api/v1/swap_trigger_cancelall`
+- POST `/linear-swap-api/v1/swap_trigger_cancelall`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -7441,7 +7802,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【全仓】合约计划委托全部撤单
 
- - POST `linear-swap-api/v1/swap_cross_trigger_cancelall`
+ - POST `/linear-swap-api/v1/swap_cross_trigger_cancelall`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -7482,7 +7843,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【逐仓】获取计划委托当前委托
 
-- POST `linear-swap-api/v1/swap_trigger_openorders`
+- POST `/linear-swap-api/v1/swap_trigger_openorders`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -7546,20 +7907,20 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | \<orders\>|   true          |    object array      |     订单信息                       |                |
 | symbol |true |string |合约品种 | |
 | contract_code |true | string  | 合约代码 | |
-| trigger_type | true |string  | 触发类型： `ge`大于等于；`le`小于等于 | |
+| trigger_type | true |string  | 触发类型  | `ge`大于等于；`le`小于等于 |
 | volume | true |decimal  | 委托数量 | |
-| order_type | true |int  | 订单类型：1、报单  2、撤单 | |
-| direction | true |string  | 订单方向 [买(buy),卖(sell)] | |
-| offset | true |string  | 开平标志 [开(open),平(close)] | |
+| order_type | true |int  | 订单类型  |  1、报单  2、撤单 |
+| direction | true |string  | 订单方向  | [买(buy),卖(sell)] |
+| offset | true |string  | 开平标志 |  [开(open),平(close)] |
 | lever_rate | true |int | 杠杆倍数  | |
 | order_id | true |long  | 计划委托单订单ID | |
 | order_id_str | true |string  | 字符串类型的订单ID  | |
-| order_source | true |string | 来源 | |
+| order_source | true |string | 来源  |（system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
 | trigger_price | true |decimal |  触发价 | |
 | order_price | true |decimal | 委托价 | |
 | created_at | true |long | 订单创建时间 | |
-| order_price_type | true |string | 订单报价类型  限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20| |
-| status | true |int | 订单状态：1:准备提交、2:已提交、3:报单中、8：撤单未找到、9：撤单中、10：失败' | |
+| order_price_type | true |string | 订单报价类型 |  限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20 |
+| status | true |int | 订单状态  | 1:准备提交、2:已提交、3:报单中、8：撤单未找到、9：撤单中、10：失败' |
 | margin_mode | true | string | 保证金模式  | isolated：逐仓模式 |
 | margin_account | true | string | 保证金账户  | 比如“BTC-USDT” |
 | \</orders\>                  |              |          |                            |                |
@@ -7568,7 +7929,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【全仓】获取计划委托当前委托
 
- - POST `linear-swap-api/v1/swap_cross_trigger_openorders`
+ - POST `/linear-swap-api/v1/swap_cross_trigger_openorders`
 
 #### 备注
  - 该接口仅支持全仓模式。
@@ -7631,27 +7992,27 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | contract_code |true | string  | 合约代码 | |
 | margin_mode | true | string | 保证金模式  | cross：全仓模式； |
 | margin_account | true | string | 保证金账户  | 比如“USDT” |
-| trigger_type | true |string  | 触发类型： `ge`大于等于；`le`小于等于 | |
+| trigger_type | true |string  | 触发类型   | `ge`大于等于；`le`小于等于 |
 | volume | true |decimal  | 委托数量 | |
-| order_type | true |int  | 订单类型：1、报单  2、撤单 | |
-| direction | true |string  | 订单方向 [买(buy),卖(sell)] | |
-| offset | true |string  | 开平标志 [开(open),平(close)] | |
+| order_type | true |int  | 订单类型  |1、报单  2、撤单 |
+| direction | true |string  | 订单方向  |[买(buy),卖(sell)] |
+| offset | true |string  | 开平标志  | [开(open),平(close)] |
 | lever_rate | true |int | 杠杆倍数  | |
 | order_id | true |long  | 计划委托单订单ID | |
 | order_id_str | true |string  | 字符串类型的订单ID  | |
-| order_source | true |string | 来源 | |
+| order_source | true |string | 来源 |（system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
 | trigger_price | true |decimal |  触发价 | |
 | order_price | true |decimal | 委托价 | |
 | created_at | true |long | 订单创建时间 | |
-| order_price_type | true |string | 订单报价类型  限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20| |
-| status | true |int | 订单状态：1:准备提交、2:已提交、3:报单中、8：撤单未找到、9：撤单中、10：失败' | |
+| order_price_type | true |string | 订单报价类型 |  限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20 |
+| status | true |int | 订单状态 |  1:准备提交、2:已提交、3:报单中、8：撤单未找到、9：撤单中、10：失败' |
 | \</orders\>                  |              |          |                            |                |
 | \</data\> |   | |  | |
 | ts                         | true         | long     | 响应生成时间点，单位：毫秒 |  |
 
 ## 【逐仓】获取计划委托历史委托
 
-- POST `linear-swap-api/v1/swap_trigger_hisorders`
+- POST `/linear-swap-api/v1/swap_trigger_hisorders`
 
 #### 备注
  - 该接口仅支持逐仓模式。
@@ -7666,6 +8027,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | create_date   | true         | int      | 日期                   |            | 可随意输入正整数，如果参数超过90则默认查询90天的数据      |
 | page_index    | false        | int      | 页码，不填默认第1页    | 1          | 第几页，不填默认第一页 |
 | page_size     | false        | int      | 不填默认20，不得多于50 | 20         | 不填默认20，不得多于50 |
+| sort_by | false  | string | 排序字段（降序），不填默认按照created_at降序 | created_at  | "created_at"：按订单创建时间进行降序，"update_time"：按订单更新时间进行降序|
 
 #### 备注：
 
@@ -7701,6 +8063,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
                 "triggered_at": null,
                 "order_insert_at": 0,
                 "canceled_at": 1603705159520,
+                "update_time": 1603705159520,
                 "fail_code": null,
                 "fail_reason": null,
                 "margin_mode": "isolated",
@@ -7729,22 +8092,23 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | \<orders\>|   true          |    object array      |     订单信息                       |                |
 | symbol |true |string |合约品种 | |
 | contract_code |true | string  | 合约代码 | |
-| trigger_type | true |string  | 触发类型： `ge`大于等于；`le`小于等于 | |
+| trigger_type | true |string  | 触发类型   |`ge`大于等于；`le`小于等于 |
 | volume | true |decimal  | 委托数量 | |
-| order_type | true |int  | 订单类型：1、报单  2、撤单 | |
-| direction | true |string  | 订单方向 [买(buy),卖(sell)] | |
-| offset | true |string  | 开平标志 [开(open),平(close)] | |
+| order_type | true |int  | 订单类型  | 1、报单  2、撤单 |
+| direction | true |string  | 订单方向  | [买(buy),卖(sell)] |
+| offset | true |string  | 开平标志  | [开(open),平(close)] |
 | lever_rate | true |int | 杠杆倍数  | |
 | order_id | true |long  | 计划委托单订单ID | |
 | order_id_str | true |string  | 字符串类型的订单ID  | |
 | relation_order_id | true | string  | 该字段为关联限价单的订单id，未触发前数值为-1 | |
-| order_price_type | true |string | 订单报价类型 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20| |
-| status | true |int  | 订单状态(4:报单成功、5:报单失败、6:已撤单 )| |
-| order_source | true |string | 来源| |
+| order_price_type | true |string | 订单报价类型 |  限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20 |
+| status | true |int  | 订单状态 | (4:报单成功、5:报单失败、6:已撤单 ) |
+| order_source | true |string | 来源 | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
 | trigger_price | true |decimal | 触发价| |
 | triggered_price | true |decimal  | 被触发时的价格| |
 | order_price | true |decimal  | 委托价| |
 | created_at | true |long  | 订单创建时间| |
+| update_time | true |long  | 订单更新时间，单位：毫秒	| |
 | triggered_at | true |long  | 触发时间| |
 | order_insert_at | true |long  | 下order单时间| |
 | canceled_at | true |long | 撤单时间| |
@@ -7758,21 +8122,22 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 
 ## 【全仓】获取计划委托历史委托
 
- - POST `linear-swap-api/v1/swap_cross_trigger_hisorders`
+ - POST `/linear-swap-api/v1/swap_cross_trigger_hisorders`
 
 #### 备注
  - 该接口仅支持全仓模式。
 
 ### 请求参数
 
-| 参数名称            | 是否必须  | 类型     | 描述                    | 取值范围                                     |
-| --------------- | ----- | ------ | --------------------- | ---------------------------------------- |
+| 参数名称            | 是否必须  | 类型     | 描述              |  默认值        | 取值范围                                     |
+| --------------- | ----- | ------ | --------------------- |----- | ---------------------------------------- |
 | contract_code | true        | string   | 合约代码 |   | BTC-USDT|
 | trade_type        | true         | int      | 交易类型               |            | 0:全部,1:买入开多,2: 卖出开空,3: 买入平空,4: 卖出平多；后台是根据该值转换为offset和direction，然后去查询的； 其他值无法查询出结果 |
-| status        | true         | String      | 订单状态               |            | 多个以英文逗号隔开，计划委托单状态：0:全部（表示全部结束状态的订单）、4:已委托、5:委托失败、6:已撤单 |
+| status        | true         | string      | 订单状态               |            | 多个以英文逗号隔开，计划委托单状态：0:全部（表示全部结束状态的订单）、4:已委托、5:委托失败、6:已撤单 |
 | create_date   | true         | int      | 日期                   |            | 可随意输入正整数，如果参数超过90则默认查询90天的数据      |
 | page_index    | false        | int      | 页码，不填默认第1页    | 1          | 第几页，不填默认第一页 |
 | page_size     | false        | int      | 不填默认20，不得多于50 | 20         | 不填默认20，不得多于50 |
+| sort_by | false  | string | 排序字段（降序），不填默认按照created_at降序 | created_at  | "created_at"：按订单创建时间进行降序，"update_time"：按订单更新时间进行降序|
 
 #### 备注：
   - 只查询 已完成订单（status对应状态范围 4、5、6）;
@@ -7807,6 +8172,7 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
                 "triggered_at": null,
                 "order_insert_at": 0,
                 "canceled_at": 1606977508571,
+                "update_time": 1606977508571,
                 "fail_code": null,
                 "fail_reason": null,
                 "margin_mode": "cross",
@@ -7836,22 +8202,23 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | contract_code |true | string  | 合约代码 | |
 | margin_mode | true | string | 保证金模式  | cross：全仓模式； |
 | margin_account | true | string | 保证金账户  | 比如“USDT” |
-| trigger_type | true |string  | 触发类型： `ge`大于等于；`le`小于等于 | |
+| trigger_type | true |string  | 触发类型   | `ge`大于等于；`le`小于等于 |
 | volume | true |decimal  | 委托数量 | |
-| order_type | true |int  | 订单类型：1、报单  2、撤单 | |
-| direction | true |string  | 订单方向 [买(buy),卖(sell)] | |
-| offset | true |string  | 开平标志 [开(open),平(close)] | |
+| order_type | true |int  | 订单类型  | 1、报单  2、撤单 |
+| direction | true |string  | 订单方向  | [买(buy),卖(sell)] |
+| offset | true |string  | 开平标志 | [开(open),平(close)]  |
 | lever_rate | true |int | 杠杆倍数  | |
 | order_id | true |long  | 计划委托单订单ID | |
 | order_id_str | true |string  | 字符串类型的订单ID  | |
 | relation_order_id | true | string  | 该字段为关联限价单的关联字段，未触发前数值为-1 | |
-| order_price_type | true |string | 订单报价类型 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20| |
-| status | true |int  | 订单状态(4:报单成功、5:报单失败、6:已撤单 )| |
-| order_source | true |string | 来源| |
+| order_price_type | true |string | 订单报价类型 |  限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20 |
+| status | true |int  | 订单状态 | (4:报单成功、5:报单失败、6:已撤单 ) |
+| order_source | true |string | 来源 | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
 | trigger_price | true |decimal | 触发价| |
 | triggered_price | true |decimal  | 被触发时的价格| |
 | order_price | true |decimal  | 委托价| |
 | created_at | true |long  | 订单创建时间| |
+| update_time	 | true |long  | 订单更新时间，单位：毫秒	| |
 | triggered_at | true |long  | 触发时间| |
 | order_insert_at | true |long  | 下order单时间| |
 | canceled_at | true |long | 撤单时间| |
@@ -7860,6 +8227,954 @@ page_size  |  false  |  int   |  每页条数，不填默认20  |  20  | 不得�
 | \</orders\>                  |              |          |                            |                |
 | \</data\> |   | |  | |
 | ts                         | true         | long     | 响应生成时间点，单位：毫秒 |  |
+
+
+## 【逐仓】对仓位设置止盈止损订单
+
+ - POST `/linear-swap-api/v1/swap_tpsl_order`
+
+### 请求参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                    | 取值范围                                     |
+| --------------- | ----- | ------ | --------------------- | ---------------------------------------- |
+| contract_code   | true | String | 合约代码    | BTC-USDT                                |
+| direction | true | string | 买卖方向| buy:买入平空 sell:卖出平多  |
+| volume | true | decimal |委托数量(张)|  |
+| tp_trigger_price          | false | decimal | 止盈触发价格                  |                            |
+| tp_order_price   | false | decimal | 	止盈委托价格（最优N档委托类型时无需填写价格）                  |  |
+| tp_order_price_type   | false | string | 止盈委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
+| sl_trigger_price          | false | decimal | 止损触发价格                  |                            |
+| sl_order_price   | false | decimal | 	止损委托价格（最优N档委托类型时无需填写价格）                  |  |
+| sl_order_price_type   | false | string | 止损委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
+
+#### 备注：
+ - 止盈止损订单都为平仓单。
+ - 该接口的限频次数为1秒5次。
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "tp_order":{
+            "order_id":1801,
+            "order_id_str":"1801"
+        },
+        "sl_order":{
+            "order_id":1802,
+            "order_id_str":"1802"
+        }
+    },
+    "ts":1547521135713
+}
+```
+
+> Error Response
+
+```json
+{
+    "status": "error",
+    "err_code": 1066,
+    "err_msg": "contract_code cannot be empty.",
+    "ts": 1604369954194
+}
+```
+
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status                     | true         | string   | 请求处理结果               | "ok" , "error" |
+| ts |  true  | long | 时间戳 | |
+| \<data\> |  false  | object | 成功处理返回的数据，下单失败时不返回  | |
+| \<tp_order\>  |  true  | object |   止盈单下单结果   | |
+| order_id  |  true  | long | 止盈订单ID   | |
+| order_id_str |  true  | string | 止盈订单ID（字符串格式）   | |
+| \</tp_order\>  |   | |      | |
+| \<sl_order\>  |  true  | object |   止损单下单结果   | |
+| order_id  |  true  | long | 止损订单ID   | |
+| order_id_str |  true  | string | 止损订单ID（字符串格式）   | |
+| \</sl_order\>  |   | |      | |
+| \</data\> |   | |  | |
+| err_code  |  false  | int | 错误码（下单失败才出现）  | |
+| err_msg |  false  | string | 错误信息（下单失败才出现）   | |
+
+#### 备注
+ - 当用户只设置了止盈或止损时，则对应返回的sl_order/tp_order则为空。
+
+
+ ## 【全仓】对仓位设置止盈止损订单
+
+  - POST `/linear-swap-api/v1/swap_cross_tpsl_order`
+
+
+### 请求参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                    | 取值范围                                     |
+| --------------- | ----- | ------ | --------------------- | ---------------------------------------- |
+| contract_code   | true | String | 合约代码    | BTC-USDT                                |
+| direction | true | string | 买卖方向| buy:买入平空 sell:卖出平多  |
+| volume | true | decimal |委托数量(张)|  |
+| tp_trigger_price          | false | decimal | 止盈触发价格                  |                            |
+| tp_order_price   | false | decimal | 	止盈委托价格（最优N档委托类型时无需填写价格）                  |  |
+| tp_order_price_type   | false | string | 止盈委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
+| sl_trigger_price          | false | decimal | 止损触发价格                  |                            |
+| sl_order_price   | false | decimal | 	止损委托价格（最优N档委托类型时无需填写价格）                  |  |
+| sl_order_price_type   | false | string | 止损委托类型    |    不填默认为limit; 限价：limit ，最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20            |
+
+#### 备注：
+ - 止盈止损订单都为平仓单。
+ - 该接口的限频次数为1秒5次。
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "tp_order":{
+            "order_id":1801,
+            "order_id_str":"1801"
+        },
+        "sl_order":{
+            "order_id":1802,
+            "order_id_str":"1802"
+        }
+    },
+    "ts":1547521135713
+}
+```
+
+> Error Response
+
+```json
+{
+    "status": "error",
+    "err_code": 1066,
+    "err_msg": "contract_code cannot be empty.",
+    "ts": 1604369954194
+}
+```
+
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status                     | true         | string   | 请求处理结果               | "ok" , "error" |
+| ts |  true  | long | 时间戳 | |
+| \<data\> |  false  | object | 成功处理返回的数据，下单失败时不返回  | |
+| \<tp_order\>  |  true  | object |   止盈单下单结果   | |
+| order_id  |  true  | long | 止盈订单ID   | |
+| order_id_str |  true  | string | 止盈订单ID（字符串格式）   | |
+| \</tp_order\>  |   | |      | |
+| \<sl_order\>  |  true  | object |   止损单下单结果   | |
+| order_id  |  true  | long | 止损订单ID   | |
+| order_id_str |  true  | string | 止损订单ID（字符串格式）   | |
+| \</sl_order\>  |   | |      | |
+| \</data\> |   | |  | |
+| err_code  |  false  | int | 错误码（下单失败才出现）  | |
+| err_msg |  false  | string | 错误信息（下单失败才出现）   | |
+
+#### 备注
+
+  - 只设置了止盈或止损时，则对应返回的sl_order/tp_order则为空。
+
+## 【逐仓】止盈止损订单撤单
+
+ - POST `/linear-swap-api/v1/swap_tpsl_cancel`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
+| order_id | true | string | 止盈止损订单ID（多个订单ID中间以","分隔,一次最多允许撤消10个订单 ）|    |
+
+#### 备注
+
+ - 该接口的限频次数为1秒5次。
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "ts":1585564764155,
+    "data":{
+        "errors":[
+            {
+                "err_code":1061,
+                "err_msg":"This order doesnt exist.",
+                "order_id":"1582"
+            }
+        ],
+        "successes":"1583"
+    }
+}
+```
+
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| \<errors\>        |   true    |   object     |                               | 字典                   |
+| order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| err_code              | false  | long   | 错误码                |                      |
+| err_msg              | false  | string   | 错误信息               |                      |
+| \</errors\>       |       |        |     |  |
+| successes              | true  | string   | 成功的订单                 |     |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
+
+
+## 【全仓】止盈止损订单撤单
+
+ - POST `/linear-swap-api/v1/swap_cross_tpsl_cancel`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
+| order_id | true | string | 止盈止损订单ID（多个订单ID中间以","分隔,一次最多允许撤消10个订单 ）|    |
+
+#### 备注
+
+ - 该接口的限频次数为1秒5次。
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "ts":1585564764155,
+    "data":{
+        "errors":[
+            {
+                "err_code":1061,
+                "err_msg":"This order doesnt exist.",
+                "order_id":"1582"
+            }
+        ],
+        "successes":"1583"
+    }
+}
+```
+
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| \<errors\>        |   true    |   object     |                               | 字典                   |
+| order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| err_code              | false  | long   | 错误码                |                      |
+| err_msg              | false  | string   | 错误信息               |                      |
+| \</errors\>       |       |        |     |  |
+| successes              | true  | string   | 成功的订单                 |     |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
+
+
+## 【逐仓】止盈止损订单全部撤单
+
+ - POST `/linear-swap-api/v1/swap_tpsl_cancelall`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
+
+#### 备注
+
+ - 该接口的限频次数为1秒5次。
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "errors":[
+            {
+                "err_code":1061,
+                "err_msg":"This order doesnt exist.",
+                "order_id":"1582"
+            }
+        ],
+        "successes":"161256,1344567"
+    },
+    "ts":1490759594752
+}
+```
+
+### 返回参数
+
+| 参数名称                   | 是否必须 | 类型      | 描述                 | 取值范围                                     |
+| ---------------------- | ---- | ------- | ------------------ | ---------------------------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| \<errors\>        |   true    |   object     |                               | 字典                   |
+| order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| err_code              | false  | long   | 错误码                |                      |
+| err_msg              | false  | string   | 错误信息               |                      |
+| \</errors\>       |       |        |     |  |
+| successes              | true  | string   | 成功的订单                 |     |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
+
+
+## 【全仓】止盈止损订单全部撤单
+
+ - POST `/linear-swap-api/v1/swap_cross_tpsl_cancelall`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
+
+#### 备注
+
+ - 该接口的限频次数为1秒5次。
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "errors":[
+            {
+                "err_code":1061,
+                "err_msg":"This order doesnt exist.",
+                "order_id":"1582"
+            }
+        ],
+        "successes":"161256,1344567"
+    },
+    "ts":1490759594752
+}
+```
+
+### 返回参数
+
+| 参数名称                   | 是否必须 | 类型      | 描述                 | 取值范围                                     |
+| ---------------------- | ---- | ------- | ------------------ | ---------------------------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| \<errors\>        |   true    |   object     |                               | 字典                   |
+| order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| err_code              | false  | long   | 错误码                |                      |
+| err_msg              | false  | string   | 错误信息               |                      |
+| \</errors\>       |       |        |     |  |
+| successes              | true  | string   | 成功的订单                 |     |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
+
+
+## 【逐仓】查询止盈止损订单当前委托
+
+ - POST `/linear-swap-api/v1/swap_tpsl_openorders`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
+| page_index | false | int | 第几页，不填默认第一页|    |
+| page_size | false | int | 不填默认20，不得多于50|    |
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "total_page":1,
+        "total_size":1,
+        "current_page":1,
+        "orders":[
+            {
+                "symbol":"BTC",
+                "contract_code":"BTC-USDT",
+                "margin_mode":"isolated",
+                "margin_account":"BTC-USDT",
+                "volume":1,
+                "order_type":1,
+                "tpsl_order_type":"tp",
+                "direction":"buy",
+                "order_id":1801,
+                "order_id_str":"1801",
+                "order_source":"api",
+                "trigger_type":"ge",
+                "trigger_price":"1801",
+                "created_at":1581041685445,
+                "order_price_type":"limit",
+                "status":2,
+                "source_order_id":"123123718923712",
+                "relation_tpsl_order_id":"-1"
+            }
+        ]
+    },
+    "ts":1581041700685
+}
+```
+
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| total_page        | true | int | 总页数   |                |
+| total_size        | true | int | 总条数   |                |
+| current_page        | true | int | 当前页   |                |
+| \<orders\>        |   true    |   object array    |                               |     |
+| symbol                 | true | string  | 品种代码               |                                          |
+| contract_code          | true | string  | 合约代码               | "BTC-USDT" ...                          |
+| margin_mode | true | string | 保证金模式  | cross：全仓模式；isolated：逐仓模式 |
+| margin_account | true | string | 保证金账户  | 比如“USDT”，“BTC-USDT” |
+| volume                 | true | decimal  | 委托数量 |      |
+| order_type           | true | int | 订单类型：1、报单 2、撤单               |                                          |
+| tpsl_order_type            | true | string | 止盈止损类型                |           “tp”:止盈单；"sl"：止损单        |
+| direction            | true | string | 买卖方向                |           买入平空："buy",卖出平多："sell"         |
+| order_id      | true | long | 止盈止损订单ID                |                                          |
+| order_id_str             | true | string | 字符串类型的止盈止损订单ID              |                                          |
+| order_source      | true | string  | 来源        |                                          |
+| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_price         | true | decimal | 触发价              |                      |
+| created_at        | true  | long | 订单创建时间 |                      |
+| order_price_type        | true  | string | 订单报价类型  |  限价："limit"， 最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20        |
+| status        | true  | int | 订单状态： |     1:未生效、2:等待委托、3:委托中、4:委托成功、5:委托失败、6:已撤单、8：撤单未找到、9：撤单中、10：失败' 、11：已失效     |
+| source_order_id        | true  | string |  源限价单的订单id（下单设置的止盈止损订单该字段才有值，表示当前止盈止损单由哪个限价单触发的） |       |
+| relation_tpsl_order_id        | true  | string |  关联的止盈止损单id（用户同时设置止盈止损单时，该字段才有值，否则数值为-1） |       |
+| \</orders\>       |       |        |     |  |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
+
+
+## 【全仓】查询止盈止损订单当前委托
+
+ - POST `/linear-swap-api/v1/swap_cross_tpsl_openorders`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
+| page_index | false | int | 第几页，不填默认第一页|    |
+| page_size | false | int | 不填默认20，不得多于50|    |
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "total_page":1,
+        "total_size":1,
+        "current_page":1,
+        "orders":[
+            {
+                "symbol":"BTC",
+                "contract_code":"BTC-USDT",
+                "margin_mode":"cross",
+                "margin_account":"USDT",
+                "volume":1,
+                "order_type":1,
+                "tpsl_order_type":"tp",
+                "direction":"buy",
+                "order_id":1801,
+                "order_id_str":"1801",
+                "order_source":"api",
+                "trigger_type":"ge",
+                "trigger_price":"1801",
+                "created_at":1581041685445,
+                "order_price_type":"limit",
+                "status":2,
+                "source_order_id":"123123718923712",
+                "relation_tpsl_order_id":"-1"
+            }
+        ]
+    },
+    "ts":1581041700685
+}
+```
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| total_page        | true | int | 总页数   |                |
+| total_size        | true | int | 总条数   |                |
+| current_page        | true | int | 当前页   |                |
+| \<orders\>        |   true    |   object array    |                               |     |
+| symbol                 | true | string  | 品种代码               |                                          |
+| contract_code          | true | string  | 合约代码               | "BTC-USDT" ...                          |
+| margin_mode | true | string | 保证金模式  | cross：全仓模式；isolated：逐仓模式 |
+| margin_account | true | string | 保证金账户  | 比如“USDT”，“BTC-USDT” |
+| volume                 | true | decimal  | 委托数量 |      |
+| order_type           | true | int | 订单类型：1、报单 2、撤单               |                                          |
+| tpsl_order_type            | true | string | 止盈止损类型                |           “tp”:止盈单；"sl"：止损单        |
+| direction            | true | string | 买卖方向                |           买入平空："buy",卖出平多："sell"         |
+| order_id      | true | long | 止盈止损订单ID                |                                          |
+| order_id_str             | true | string | 字符串类型的止盈止损订单ID              |                                          |
+| order_source      | true | string  | 来源        |                                          |
+| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_price         | true | decimal | 触发价              |                      |
+| created_at        | true  | long | 订单创建时间 |                      |
+| order_price_type        | true  | string | 订单报价类型  |  限价："limit"， 最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20        |
+| status        | true  | int | 订单状态： |     1:未生效、2:等待委托、3:委托中、4:委托成功、5:委托失败、6:已撤单、8：撤单未找到、9：撤单中、10：失败' 、11：已失效    |
+| source_order_id        | true  | string |  源限价单的订单id（下单设置的止盈止损订单该字段才有值，表示当前止盈止损单由哪个限价单触发的） |       |
+| relation_tpsl_order_id        | true  | string |  关联的止盈止损单id（用户同时设置止盈止损单时，该字段才有值，否则数值为-1） |       |
+| \</orders\>       |       |        |     |  |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
+
+
+## 【逐仓】查询止盈止损订单历史委托
+
+ - POST `/linear-swap-api/v1/swap_tpsl_hisorders`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码,"BTC-USDT" ...|    |
+| status | true | string | 订单状态| 多个以英文逗号隔开，止盈止损订单状态： 1：等待委托；2：已委托；3：委托失败；4：已撤销   |
+| create_date | true | long | 日期| 可随意输入正整数，如果参数超过90则默认查询90天的数据   |
+| page_index | false | int | 第几页，不填默认第一页|    |
+| page_size | false | int | 不填默认20，不得多于50|    |
+| sort_by | false  | string | 排序字段（降序），不填默认按照created_at降序 |  "created_at"：按订单创建时间进行降序，"update_time"：按订单更新时间进行降序|
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "total_page":1,
+        "total_size":1,
+        "current_page":1,
+        "orders":[
+            {
+                "symbol":"BTC",
+                "contract_code":"BTC-USDT",
+                "margin_mode":"isolated",
+                "margin_account":"BTC-USDT",
+                "volume":1,
+                "order_type":1,
+                "direction":"buy",
+                "tpsl_order_type":"tp",
+                "order_id":1801,
+                "order_id_str":"1801",
+                "order_source":"api",
+                "created_at":1581041685445,
+                "order_price_type":"limit",
+                "trigger_type":"ge",
+                "trigger_price":"1801",
+                "status":2,
+                "source_order_id":"123123718923712",
+                "relation_tpsl_order_id":"-1",
+                "canceled_at":null,
+                "fail_code":null,
+                "fail_reason":null,
+                "triggered_price":1800,
+                "relation_order_id":"123128379123123",
+                "update_time":1581041685445
+            }
+        ]
+    },
+    "ts":1581041700685
+}
+```
+
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| total_page        | true | int | 总页数   |                |
+| total_size        | true | int | 总条数   |                |
+| current_page        | true | int | 当前页   |                |
+| \<orders\>        |   true    |   object array    |                               |     |
+| symbol                 | true | string  | 品种代码               |                                          |
+| contract_code          | true | string  | 合约代码               | "BTC-USDT" ...                          |
+| margin_mode | true | string | 保证金模式  | cross：全仓模式；isolated：逐仓模式 |
+| margin_account | true | string | 保证金账户  | 比如“USDT”，“BTC-USDT” |
+| volume                 | true | decimal  | 委托数量 |      |
+| order_type           | true | int | 订单类型：1、报单 2、撤单               |                                          |
+| tpsl_order_type            | true | string | 止盈止损类型                |           “tp”:止盈单；"sl"：止损单        |
+| direction            | true | string | 买卖方向                |           买入平空："buy",卖出平多："sell"         |
+| order_id      | true | long | 止盈止损订单ID                |                                          |
+| order_id_str             | true | string | 字符串类型的止盈止损订单ID              |                                          |
+| order_source      | true | string  | 来源        |                                          |
+| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_price         | true | decimal | 触发价              |                      |
+| created_at        | true  | long | 订单创建时间 |                      |
+| order_price_type        | true  | string | 订单报价类型  |  限价："limit"， 最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20        |
+| status        | true  | int | 订单状态： |    1:未生效、2:等待委托、3:委托中、4:委托成功、5:委托失败、6:已撤单、8：撤单未找到、9：撤单中、10：失败' 、11：已失效    |
+| source_order_id        | true  | string |  源限价单的订单id（下单设置的止盈止损订单该字段才有值，表示当前止盈止损单由哪个限价单触发的） |       |
+| relation_tpsl_order_id        | true  | string |  关联的止盈止损单id（用户同时设置止盈止损单时，该字段才有值，否则数值为-1） |       |
+| canceled_at        | true  | long | 撤单时间 |                      |
+| fail_code        | true  | int | 被触发时下order单失败错误码 |                      |
+| fail_reason        | true  | string | 被触发时下order单失败原因 |                      |
+| triggered_price   | true | decimal | 被触发时的价格                |  |
+| relation_order_id          | true | string |  该字段为关联限价单的关联字段，未触发前数值为-1	           |                       |
+| update_time | true  | long | 订单更新时间，单位：毫秒 |  |
+| \</orders\>       |       |        |     |  |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
+
+
+## 【全仓】查询止盈止损订单历史委托
+
+ - POST `linear-swap-api/v1/swap_cross_tpsl_hisorders`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码,"BTC-USDT" ...|    |
+| status | true | string | 订单状态| 多个以英文逗号隔开，止盈止损订单状态： 1：等待委托；2：已委托；3：委托失败；4：已撤销   |
+| create_date | true | long | 日期| 可随意输入正整数，如果参数超过90则默认查询90天的数据   |
+| page_index | false | int | 第几页，不填默认第一页|    |
+| page_size | false | int | 不填默认20，不得多于50|    |
+| sort_by | false  | string | 排序字段（降序），不填默认按照created_at降序 |  "created_at"：按订单创建时间进行降序，"update_time"：按订单更新时间进行降序|
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "total_page":1,
+        "total_size":1,
+        "current_page":1,
+        "orders":[
+            {
+                "symbol":"BTC",
+                "contract_code":"BTC-USDT",
+                "margin_mode":"cross",
+                "margin_account":"USDT",
+                "volume":1,
+                "order_type":1,
+                "direction":"buy",
+                "tpsl_order_type":"tp",
+                "order_id":1801,
+                "order_id_str":"1801",
+                "order_source":"api",
+                "created_at":1581041685445,
+                "order_price_type":"limit",
+                "trigger_type":"ge",
+                "trigger_price":"1801",
+                "status":2,
+                "source_order_id":"123123718923712",
+                "relation_tpsl_order_id":"-1",
+                "canceled_at":null,
+                "fail_code":null,
+                "fail_reason":null,
+                "triggered_price":1800,
+                "relation_order_id":"123128379123123",
+                "update_time":1581041685445
+            }
+        ]
+    },
+    "ts":1581041700685
+}
+```
+
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| total_page        | true | int | 总页数   |                |
+| total_size        | true | int | 总条数   |                |
+| current_page        | true | int | 当前页   |                |
+| \<orders\>        |   true    |   object array    |                               |     |
+| symbol                 | true | string  | 品种代码               |                                          |
+| contract_code          | true | string  | 合约代码               | "BTC-USDT" ...                          |
+| margin_mode | true | string | 保证金模式  | cross：全仓模式；isolated：逐仓模式 |
+| margin_account | true | string | 保证金账户  | 比如“USDT”，“BTC-USDT” |
+| volume                 | true | decimal  | 委托数量 |      |
+| order_type           | true | int | 订单类型：1、报单 2、撤单               |                                          |
+| tpsl_order_type            | true | string | 止盈止损类型                |           “tp”:止盈单；"sl"：止损单        |
+| direction            | true | string | 买卖方向                |           买入平空："buy",卖出平多："sell"         |
+| order_id      | true | long | 止盈止损订单ID                |                                          |
+| order_id_str             | true | string | 字符串类型的止盈止损订单ID              |                                          |
+| order_source      | true | string  | 来源        |                                          |
+| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_price         | true | decimal | 触发价              |                      |
+| created_at        | true  | long | 订单创建时间 |                      |
+| order_price_type        | true  | string | 订单报价类型  |  限价："limit"， 最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20        |
+| status        | true  | int | 订单状态： |    1:未生效、2:等待委托、3:委托中、4:委托成功、5:委托失败、6:已撤单、8：撤单未找到、9：撤单中、10：失败' 、11：已失效    |
+| source_order_id        | true  | string |  源限价单的订单id（下单设置的止盈止损订单该字段才有值，表示当前止盈止损单由哪个限价单触发的） |       |
+| relation_tpsl_order_id        | true  | string |  关联的止盈止损单id（用户同时设置止盈止损单时，该字段才有值，否则数值为-1） |       |
+| canceled_at        | true  | long | 撤单时间 |                      |
+| fail_code        | true  | int | 被触发时下order单失败错误码 |                      |
+| fail_reason        | true  | string | 被触发时下order单失败原因 |                      |
+| triggered_price   | true | decimal | 被触发时的价格                |  |
+| relation_order_id          | true | string |  该字段为关联限价单的关联字段，未触发前数值为-1	           |                       |
+| update_time | true  | long | 订单更新时间，单位：毫秒 |  |
+| \</orders\>       |       |        |     |  |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
+
+
+## 【逐仓】查询开仓单关联的止盈止损订单详情
+
+ - POST `/linear-swap-api/v1/swap_relation_tpsl_order`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
+| order_id | true | long | 止盈止损订单ID  |    |
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "symbol":"BTC",
+        "contract_code":"BTC-USDT",
+        "margin_mode":"isolated",
+        "margin_account":"BTC-USDT",
+        "volume":5,
+        "price":8000,
+        "order_price_type":"limit",
+        "direction":"buy",
+        "offset":"open",
+        "lever_rate":20,
+        "order_id":663044581377445888,
+        "order_id_str":"663044581377445888",
+        "client_order_id":null,
+        "created_at":1578123746973,
+        "trade_volume":5,
+        "trade_turnover":500,
+        "fee":-0.000019993069154634,
+        "trade_avg_price":7502.599968010237,
+        "margin_frozen":0,
+        "profit":0,
+        "status":6,
+        "order_type":1,
+        "order_source":"api",
+        "fee_asset":"BTC",
+        "liquidation_type":"0",
+        "canceled_at":1578123746973,
+        "tpsl_order_info":[
+            {
+                "volume":1,
+                "tpsl_order_type":"tp",
+                "direction":"sell",
+                "order_id":21436227224008574,
+                "order_id_str":"21436227224008574",
+                "trigger_type":"le",
+                "trigger_price":10000,
+                "created_at":1604368087894,
+                "order_price_type":"limit",
+                "relation_tpsl_order_id":"-1",
+                "status":2,
+                "canceled_at":null,
+                "fail_code":null,
+                "fail_reason":null,
+                "triggered_price":null,
+                "relation_order_id":""
+            }
+        ]
+    },
+    "ts":1604370259827
+}
+```
+
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| symbol               | true | string  | 品种代码   |                                          |
+| contract_type        | true | string  | 合约类型   | 当周:"this_week", 周:"next_week", 当季:"quarter" ，次季度：“next_quarter”  |
+| contract_code        | true | string  | 合约代码   | "BTC180914" ...                          |
+| margin_mode | true | string | 保证金模式  | cross：全仓模式；isolated：逐仓模式 |
+| margin_account | true | string | 保证金账户  | 比如“USDT”，“BTC-USDT” |
+| volume               | true | decimal | 委托数量   |                                          |
+| price                | true | decimal | 委托价格   |                                          |
+| order_price_type     | true | string  | 订单报价类型 | "limit":限价，"opponent":对手价，"post_only":只做maker单,post only下单只受用户持仓数量限制，"lightning":闪电平仓，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档，"fok":FOK订单，"ioc":IOC订单, "opponent_ioc": 对手价-IOC下单，"lightning_ioc": 闪电平仓-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"lightning_fok"：闪电平仓-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
+| direction            | true | string  | 买卖方向   | "buy":买 "sell":卖                         |
+| offset               | true | string  | 开平方向   | "open":开 "close":平                       |
+| lever_rate           | true | int     | 杠杆倍数   |                         |
+| order_id             | true | long    | 订单ID   |                                          |
+| order_id_str             | true | string    | String类型订单ID   |                                          |
+| client_order_id      | true | long    | 客户订单ID |                                          |
+| created_at           | true | long    | 创建时间   |                                          |
+| trade_volume         | true | decimal | 成交数量   |                                          |
+| trade_turnover       | true | decimal | 成交总金额  |                                          |
+| fee                  | true | decimal | 手续费    |                                          |
+| trade_avg_price      | true | decimal | 成交均价   |                                          |
+| margin_frozen        | true | decimal | 冻结保证金  |                                          |
+| profit               | true | decimal | 收益     |                                          |
+| status               | true | int     | 订单状态   | (1准备提交 2准备提交 3已提交 4部分成交 5部分成交已撤单 6全部成交 7已撤单 11撤单中) |
+| order_type           | true | int  | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
+| order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
+| fee_asset         | true | string  | 手续费币种   | （"BTC","ETH"...）|
+| liquidation_type               | true     | string    | 强平类型 0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管           |  |
+| canceled_at               | true     | long    |撤单时间           |  |
+| \<tpsl_order_info\>  |  true  | object array |  关联的止盈止损单信息    | |
+| volume                 | true | decimal  | 委托数量  |      |
+| tpsl_order_type            | true | string | 止盈止损类型                |           “tp”:止盈单；"sl"：止损单        |
+| direction            | true | string | 买卖方向                |           买入平空："buy",卖出平多："sell"         |
+| order_id      | true | long | 止盈止损订单ID              |                                          |
+| order_id_str             | true | string | 字符串类型的止盈止损订单ID             |                                          |
+| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_price         | true | decimal | 触发价              |                      |
+| created_at        | true  | long | 订单创建时间 |                      |
+| order_price_type        | true  | string | 订单报价类型  |  限价："limit"， 最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20        |
+| status        | true  | int | 订单状态 |     1:未生效、2:等待委托、3:委托中、4:委托成功、5:委托失败、6:已撤单、8：撤单未找到、9：撤单中、10：失败' 、11：已失效、12、未生效-已结束        |
+| relation_tpsl_order_id        | true  | string |  关联的止盈止损单id（用户同时设置止盈止损单时，该字段才有值，否则数值为-1） |       |
+| canceled_at        | true  | long | 撤单时间 |                      |
+| fail_code        | true  | int | 被触发时下order单失败错误码 |                      |
+| fail_reason        | true  | string | 被触发时下order单失败原因 |                      |
+| triggered_price   | true | decimal | 被触发时的价格                |  |
+| relation_order_id          | true | string |  该字段为关联限价单的关联字段，未触发前数值为-1	           |                       |
+| \</tpsl_order_info\>  |   | |      | |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
+
+
+## 【全仓】查询开仓单关联的止盈止损订单详情
+
+ - POST `/linear-swap-api/v1/swap_cross_relation_tpsl_order`
+
+### 请求参数
+
+| 参数名称          | 是否必须  | 类型     | 描述   | 取值范围                                     |
+| ------------- | ----- | ------ | ------------- | ---------------------------------------- |
+| contract_code | true | string | 合约代码|  "BTC-USDT" ...  |
+| order_id | true | long | 止盈止损订单ID  |    |
+
+> Response
+
+```json
+{
+    "status":"ok",
+    "data":{
+        "symbol":"BTC",
+        "contract_code":"BTC-USDT",
+        "margin_mode":"cross",
+        "margin_account":"USDT",
+        "volume":5,
+        "price":8000,
+        "order_price_type":"limit",
+        "direction":"buy",
+        "offset":"open",
+        "lever_rate":20,
+        "order_id":663044581377445888,
+        "order_id_str":"663044581377445888",
+        "client_order_id":null,
+        "created_at":1578123746973,
+        "trade_volume":5,
+        "trade_turnover":500,
+        "fee":-0.000019993069154634,
+        "trade_avg_price":7502.599968010237,
+        "margin_frozen":0,
+        "profit":0,
+        "status":6,
+        "order_type":1,
+        "order_source":"api",
+        "fee_asset":"BTC",
+        "liquidation_type":"0",
+        "canceled_at":1578123746973,
+        "tpsl_order_info":[
+            {
+                "volume":1,
+                "tpsl_order_type":"tp",
+                "direction":"sell",
+                "order_id":21436227224008574,
+                "order_id_str":"21436227224008574",
+                "trigger_type":"le",
+                "trigger_price":10000,
+                "created_at":1604368087894,
+                "order_price_type":"limit",
+                "relation_tpsl_order_id":"-1",
+                "status":2,
+                "canceled_at":null,
+                "fail_code":null,
+                "fail_reason":null,
+                "triggered_price":null,
+                "relation_order_id":""
+            }
+        ]
+    },
+    "ts":1604370259827
+}
+```
+
+### 返回参数
+
+| 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
+| --------------- | ----- | ------ | ----------------------------- | -------------------- |
+| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| \<data\>        |   true    |   object     |                               | 字典                   |
+| symbol               | true | string  | 品种代码   |                                          |
+| contract_type        | true | string  | 合约类型   | 当周:"this_week", 周:"next_week", 当季:"quarter" ，次季度：“next_quarter”  |
+| contract_code        | true | string  | 合约代码   | "BTC180914" ...                          |
+| margin_mode | true | string | 保证金模式  | cross：全仓模式；isolated：逐仓模式 |
+| margin_account | true | string | 保证金账户  | 比如“USDT”，“BTC-USDT” |
+| volume               | true | decimal | 委托数量   |                                          |
+| price                | true | decimal | 委托价格   |                                          |
+| order_price_type     | true | string  | 订单报价类型 | "limit":限价，"opponent":对手价，"post_only":只做maker单,post only下单只受用户持仓数量限制，"lightning":闪电平仓，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档，"fok":FOK订单，"ioc":IOC订单, "opponent_ioc": 对手价-IOC下单，"lightning_ioc": 闪电平仓-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"lightning_fok"：闪电平仓-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
+| direction            | true | string  | 买卖方向   | "buy":买 "sell":卖                         |
+| offset               | true | string  | 开平方向   | "open":开 "close":平                       |
+| lever_rate           | true | int     | 杠杆倍数   |                         |
+| order_id             | true | long    | 订单ID   |                                          |
+| order_id_str             | true | string    | String类型订单ID   |                                          |
+| client_order_id      | true | long    | 客户订单ID |                                          |
+| created_at           | true | long    | 创建时间   |                                          |
+| trade_volume         | true | decimal | 成交数量   |                                          |
+| trade_turnover       | true | decimal | 成交总金额  |                                          |
+| fee                  | true | decimal | 手续费    |                                          |
+| trade_avg_price      | true | decimal | 成交均价   |                                          |
+| margin_frozen        | true | decimal | 冻结保证金  |                                          |
+| profit               | true | decimal | 收益     |                                          |
+| status               | true | int     | 订单状态   | (1准备提交 2准备提交 3已提交 4部分成交 5部分成交已撤单 6全部成交 7已撤单 11撤单中) |
+| order_type           | true | int  | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
+| order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
+| fee_asset         | true | string  | 手续费币种   | （"BTC","ETH"...）|
+| liquidation_type               | true     | string    | 强平类型 0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管           |  |
+| canceled_at               | true     | long    |撤单时间           |  |
+| \<tpsl_order_info\>  |  true  | object array |  关联的止盈止损单信息    | |
+| volume                 | true | decimal  | 委托数量  |      |
+| tpsl_order_type            | true | string | 止盈止损类型                |           “tp”:止盈单；"sl"：止损单        |
+| direction            | true | string | 买卖方向                |           买入平空："buy",卖出平多："sell"         |
+| order_id      | true | long | 止盈止损订单ID              |                                          |
+| order_id_str             | true | string | 字符串类型的止盈止损订单ID          |                                          |
+| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_price         | true | decimal | 触发价              |                      |
+| created_at        | true  | long | 订单创建时间 |                      |
+| order_price_type        | true  | string | 订单报价类型  |  限价："limit"， 最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20        |
+| status        | true  | int | 订单状态 |    1:未生效、2:等待委托、3:委托中、4:委托成功、5:委托失败、6:已撤单、8：撤单未找到、9：撤单中、10：失败' 、11：已失效、12、未生效-已结束       |
+| relation_tpsl_order_id        | true  | string |  关联的止盈止损单id（用户同时设置止盈止损单时，该字段才有值，否则数值为-1） |       |
+| canceled_at        | true  | long | 撤单时间 |                      |
+| fail_code        | true  | int | 被触发时下order单失败错误码 |                      |
+| fail_reason        | true  | string | 被触发时下order单失败原因 |                      |
+| triggered_price   | true | decimal | 被触发时的价格                |  |
+| relation_order_id          | true | string |  该字段为关联限价单的关联字段，未触发前数值为-1	           |                       |
+| \</tpsl_order_info\>  |   | |      | |
+| \</data\>       |       |        |     |  |
+| ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
 
 
 # USDT本位永续合约划转接口
@@ -8033,6 +9348,7 @@ message |    true  |   string    |   响应信息	 |   |
 | 读取    |  交易接口 | 全仓 | positions_cross.$contract_code                            | sub    |  【全仓】订阅持仓变动更新数据     |       是          |
 | 读取    |  交易接口 | 全仓 | matchOrders_cross.$contract_code                          | sub    |  【全仓】订阅撮合订单成交数据     |       是          |
 | 读取    |  交易接口 | 全仓 | trigger_order_cross.$contract_code                        | sub    |  【全仓】订阅计划委托订单变动     |       是          |
+| 读取    |  系统状态接口 | 通用  |  public.$service.heartbeat                            | sub    | 【通用】订阅系统状态更新         |       否          | 
 
 ## 合约订阅地址
 
@@ -8042,6 +9358,8 @@ message |    true  |   string    |   响应信息	 |   |
 
 合约站指数K线及基差数据订阅地址：wss://api.hbdm.com/ws_index
 
+合约站系统状态更新订阅地址：wss://api.hbdm.com/center-notification
+
 如果api.hbdm.com域名访问不了，可使用：
 
 合约站行情请求以及订阅地址为：wss://api.btcgateway.pro/linear-swap-ws
@@ -8049,6 +9367,8 @@ message |    true  |   string    |   响应信息	 |   |
 合约站订单推送订阅地址：wss://api.btcgateway.pro/linear-swap-notification
 
 合约站指数K线及基差数据订阅地址：wss://api.btcgateway.pro/ws_index
+
+合约站系统状态更新订阅地址：wss://api.btcgateway.pro/center-notification
 
 如果对合约订单推送订阅有疑问，可以参考 <a href='https://docs.huobigroup.com/docs/usdt_swap/v1/cn/#2cff7db524'> Demo </a>
  
@@ -8060,7 +9380,7 @@ message |    true  |   string    |   响应信息	 |   |
 
 公开行情接口和用户私有接口都有访问次数限制
 
-- 普通用户，需要密钥的私有接口，每个UID 3秒最多45次请求(该UID的所有币种的合约的所有私有接口共享3秒45次的额度)
+- 普通用户，需要密钥的私有接口，每个UID 3秒最多 72 次请求(交易接口3秒最多 36 次请求，查询接口3秒最多 36 次请求) (该UID的所有币种和不同到期日的合约的所有私有接口共享该限制) 
 
 - 其他非行情类的公开接口，比如获取指数信息，限价信息，交割结算、平台持仓信息等，所有用户都是每个IP3秒最多120次请求（所有该IP的非行情类的公开接口请求共享3秒120次的额度）
 
@@ -8426,7 +9746,7 @@ WebSocket API 返回的所有数据都进⾏了 GZIP 压缩，需要 client 在�
 -------------- | -----------------  | ---------- |  -------------- |
   ch  |       true         |  string  |   请求参数   | 
   ts    |     true          | long   |  响应生成时间点，单位：毫秒     |           
- \<list\>(属性名称: tick)    |               |    |      |            | 
+ \<tick\>   |               |    |      |            | 
   id    |     true          | long   |  K线ID,也就是K线时间戳，K线起始时间    |            
   mrid    |     true          | long   |  订单ID     |            
   vol    |     true          | decimal   |  成交量张数     |            
@@ -8437,7 +9757,7 @@ WebSocket API 返回的所有数据都进⾏了 GZIP 压缩，需要 client 在�
   high    |     true          | decimal   |  最高价    |            
   amount    |     true          | decimal   |  成交量(币), 即 sum(每一笔成交量(张)*单张合约面值/该笔成交价)    |  
   trade_turnover   | true | decimal  | 成交额, 即sum（每一笔成交张数 * 合约面值 * 成交价格）   |    |          
-  \</list\>    |               |     |      |          
+  \</tick\>    |               |     |      |          
 
 > 之后每当 KLine 有更新时，client 会收到数据:
 
@@ -8577,7 +9897,7 @@ from: t1 and to: t2, should satisfy 1325347200  < t1  < t2  < 2524579200.
   status  |       true         |  string  |   状态   | 
   id  |       true         |  string  |   请求id   | 
   wsid    |     true          | long   |  wsid     |           
- \<list\>(属性名称: data)    |               |    |      |            | 
+ \<data\>    |               |    |      |            | 
   id    |     true          | long   | K线ID,也就是K线时间戳，K线起始时间 |            
   vol    |     true          | decimal   |  成交量张数     |            
   count    |     true          | decimal   |  成交笔数     |            
@@ -8587,7 +9907,7 @@ from: t1 and to: t2, should satisfy 1325347200  < t1  < t2  < 2524579200.
   high    |     true          | decimal   |  最高价    |            
   amount    |     true          | decimal   |  成交量(币), 即 sum(每一笔成交量(张)*单张合约面值/该笔成交价)    |   
   trade_turnover   | true | decimal  | 成交额, 即sum（每一笔成交张数 * 合约面值 * 成交价格）   |    |         
-  \</list\>    |               |     |      |          
+  \</data\>    |               |     |      |          
 
 ## 【通用】订阅 Market Depth 数据 
 
@@ -8696,7 +10016,7 @@ from: t1 and to: t2, should satisfy 1325347200  < t1  < t2  < 2524579200.
 -------- | -------- | -------- |  --------------------------------------- | -------------- | 
 ch | true |  string | 数据所属的 channel，格式： market.period | | 
 ts | true | long | 数据进入行情服务器时间戳，单位：毫秒 | |
-\<list\>(属性名称: tick)    |               |    |      |            | 
+\<tick\>   |               |    |      |            | 
 mrid  | true| long | 订单ID | 
 id  | true| long | tick ID | 
 asks | true | object |卖盘,[price(挂单价), vol(此价格挂单张数)], 按price升序 | | 
@@ -8704,7 +10024,7 @@ bids | true| object | 买盘,[price(挂单价), vol(此价格挂单张数)], 按
 ts | true | long | 深度生成时间戳，每100MS生成一次，单位：毫秒 | |
 version | true | long | 版本号 | |
 ch | true |  string | 数据所属的 channel，格式： market.period | | 
- \</list\>    |               |    |      |            | | 
+ \</tick\>    |               |    |      |            | | 
 
 ## 【通用】订阅Market Depth增量数据
 
@@ -8804,7 +10124,7 @@ event | true |  string | 事件类型；"update":更新，表示推送买卖各2
 
 ### 备注
 
-1、	当"data_type"为incremental时，首次推送的"event"为"snapshot"的数据，且当重新发送订阅请求时，首次返回都是"snapshot"的数据；
+1、当"data_type"为incremental时，首次推送的"event"为"snapshot"的数据，且当重新发送订阅请求时，首次返回都是"snapshot"的数据；
 
 2、深度即可以按照合约周期订阅，也可以按照合约代码订阅，行情系统在进行数据计算时，需要更新对应类型的数据；
 
@@ -8871,7 +10191,15 @@ event | true |  string | 事件类型；"update":更新，表示推送买卖各2
         "amount":30.316,
         "vol":30316,
         "trade_turnover":395073.4918,
-        "count":2983
+        "count":2983,
+        "asks":[
+            13081.9,
+            206
+        ],
+        "bids":[
+            13071.9,
+            38
+        ]
     }
 }
   
@@ -8882,7 +10210,7 @@ event | true |  string | 事件类型；"update":更新，表示推送买卖各2
 -------------- |  -------------- |  -------------- |  ----------------------------------------------------------  |
 ch  |  true  |  string  |    数据所属的 channel，格式： market.$contract_code.detail   |     
 ts  |  true  |  long  |    响应生成时间点，单位：毫秒  |    
-\<list\>(属性名称: tick)   |               |    |      |           
+\<tick\>   |               |    |      |           
 id  |  true  |  long  |    ID  |    
 mrid  |  true  |  long  |    订单ID  |    
 open  |  true  |  decimal  |    开盘价  |     
@@ -8893,7 +10221,9 @@ amount  |  true  |  decimal  |    成交量(币), 即 sum(每一笔成交量(张
 vol  |  true  |  decimal  |   成交量（张），买卖双边成交量之和  |     
 trade_turnover   | true | decimal  | 成交额，即sum（每一笔成交张数 * 合约面值 * 成交价格） |  |
 count  |  true  |  decimal  |   成交笔数  |     
- \</list\>    |               |    |      |  
+ask  |  true  |  array  |   [卖1价,卖1量(张)]  |     
+bid  |  true  |  array  |   [买1价,买1量(张)]	  |     
+ \</tick\>    |               |    |      |  
  
 
 ## 【通用】订阅买一卖一逐笔行情推送
@@ -9061,13 +10391,13 @@ count  |  true  |  decimal  |   成交笔数  |
 rep  |  true  |  string  |  数据所属的 channel，格式： market.$contract_code.trade.detail  |  |   
 status  |  true  |  string  |  返回状态  |  |   
 id  |  true  |  long  |  请求唯一 ID  |   |    
-\<list\>(属性名称: data)    |               |    |      | 
+\<data\>    |               |    |      | 
 id  |  true  |  long  |  成交唯一id（品种唯一）  |   |    
 price  |  true  |  string  |  价格  |   |    
 amount  |  true  |  string  |  数量（张）  |   |    
 direction  |  true  |  string  |  买卖方向  |   |    
 ts  |  true  |  long  |  订单成交时间  |   |    
- \</list\>    |               |    |      | 
+\</data\>    |               |    |      | 
 ts  |  true  |  long  |  发送时间  |   |  
 
 ## 【通用】订阅 Trade Detail 数据
@@ -9141,17 +10471,17 @@ ts  |  true  |  long  |  发送时间  |   |
 --------------  | --------------  | ----------  | ---------------------------------------------------------  | ------------ | 
 ch  |  true  |  string  |  数据所属的 channel，格式： market.$contract_code.trade.detail  |  |   
 ts  |  true  |  long  |  发送时间  |   |    
-\<list\>(属性名称: tick)    |               |    |      | 
+\<tick\>   |               |    |      | 
 id  |  true  |  long  |  订单唯一id（品种唯一）  |   |    
 ts  |  true  |  long  |  tick数据戳  |   |    
-\<list\>(属性名称: data)    |               |    |      | 
+\<data\>    |               |    |      | 
 amount  |  true  |  decimal  |  数量（张）  |   |    
 ts  |  true  |  long  |  订单时间戳  |   |    
 id  |  true  |  long  |   成交唯一id（品种唯一）  |   |    
 price  |  true  |  decimal  |  价格  |   |    
 direction  |  true  |  string  |  买卖方向  |   |    
- \</list\>    |               |    |      | 
- \</list\>    |               |    |      | 
+ \</data\>    |               |    |      | 
+ \</tick\>    |               |    |      | 
 
 
 # WebSocket指数与基差数据接口
@@ -9911,6 +11241,8 @@ direction  |  true  |  string  |  买卖方向  |   |
 | cid      | string | 选填;Client 请求唯一 ID                     |
 | topic    | string |  订阅主题名称，必填 (orders.$contract_code) 订阅、取消订阅某个合约下的成交订单信息； $contract_code为合约代码（BTC-USDT、ETH-USDT...），如果值为 * 时代表订阅所有合约; |
 
+ - 备注：postOnly的报单收到的WS推送要么是报单成功，状态为3，要么是7，已撤单。
+
 > 成交详情通知数据格式说明
 
 ```json
@@ -9947,6 +11279,7 @@ direction  |  true  |  string  |  买卖方向  |   |
     "fee_asset": "USDT",
     "margin_mode": "isolated",
     "margin_account": "BTC-USDT",
+    "is_tpsl": 0,
     "trade": [{
         "trade_id":14469,
         "id":"14469-758684042347171840-1", 
@@ -9981,7 +11314,7 @@ direction  |  true  |  string  |  买卖方向  |   |
 | order_id   | true | bingint  | 订单ID   |    |
 | order_id_str   | true | string  | string格式的订单ID   |    |
 | client_order_id   | true | long  | 客户订单ID   |    |
-| order_source   | true | string  | 订单来源   |  system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发  |
+| order_source   | true | string  | 订单来源   |  system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发  |
 | order_type   | true | int  | 订单类型    |  1:报单 、 2:撤单 、 3:强平、4:交割  |
 | created_at   | true | long  | 订单创建时间   |    |
 | trade_volume   | true | decimal  | 成交总数量   |    |
@@ -9996,6 +11329,7 @@ direction  |  true  |  string  |  买卖方向  |   |
 | fee_asset               | true     | string    | 手续费币种          | “USDT” |
 | margin_account | true | string | 保证金账户  | 比如“BTC-USDT” |
 | margin_mode | true | string | 保证金模式  | isolated：逐仓模式 |
+| is_tpsl | true | int | 是否设置止盈止损  | 1：是；0：否 |
 | \<trade\>   | true | object array |     |    |
 | id   | true | string  | 全局唯一的交易标识    |    |
 | trade_id | true | long  | 与linear-swap-api/v1/swap_matchresults返回结果中的match_id一样，是撮合结果id， 非唯一，可重复，注意：一个撮合结果代表一个taker单和N个maker单的成交记录的集合，如果一个taker单吃了N个maker单，那这N笔trade都是一样的撮合结果id   |    |
@@ -10095,6 +11429,8 @@ direction  |  true  |  string  |  买卖方向  |   |
 | cid      | string | 选填;Client 请求唯一 ID                     |
 | topic    | string |  订阅主题名称，必填 (orders_cross.$contract_code) 订阅、取消订阅某个合约下的成交订单信息； $contract_code为合约代码（BTC-USDT、ETH-USDT...），如果值为 * 时代表订阅所有合约; |
 
+ - 备注：postOnly的报单收到的WS推送要么是报单成功，状态为3，要么是7，已撤单。
+
 > 成交详情通知数据格式说明
 
 ```json
@@ -10143,7 +11479,8 @@ direction  |  true  |  string  |  买卖方向  |   |
     "uid":"123456789",
     "liquidation_type":"1",
     "margin_mode":"cross",
-    "margin_account":"USDT"
+    "margin_account":"USDT",
+    "is_tpsl": 0
 }
 ```
 
@@ -10169,7 +11506,7 @@ direction  |  true  |  string  |  买卖方向  |   |
 | order_id   | true | bingint  | 订单ID   |    |
 | order_id_str   | true | string  | string格式的订单ID   |    |
 | client_order_id   | true | long  | 客户订单ID   |    |
-| order_source   | true | string  | 订单来源   |  system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发  |
+| order_source   | true | string  | 订单来源   |  system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发 |
 | order_type   | true | int  | 订单类型    |  1:报单 、 2:撤单 、 3:强平、4:交割  |
 | created_at   | true | long  | 订单创建时间   |    |
 | trade_volume   | true | decimal  | 成交总数量   |    |
@@ -10182,6 +11519,7 @@ direction  |  true  |  string  |  买卖方向  |   |
 | liquidation_type   | true | decimal  | 强平类型 0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管   |    |
 | canceled_at               | true     | long    | 撤单时间   |  |
 | fee_asset               | true     | string    | 手续费币种          | “USDT” |
+| is_tpsl | true | int | 是否设置止盈止损  | 1：是；0：否 |
 | \<trade\>   | true | object array |     |    |
 | id   | true | string  | 全局唯一的交易标识    |    |
 | trade_id | true | long  | 与linear-swap-api/v1/swap_cross_matchresults返回结果中的match_id一样，是撮合结果id， 非唯一，可重复，注意：一个撮合结果代表一个taker单和N个maker单的成交记录的集合，如果一个taker单吃了N个maker单，那这N笔trade都是一样的撮合结果id    |    |
@@ -10469,7 +11807,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
             "profit_unreal":0,
             "withdraw_available":1543.122922549410817836,
             "risk_rate":59.270830593679738555,
-            "contact_detail":[
+            "contract_detail":[
                 {
                     "symbol":"BTC",
                     "contract_code":"BTC-USDT",
@@ -10656,7 +11994,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | uid           | string    | 账户id	                                             |
 | ts                     | long  | 响应生成时间点，单位：毫秒                           |
 | event                  | string  | 持仓变化通知相关事件说明，比如订单创建平仓(order.close) 、订单成交(order.match)（除开强平和结算交割）、结算交割(settlement)、订单强平成交(order.liquidation)（对钆和接管仓位）、订单撤销(order.cancel)、切换杠杆（switch_lever_rate）、 初始持仓（init）、由系统定期推送触发（snapshot）    |
-| \<list\> (attr name: data) | array object |  | |
+| \<data\>  | array object |  | |
 | symbol                 | string    | 品种代码 ,"BTC","ETH"...                                             |
 | contract_code          | string  | 合约代码，"BTC-USDT"                                                       |
 | volume                 | decimal  | 持仓量                                                     |
@@ -10674,7 +12012,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | margin_asset           | string | 保证金币种（计价币种）                 |  
 | margin_account        |  string | 保证金账户  比如“BTC-USDT” |
 | margin_mode           |  string | 保证金模式  isolated：逐仓模式 |
-| \</list\> | | |  | |
+| \</data\> | | |  | |
 
 
 #### 备注：
@@ -10974,7 +12312,8 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
     "order_source":"web",
     "order_price_type":"opponent",
     "margin_mode": "isolated",
-    "margin_account": "BTC-USDT"
+    "margin_account": "BTC-USDT",
+    "is_tpsl": 0
 }
 
 ```
@@ -10989,7 +12328,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | uid   | true | string  | 用户uid  |    |
 | symbol   | true | string  | 品种代码  |  "BTC","ETH"...  |
 | contract_code   | true | string  | 合约代码  |   |
-| status   | true | int  | 订单状态(3未成交 4部分成交 5部分成交已撤单 6全部成交 7已撤单) |    |
+| status   | true | int  | 订单状态 | (3未成交 4部分成交 5部分成交已撤单 6全部成交 7已撤单)   |
 | order_id   | true | long  | 订单ID  |    |
 | order_id_str   | true | string  |订单ID ,字符串类型  |   |
 | client_order_id               | true     | long    | 客户订单id             |  |
@@ -11001,10 +12340,11 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | lever_rate              | true | int     | 杠杆倍数        |                  |
 | price            | true     | decimal      | 委托价格                                                     |                                                              |
 | created_at       | true     | long         | 创建时间                                                     |                                                              |
-| order_source     | true     | string       | 订单来源                                                     |                                                              |
+| order_source     | true     | string       | 订单来源                                                     | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发）    |
 | order_price_type | true     | string       | 订单报价类型                                                 |  "limit":限价，"opponent":对手价，"post_only":只做maker单,post only下单只受用户持仓数量限制，"lightning":闪电平仓，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档，"fok":FOK订单，"ioc":IOC订单, "opponent_ioc": 对手价-IOC下单，"lightning_ioc": 闪电平仓-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"lightning_fok"：闪电平仓-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单    |
 | margin_account | true | string | 保证金账户  | 比如“BTC-USDT” |
 | margin_mode | true | string | 保证金模式  | isolated：逐仓模式 |
+| is_tpsl | true | int | 是否设置止盈止损  | 1：是；0：否 |
 | \<trade\>   | true | object array |     |    |
 | id   | true | string  | 全局唯一的交易标识  |   |
 | trade_id   | true | long  | 与linear-swap-api/v1/swap_matchresults返回结果中的match_id一样，是撮合结果id， 非唯一，可重复，注意：一个撮合结果代表一个taker单和N个maker单的成交记录的集合，如果一个taker单吃了N个maker单，那这N笔trade都是一样的撮合结果id   |   |
@@ -11145,7 +12485,8 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
         }
     ],
     "margin_mode":"cross",
-    "margin_account":"USDT"
+    "margin_account":"USDT",
+    "is_tpsl": 0
 }
 
 ```
@@ -11162,8 +12503,8 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | contract_code   | true | string  | 合约代码  |   |
 | margin_mode | true | string | 保证金模式  | cross：全仓模式； |
 | margin_account | true | string | 保证金账户  | 比如“USDT” |
-| status   | true | int  | 订单状态(3未成交 4部分成交 5部分成交已撤单 6全部成交 7已撤单) |    |
-| order_id   | true | long  | 订单ID，在系统存储的字段为user_order_id |    |
+| status   | true | int  | 订单状态 | (3未成交 4部分成交 5部分成交已撤单 6全部成交 7已撤单)   |
+| order_id   | true | long  | 订单ID  |    |
 | order_id_str   | true | string  |订单ID ,字符串类型  |   |
 | client_order_id               | true     | long    | 客户订单id             |  |
 | order_type   | true | int  | 订单类型  | 1:报单 、 2:撤单 、 3:强平、4:交割  |
@@ -11173,8 +12514,9 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | offset   | true | string  |  开平方向  |    "open":开 "close":平 |
 | lever_rate              | true | int     | 杠杆倍数        |                  |
 | price            | true     | decimal      | 委托价格                                                     |                                                              |
-| created_at       | true     | long         | 创建时间                                                     |                                                              |
-| order_source     | true     | string       | 订单来源                                                     |                                                              |
+| created_at       | true     | long         | 创建时间                                                     |    |
+| is_tpsl           | true | int | 是否设置止盈止损  | 1：是；0：否 |
+| order_source     | true     | string       | 订单来源                                                     |  （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发）     |
 | order_price_type | true     | string       | 订单报价类型                                                 |  "limit":限价，"opponent":对手价，"post_only":只做maker单,post only下单只受用户持仓数量限制，"lightning":闪电平仓，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档，"fok":FOK订单，"ioc":IOC订单, "opponent_ioc": 对手价-IOC下单，"lightning_ioc": 闪电平仓-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"lightning_fok"：闪电平仓-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单    |
 | \<trade\>   | true | object array |     |    |
 | id   | true | string  | 全局唯一的交易标识  |   |
@@ -11546,6 +12888,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
             "price_tick":0.1,
             "settlement_date":"1603785600000",
             "create_date":"20201021",
+            "delivery_time": "",
             "contract_status":1,
             "support_margin_mode": "all"
         }
@@ -11567,6 +12910,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | contract_size  | true | decimal | 合约面值，即1张合约对应多少标的币种（如BTC-USDT合约则面值单位就是BTC） | 10, 100... |
 | price_tick  | true | decimal | 合约价格最小变动精度 | 0.001, 0.01... |
 | settlement_date  | true | string  | 合约下次结算时间    | 时间戳，如"1490759594752"  |
+| delivery_time  | true | string  | 交割时间（合约无需交割时，该字段值为空字符串），单位：毫秒	    |   |
 | create_date   | true | string  | 合约上市日期    | 如"20180706" |
 | contract_status      | true | int     | 合约状态  | 合约状态: 0:已下市、1:上市、2:待上市、3:停牌，4:待开盘、5:结算中、6:交割中、7:结算完成、8:交割完成 |
 | support_margin_mode | true | string | 合约支持的保证金模式  | cross：全仓模式；isolated：逐仓模式；all：全逐仓都支持 |
@@ -11718,7 +13062,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | \<data\> |   true   |  object array   |   |   |
 | symbol                 | true | string  | 品种代码               |                                          |
 | contract_code          | true | string  | 合约代码               | "BTC-USDT" ...                          |
-| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_type              | true | string  | 触发类型    |  ge大于等于；le小于等于   |
 | volume                 | true | decimal  | 委托数量 |      |
 | order_type           | true | int | 订单类型              |  1、报单     |
 | direction            | true | string | 买卖方向               |             买："buy",卖："sell"          |
@@ -11729,7 +13073,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | relation_order_id             | true | string | 该字段为关联限价单的关联字段，未触发前数值为-1  |         |
 | order_price_type        | true  | string | 订单报价类型 |                  "limit":限价，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档     |
 | status        | true  | int | 订单状态|    2:已提交、4:报单成功、5:报单失败、6:已撤单    |
-| order_source      | true | string  | 来源        |                                          |
+| order_source      | true | string  | 来源        |  （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发）   |
 | trigger_price         | true | decimal  | 触发价       |       |
 | triggered_price         | true | decimal  | 被触发时的价格       |       |
 | order_price           | true | decimal  | 委托价   |                                          |
@@ -11893,7 +13237,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | contract_code          | true | string  | 合约代码               | "BTC-USDT" ...                          |
 | margin_mode | true | string | 保证金模式  | cross：全仓模式； |
 | margin_account | true | string | 保证金账户  | 比如“USDT” |
-| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_type              | true | string  | 触发类型   |  ge大于等于；le小于等于    |
 | volume                 | true | decimal  | 委托数量 |      |
 | order_type           | true | int | 订单类型              |  1、报单     |
 | direction            | true | string | 买卖方向               |             买："buy",卖："sell"          |
@@ -11904,7 +13248,7 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | relation_order_id             | true | string | 该字段为关联限价单的关联字段，未触发前数值为-1  |         |
 | order_price_type        | true  | string | 订单报价类型 |                  "limit":限价，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档     |
 | status        | true  | int | 订单状态|    2:已提交、4:报单成功、5:报单失败、6:已撤单、7:错单     |
-| order_source      | true | string  | 来源        |                                          |
+| order_source      | true | string  | 来源        | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发）   |
 | trigger_price         | true | decimal  | 触发价       |       |
 | triggered_price         | true | decimal  | 被触发时的价格       |       |
 | order_price           | true | decimal  | 委托价   |                                          |
@@ -11973,6 +13317,80 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | trigger_order_cross.contract_code1 | trigger_order_cross.contract_code2  | 不允许 |
 | trigger_order_cross.*       | trigger_order_cross.contract_code1  | 不允许 |
 
+# WebSocket系统状态更新接口
+
+ - 系统状态更新订阅WS地址：wss://api.hbdm.com/center-notification
+
+## 【通用】订阅系统状态更新
+
+### 成功建立和 WebSocket API 的连接之后，向 Server 发送如下格式的数据来请求数据：
+
+  `{`
+  
+      `"op": "sub",`
+  
+      `"cid": "id generated by client",`
+  
+      `"topic ": "public.$service.heartbeat"`
+  
+  `} `
+
+> 数据请求参数的例子：
+
+```json
+
+{
+	"op": "sub",
+	"cid": "id generated by client",
+	"topic ": "public.linear-swap.heartbeat"
+}
+```
+
+### **请求参数**:
+| 参数名称   | 是否必须 | 类型     | 描述   | 取值范围           |
+| ------ | ---- | ------ | -------- | -------------- |
+| op | true | string | 必填;订阅固定值为sub	 |  |
+| cid | false| string | 选填;Client 请求唯一 ID	 | |
+| topic | true| string | 必填;订阅主题名称:public.$service.heartbeat; 订阅USDT本位永续合约的系统状态信息 | |
+
+### **sub订阅参数说明**:
+| 参数名称   | 是否必须 | 类型     | 描述   | 取值范围           |
+| ------ | ---- | ------ | -------- | -------------- |
+| service | true | string | 业务代码	 | linear-swap：USDT本位永续 |
+
+
+> **返回示例**:
+
+```json
+
+{
+    "op": "notify",
+    "topic": "public.linear-swap.heartbeat",
+    "event": "init",
+    "ts":1580815422403,
+    "data":{
+        "heartbeat": 0,
+        "estimated_recovery_time": 1408076414000
+    }
+}
+
+```
+
+### **返回参数说明**：
+| 参数名称   |   是否必须  |   数据类型   |   描述   |   取值范围   |
+| -------- | -------- | -------- |  --------------------------------------- | -------------- | 
+| op   | true | string  | 操作名称，推送固定值为 notify;    |   |
+| topic   | true | string  | 推送的主题   |   |
+| event   | true | string  | 通知相关事件说明   |  订阅成功返回的初始系统状态信息（init），系统状态变化触发（update） |
+| ts   | true | long  | 服务端应答时间戳   |   |
+| \<data\> |  |  |  | |
+| heartbeat | true | int | 系统状态	 |  1是可用，0为不可用(即停服维护) |
+| estimated_recovery_time | true | long |  系统预估恢复时间，单位：毫秒	 |  当系统状态为可用时，返回空值 |
+| \</data\> | | |  | |
+
+### 备注
+
+- 这个推送由于是轮询判断状态的，所以推送可能存在1—2秒的延迟。
 
 # WebSocket附录
 
@@ -12003,11 +13421,14 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 | 2003   | Authentication failed.                   |
 | 2004   | Number of visits exceeds limit.          |
 | 2005   | Connection has been authenticated.       |
+| 2007   | You don’t have access permission as you have not opened contracts trading.|
 | 2010   | Topic error.                             |
 | 2011   | Contract doesn't exist.                  |
 | 2012   | Topic not subscribed.                    |
 | 2013   | Authentication type doesn't exist.       |
 | 2014   | Repeated subscription.                   |
+| 2020   | This contract does not support cross margin mode.| 
+| 2021   | Illegal parameter margin_account.| 
 | 2030   | Exceeds connection limit of single user. |
 | 2040   | Missing required parameter.              |
 
