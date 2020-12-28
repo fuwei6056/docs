@@ -2017,10 +2017,10 @@ market.$symbol.depth.$type是全量数据，market.$symbol.depth.size_${size}.hi
 
 温馨提示您，交割合约在新加坡时间每天16:00进行结算或周五16:00进行交割。在结算或交割期间查询资金和持仓会返回错误码，返回的错误码及错误码表示的含义如下：
 
-错误码"1077"表示"交割或结算中，当前品种资金查询失败"；
-错误码"1078"表示"交割或结算中，部分品种资金查询失败"；
-错误码"1079"表示"交割或结算中，当前品种持仓查询失败"；
-错误码"1080"表示"交割或结算中，部分品种持仓查询失败"
+   错误码"1077"表示"交割或结算中，当前品种资金查询失败"；
+   错误码"1078"表示"交割或结算中，部分品种资金查询失败"；
+   错误码"1079"表示"交割或结算中，当前品种持仓查询失败"；
+   错误码"1080"表示"交割或结算中，部分品种持仓查询失败"；
 建议您从返回的报文里读取状态码，如果状态码出现上述四种类型，请不要用这个返回的数据。
 
 ### Q2: API返回1004错误码是什么原因？
@@ -6520,7 +6520,7 @@ client_order_id | false | long | 用户自己的订单id |  |
 ```
 > Error Response
 
-```
+```json
 {
     "status": "error",
     "err_code": 1066,
@@ -6716,13 +6716,13 @@ client_order_id | false | long | 用户自己的订单id |  |
 | contract_type          | true | string  | 合约类型               | 当周:"this_week", 次周:"next_week", 当季:"quarter" ，次季度：“next_quarter” |
 | contract_code          | true | string  | 合约代码               | "BTC180914" ...                          |
 | volume                 | true | decimal  | 委托数量 |      |
-| order_type           | true | int | 订单类型：1、报单 2、撤单               |                                          |
+| order_type           | true | int | 订单类型 | 1、报单 2、撤单               |                                         
 | tpsl_order_type            | true | string | 止盈止损类型                |           “tp”:止盈单；"sl"：止损单        |
 | direction            | true | string | 买卖方向                |           买入平空："buy",卖出平多："sell"         |
 | order_id      | true | long | 止盈止损订单ID                |                                          |
 | order_id_str             | true | string | 字符串类型的止盈止损订单ID              |                                          |
 | order_source      | true | string  | 来源        |                                          |
-| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_type              | true | string  | 触发类型 | ge大于等于；le小于等于  |             
 | trigger_price         | true | decimal | 触发价              |                      |
 | created_at        | true  | long | 订单创建时间 |                      |
 | order_price_type        | true  | string | 订单报价类型  |  限价："limit"， 最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20        |
@@ -6811,7 +6811,7 @@ client_order_id | false | long | 用户自己的订单id |  |
 
 | 参数名称            | 是否必须  | 类型     | 描述                            | 取值范围                 |
 | --------------- | ----- | ------ | ----------------------------- | -------------------- |
-| status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
+| status          | true <img width=250/>  | string <img width=250/> | 请求处理结果  <img width=1000/>      | "ok" :成功, "error"：失败 |
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | symbol               | true | string  | 品种代码   |                                          |
 | contract_type        | true | string  | 合约类型   | 当周:"this_week", 周:"next_week", 当季:"quarter" ，次季度：“next_quarter”  |
@@ -6836,7 +6836,7 @@ client_order_id | false | long | 用户自己的订单id |  |
 | order_type           | true | int  | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
 | order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
 | fee_asset         | true | string  | 手续费币种   | （"BTC","ETH"...）|
-| liquidation_type               | true     | string    | 强平类型 0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管           |  |
+| liquidation_type               | true     | string    | 强平类型 | 0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管           |  
 | canceled_at               | true     | long    |撤单时间           |  |
 | \<tpsl_order_info\>  |  true  | object array |  关联的止盈止损单信息    | |
 | volume                 | true | decimal  | 委托数量  |      |
@@ -6844,7 +6844,7 @@ client_order_id | false | long | 用户自己的订单id |  |
 | direction            | true | string | 买卖方向                |           买入平空："buy",卖出平多："sell"         |
 | order_id      | true | long | 止盈止损订单ID                |                                          |
 | order_id_str             | true | string | 字符串类型的止盈止损订单ID             |                                          |
-| trigger_type              | true | string  | 触发类型： ge大于等于；le小于等于  |              |
+| trigger_type              | true | string  | 触发类型 |  ge大于等于；le小于等于  |             
 | trigger_price         | true | decimal | 触发价              |                      |
 | created_at        | true  | long | 订单创建时间  |                      |
 | order_price_type        | true  | string | 订单报价类型  |  限价："limit"， 最优5档：optimal_5，最优10档：optimal_10，最优20档：optimal_20        |
