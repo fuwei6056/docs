@@ -6092,7 +6092,7 @@ ts                     | true     | long    | timestamp                |        
 | order_id | true | string | order ID（different IDs are separated by ",", maximum 10 orders can be withdrew at one time）|    |
 
 #### Note
- - The frequency limit of this interface is 5 times per second.
+ - The frequency limit of this interface is 5 times per second. 
 
 > Response
 
