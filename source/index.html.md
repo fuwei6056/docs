@@ -6024,7 +6024,7 @@ ts                     | true     | long    | timestamp                |        
 #### Note: 
  - All take-profit and stop-loss orders are position closing orders.
  - The frequency limit of this interface is 5 times per second.
-
+ - One of tp_order_price and sl_trigger_price must been filled in at least. If all of them not filled in,  the order of take-profit and stop-loss order for an existing position will not be submitted.
 
 > Response
 
