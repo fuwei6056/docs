@@ -839,11 +839,11 @@ Trade  | Trade      | isolated margin | /linear-swap-api/v1/swap_cancelall      
  Read  | Trade      | isolated margin | /linear-swap-api/v1/swap_hisorders                                 | POST   |      Get History Orders               |     Yes        |
  Read  | Trade      | isolated margin | /linear-swap-api/v1/swap_matchresults                              | POST   |      Acquire History Match Results           |     Yes        |
 Trade  | Trade      | isolated margin | /linear-swap-api/v1/swap_lightning_close_position                  | POST   |      Place Lightning Close Order                    |     Yes        |
-Trade  | Trade      | isolated margin | /linear-swap-api/v1/swap_trigger_order                             | POST   |      Place an Trigger Order                      |     Yes         |
-Trade  | Trade      | isolated margin | /linear-swap-api/v1/swap_trigger_cancel                            | POST   |      Cancel a Trigger Order                     |     Yes        |
-Trade  | Trade      | isolated margin | /linear-swap-api/v1/swap_trigger_cancelall                         | POST   |      Cancel all trigger Orders                 |     Yes        |
- Read  | Trade      | isolated margin | /linear-swap-api/v1/swap_trigger_openorders                        | POST   |      Get all open trigger Orders                 |     Yes        |
- Read  | Trade      | isolated margin | /linear-swap-api/v1/swap_trigger_hisorders                         | POST   |      Get all history trigger Orders                 |     Yes        |
+Trade  | Strategy       | isolated margin | /linear-swap-api/v1/swap_trigger_order                             | POST   |      Place an Trigger Order                      |     Yes         |
+Trade  | Strategy       | isolated margin | /linear-swap-api/v1/swap_trigger_cancel                            | POST   |      Cancel a Trigger Order                     |     Yes        |
+Trade  | Strategy       | isolated margin | /linear-swap-api/v1/swap_trigger_cancelall                         | POST   |      Cancel all trigger Orders                 |     Yes        |
+ Read  | Strategy       | isolated margin | /linear-swap-api/v1/swap_trigger_openorders                        | POST   |      Get all open trigger Orders                 |     Yes        |
+ Read  | Strategy       | isolated margin | /linear-swap-api/v1/swap_trigger_hisorders                         | POST   |      Get all history trigger Orders                 |     Yes        |
 Trade  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_switch_lever_rate                     | POST    |    Switch Leverage         |       Yes          |
 Trade  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_order                                 | POST    |    Place An Order           |       Yes          |
 Trade  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_batchorder                            | POST    |    Place A Batch Of Orders        |       Yes          |
@@ -855,23 +855,23 @@ Trade  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_cancelall     
  Read  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_hisorders                             | POST    |    Get History Orders             |       Yes          |
  Read  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_matchresults                          | POST    |    Get History Match Results         |       Yes          |
 Trade  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_lightning_close_position              | POST    |    Place Lightning Close Position           |       Yes          |
-Trade  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_trigger_order                         | POST    |    Place Trigger Order           |       Yes          |
-Trade  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_trigger_cancel                        | POST    |    Cancel Trigger Order           |       Yes          |
-Trade  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_trigger_cancelall                     | POST    |    Cancel All Trigger Orders       |       Yes          |
- Read  | Trade    | cross margin | /linear-swap-api/v1/swap_cross_trigger_openorders                    | POST    |    Query Open Trigger Order       |       Yes          |
- Read  | Trade    | cross margin | /inear-swap-api/v1/swap_cross_trigger_hisorders                     | POST    |    Query Trigger Order History       |       Yes          | 
-Trade  | Trade  | isolated margin |  /linear-swap-api/v1/swap_tpsl_order                           | POST    |     [Isolated]Set a Take-profit and Stop-loss Order for an Existing Position       |      Yes         |
-Trade  | Trade  | isolated margin |  /linear-swap-api/v1/swap_tpsl_cancel                           | POST    |    [Isolated]Cancel a Take-profit and Stop-loss Order       |      Yes         |
-Trade  | Trade  | isolated margin |  /linear-swap-api/v1/swap_tpsl_cancelall                       | POST    |     [Isolated]Cancel all Take-profit and Stop-loss Orders       |      Yes         |
-Read  | Trade  | isolated margin |  /linear-swap-api/v1/swap_tpsl_openorders                      | POST    |     [Isolated]Open take-profit and stop-loss orders        |      Yes         |
-Read  | Trade  | isolated margin |  /linear-swap-api/v1/swap_tpsl_hisorders                       | POST    |     [Isolated]Take-profit and stop-loss histoty orders       |      yes         |
-Read  | Trade  | isolated margin |  /linear-swap-api/v1/swap_relation_tpsl_order                  | POST    |     [Isolated]Query take-profit and stop-loss order related to position opening order       |      Yes         |
-Trade  | Trade  | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_order                           | POST    |     [Cross]Set a Take-profit and Stop-loss Order for an Existing Position       |      Yes         |
-Trade  | Trade  | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_cancel                           | POST    |    [Cross]Cancel a Take-profit and Stop-loss Order       |      Yes         |
-Trade  | Trade  | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_cancelall                       | POST    |     [Cross]Cancel all Take-profit and Stop-loss Orders       |      Yes         |
-Read  | Trade  | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_openorders                      | POST    |     [Cross]Open take-profit and stop-loss orders        |      Yes         |
-Read  | Trade  | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_hisorders                       | POST    |     [Cross]Take-profit and stop-loss histoty orders       |      Yes         |
-Read  | Trade  | cross margin |  /linear-swap-api/v1/swap_cross_relation_tpsl_order                  | POST    |     [Cross]Query take-profit and stop-loss order related to position opening order       |      Yes         |
+Trade  | Strategy     | cross margin | /linear-swap-api/v1/swap_cross_trigger_order                         | POST    |    Place Trigger Order           |       Yes          |
+Trade  | Strategy     | cross margin | /linear-swap-api/v1/swap_cross_trigger_cancel                        | POST    |    Cancel Trigger Order           |       Yes          |
+Trade  | Strategy     | cross margin | /linear-swap-api/v1/swap_cross_trigger_cancelall                     | POST    |    Cancel All Trigger Orders       |       Yes          |
+ Read  | Strategy     | cross margin | /linear-swap-api/v1/swap_cross_trigger_openorders                    | POST    |    Query Open Trigger Order       |       Yes          |
+ Read  | Strategy     | cross margin | /inear-swap-api/v1/swap_cross_trigger_hisorders                     | POST    |    Query Trigger Order History       |       Yes          | 
+Trade  | Strategy   | isolated margin |  /linear-swap-api/v1/swap_tpsl_order                           | POST    |     [Isolated]Set a Take-profit and Stop-loss Order for an Existing Position       |      Yes         |
+Trade  | Strategy   | isolated margin |  /linear-swap-api/v1/swap_tpsl_cancel                           | POST    |    [Isolated]Cancel a Take-profit and Stop-loss Order       |      Yes         |
+Trade  | Strategy   | isolated margin |  /linear-swap-api/v1/swap_tpsl_cancelall                       | POST    |     [Isolated]Cancel all Take-profit and Stop-loss Orders       |      Yes         |
+Read  | Strategy   | isolated margin |  /linear-swap-api/v1/swap_tpsl_openorders                      | POST    |     [Isolated]Open take-profit and stop-loss orders        |      Yes         |
+Read  | Strategy   | isolated margin |  /linear-swap-api/v1/swap_tpsl_hisorders                       | POST    |     [Isolated]Take-profit and stop-loss histoty orders       |      yes         |
+Read  | Strategy   | isolated margin |  /linear-swap-api/v1/swap_relation_tpsl_order                  | POST    |     [Isolated]Query take-profit and stop-loss order related to position opening order       |      Yes         |
+Trade  | Strategy   | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_order                           | POST    |     [Cross]Set a Take-profit and Stop-loss Order for an Existing Position       |      Yes         |
+Trade  | Strategy   | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_cancel                           | POST    |    [Cross]Cancel a Take-profit and Stop-loss Order       |      Yes         |
+Trade  | Strategy   | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_cancelall                       | POST    |     [Cross]Cancel all Take-profit and Stop-loss Orders       |      Yes         |
+Read  | Strategy   | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_openorders                      | POST    |     [Cross]Open take-profit and stop-loss orders        |      Yes         |
+Read  | Strategy   | cross margin |  /linear-swap-api/v1/swap_cross_tpsl_hisorders                       | POST    |     [Cross]Take-profit and stop-loss histoty orders       |      Yes         |
+Read  | Strategy   | cross margin |  /linear-swap-api/v1/swap_cross_relation_tpsl_order                  | POST    |     [Cross]Query take-profit and stop-loss order related to position opening order       |      Yes         |
 Trade  | Account  | general |https://api.huobi.pro/v2/account/transfer                         | POST   |      Transfer margin between Spot account and USDT Margined Swap account     |     Yes       |
 
 
@@ -7719,6 +7719,8 @@ ts                     | true     | long    | timestamp                |        
 | \</data\>            |      |         |                    |     |
 | ts                     | true | long    | timestamp                |    |
 
+
+# Contract strategy order interface
 
 ## [Isolated] Place Trigger Order
 
