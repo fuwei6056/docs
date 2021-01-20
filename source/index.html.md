@@ -2800,9 +2800,9 @@ curl "https://api.hbdm.com/linear-swap-ex/market/trade?contract_code=BTC-USDT"
         {
                   "id": 成交唯一id（品种唯一）,
                   "price": 成交价钱,
-         "amount": 成交量(张)，买卖双边成交量之和,
-         "direction": 主动成交方向,
-         "ts": 成交时间
+                  "amount": 成交量(张)，买卖双边成交量之和,
+                  "direction": 主动成交方向,
+                  "ts": 成交时间
         }
       ]
     }
@@ -5325,7 +5325,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 | start_time   | false  | long    | 起始时间（时间戳，单位毫秒）        |  取值范围：[(当前时间 - 90天), 当前时间] ，默认取当前时间- 90天   |
 | end_time   | false  | long    | 结束时间（时间戳，单位毫秒）        | 取值范围：(start_time, 当前时间]，默认取当前时间  |
 | page_index	|false |	int	|页码 |不填默认第1页	|
-| page_size	|false |	int	|页大小|不填默认!!10!!，不得多于!!25!!（超过则按照25进行查询）|
+| page_size	|false |	int	|页大小|不填默认10，不得多于25（超过则按照25进行查询）|
 
 > Response: 
 
@@ -5431,7 +5431,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 | offset_profitloss        | true | decimal | 本期该合约平仓盈亏           |                                          |
 | fee        | true | decimal | 本期该合约交易手续费           |                                          |
 | fee_asset        | true | string | 手续费币种      |                                          |
-| <positions> | true     |  object   array    |   该合约仓位（结算时有持仓量的才有值）                |                                          |
+| \<positions\> | true     |  object   array    |   该合约仓位（结算时有持仓量的才有值）                |                                          |
 | symbol     | true   | string  | 品种代码                 | "BTC","ETH"... |
 | contract_code     | true   | string  | 合约代码                 |  "BTC-USDT" ... |
 | direction            | true | string  | 仓位方向  |     "buy":买 "sell":卖                                     |
@@ -6990,7 +6990,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
  
  
 ## 【全仓】获取合约订单信息
@@ -7097,7 +7097,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
 
 ## 【逐仓】获取订单明细信息
 
@@ -7251,7 +7251,7 @@ created_at禁止传0。
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
 
 ## 【全仓】获取订单明细信息
 
@@ -7400,7 +7400,7 @@ created_at禁止传0。
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
  
 
 ## 【逐仓】获取合约当前未成交委托 
@@ -7517,7 +7517,7 @@ ts  |    true  |  long  |  时间戳  |    |
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
 
 ## 【全仓】获取合约当前未成交委托
 
@@ -7629,7 +7629,7 @@ ts  |    true  |  long  |  时间戳  |    |
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
 
 ## 【逐仓】获取合约历史委托
 
@@ -7746,7 +7746,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
 
 ## 【全仓】获取合约历史委托
 
@@ -7861,7 +7861,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
 
 ## 【逐仓】获取历史成交记录
 
@@ -7956,7 +7956,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
 
 ## 【全仓】获取历史成交记录
 
@@ -8050,7 +8050,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit 真实收益的字段在上线之后才有值（上线前的历史数据都是0）
+ - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
 
 ## 【逐仓】闪电平仓下单
 
