@@ -36,7 +36,7 @@ search: true
 
 # 更新日志
 
-## 1.0.7 2021年1月21日 【新增：批量获取聚合行情接口、获取标记价格的 K 线数据、查询用户结算记录（全仓和逐仓）、订阅标记价格 K 线数据（sub）、请求标记价格 K 线数据（req）。7-28 修改接口，新增字段】
+## 1.0.7 2021年1月27日 【新增：批量获取聚合行情接口、获取标记价格的 K 线数据、查询用户结算记录（全仓和逐仓）、订阅标记价格 K 线数据（sub）、请求标记价格 K 线数据（req）。7-28 修改接口，新增字段。修改：计划委托订单的订单ID由原本的自然数自增ID 改为长度为 18 位的唯一标识ID。推荐使用下单后返回的 order_id_str（字符串类型的订单 ID），避免发生长度过大而被系统截断的情况。】
 
 ### 1、新增批量获取聚合行情接口
  - 接口名称：【通用】批量获取聚合行情
@@ -50,12 +50,12 @@ search: true
 
 ### 3、新增订阅标记价格 K 线数据 WS 接口
  - 接口名称：【通用】订阅标记价格 K 线数据
- - 接口类型：共公接口
+ - 接口类型：公共接口
  - 订阅地址：market.$contract_code.mark_price.$period
 
 ### 4、新增请求标记价格 K 线数据 WS 接口
  - 接口名称：【通用】请求标记价格 K 线数据
- - 接口类型：共公接口
+ - 接口类型：公共接口
  - 订阅地址：market.$contract_code.mark_price.$period
 
 ### 5、新增查询用户结算记录(逐仓)接口
@@ -88,12 +88,12 @@ search: true
  - 接口类型：私有接口
  - 接口URL：/linear-swap-api/v1/swap_cross_order_info
 
-### 11、修改获取订单明细信息(逐仓)接口（返回参数中的 data 和 trades 下各新增以下字段:real_profit(真实收益)。同时 trades 下新增每笔成交收益字段：profit（收益））
+### 11、修改获取订单明细信息(逐仓)接口（返回参数中的 data 和 trades 下各新增以下字段:real_profit(真实收益)。同时 trades 下新增每笔成交收益字段：profit（平仓盈亏））
  - 接口名称：【逐仓】获取订单明细信息
  - 接口类型：私有接口
  - 接口URL：/linear-swap-api/v1/swap_order_detail
 
-### 12、修改获取订单明细信息(全仓)接口（返回参数中的 data 和 trades 下各新增以下字段:real_profit(真实收益)。同时 trades 下新增每笔成交收益字段：profit（收益））
+### 12、修改获取订单明细信息(全仓)接口（返回参数中的 data 和 trades 下各新增以下字段:real_profit(真实收益)。同时 trades 下新增每笔成交收益字段：profit（平仓盈亏））
  - 接口名称：【全仓】获取订单明细信息
  - 接口类型：私有接口
  - 接口URL：/linear-swap-api/v1/swap_cross_order_detail
@@ -128,14 +128,14 @@ search: true
  - 接口类型：私有接口
  - 接口URL：/linear-swap-api/v1/swap_cross_matchresults
 
-### 19、修改订阅订单成交数据(逐仓)接口（返参外层新增real_profit字段，表示真实收益，类型decimal）
+### 19、修改订阅订单成交数据(逐仓)接口（返参外层新增real_profit字段，表示真实收益，类型decimal.返参trade中新增：real_profit字段，表示真实收益、profit字段，表示平仓盈亏。）
  - 接口名称：【逐仓】订阅订单成交数据
- - 接口类型：共公接口
+ - 接口类型：私有接口
  - 订阅地址：orders.$contract_code
 
-### 20、修改订阅订单成交数据(全仓)接口（返参外层新增real_profit字段，表示真实收益，类型decimal）
+### 20、修改订阅订单成交数据(全仓)接口（返参外层新增real_profit字段，表示真实收益，类型decimal.返参trade中新增：real_profit字段，表示真实收益、profit字段，表示平仓盈亏。）
  - 接口名称：【全仓】订阅订单成交数据
- - 接口类型：共公接口
+ - 接口类型：私有接口
  - 订阅地址：orders_cross.$contract_code
 
 ### 21、修改计划委托全部撤单(逐仓)接口（请求参数新增 2 个选填字段:direction，表示买卖方向，不填默认撤销全部。参数可选值为“buy”:买，“sell”:卖。offset，表示开平方向，不填默认撤销全部。参数可 选值为“open”:开仓，“close”:平仓。）
@@ -5288,7 +5288,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 | settlement_profit_real        | true | decimal | 本期结算已实现盈亏            |                                          |
 | settlement_time     | true   | long  | 本期结算时间，交割时为交割时间                |   |
 | clawback        | true | decimal |   本期分摊费用         |         |
-| funding_fee        | true | decimal |  本期资金费            |                       |
+| funding_fee        | true | decimal |  本期资金费（或本期交割费）            |                       |
 | offset_profitloss        | true | decimal | 本期平仓盈亏           |                                          |
 | fee        | true | decimal | 本期交易手续费           |                                          |
 | fee_asset        | true | string | 手续费币种      |                                          |
@@ -5423,7 +5423,7 @@ curl "https://api.hbdm.com/index/market/history/linear_swap_basis?contract_code=
 | settlement_profit_real        | true | decimal | 本期结算已实现盈亏            |                                          |
 | settlement_time     | true   | long  | 本期结算时间，交割时为交割时间                |   |
 | clawback        | true | decimal |   本期分摊费用         |         |
-| funding_fee        | true | decimal |  本期总资金费            |                       |
+| funding_fee        | true | decimal |  本期总资金费（包含交割费）            |                       |
 | offset_profitloss        | true | decimal | 本期总平仓盈亏           |                                          |
 | fee        | true | decimal | 本期总交易手续费           |                                          |
 | fee_asset        | true | string | 手续费币种      |                                          |
@@ -6978,7 +6978,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 | trade_avg_price      | true | decimal | 成交均价   |   |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen        | true | decimal | 冻结保证金  |     |
-| profit               | true | decimal | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）     |        |
+| profit               | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）     |        |
 | status               | true | int     | 订单状态   | (1准备提交 2准备提交 3已提交 4部分成交 5部分成交已撤单 6全部成交 7已撤单 11撤单中) |
 | order_type           | true | int  | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
 | order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发 ） |
@@ -6994,7 +6994,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 只有在2021年1月30日0点后创建的订单，真实收益（real_profit）字段才会有值。存量数据均为0。
  
  
 ## 【全仓】获取合约订单信息
@@ -7089,7 +7089,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 | trade_avg_price      | true | decimal | 成交均价   |   |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen        | true | decimal | 冻结保证金  |     |
-| profit               | true | decimal | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）     |        |
+| profit               | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）     |        |
 | status               | true | int     | 订单状态   | (1准备提交 2准备提交 3已提交 4部分成交 5部分成交已撤单 6全部成交 7已撤单 11撤单中) |
 | order_type           | true | int  | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
 | order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发） |
@@ -7103,7 +7103,7 @@ ts  | true  |  long  |  响应生成时间点，单位：毫秒  |   |
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 只有在2021年1月30日0点后创建的订单，真实收益（real_profit）字段才会有值。存量数据均为0。
 
 ## 【逐仓】获取订单明细信息
 
@@ -7218,7 +7218,7 @@ created_at禁止传0。
 | order_price_type        | true | string  | 订单报价类型      | "limit":限价，"opponent":对手价，"post_only":只做maker单,post only下单只受用户持仓数量限制，"lightning":闪电平仓，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档，"fok":FOK订单，"ioc":IOC订单, "opponent_ioc": 对手价-IOC下单，"lightning_ioc": 闪电平仓-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"lightning_fok"：闪电平仓-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen           | true | decimal | 冻结保证金       |    |
-| profit                  | true | decimal | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）          |     |
+| profit                  | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）          |     |
 | instrument_price        | true | decimal | 爆仓单合约价格     |     |
 | final_interest          | true | decimal | 爆仓时合约权益     |     |
 | adjust_value            | true | decimal | 爆仓时调整系数     |      |
@@ -7250,14 +7250,14 @@ created_at禁止传0。
 | role                    | true | string  | taker或maker |   |
 | created_at              | true | long    | 创建时间        |      |
 | real_profit             | true | decimal | 真实收益（使用开仓均价计算，包含仓位跨结算的已实现盈亏。）  |  |
-| profit                  | true | decimal | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）          |     |
+| profit                  | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）          |     |
 | \</trades\>               |      |         |             |     |
 | \</data\>            |      |         |             |         |
 | ts                      | true | long    | 时间戳         |      |
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 只有在2021年1月30日0点后创建的订单，订单级别的真实收益（real_profit）字段才会有值。而成交级别的真实收益（real_profit）在2020年12月10日后就会有值。
 
 ## 【全仓】获取订单明细信息
 
@@ -7368,7 +7368,7 @@ created_at禁止传0。
 | order_price_type        | true | string  | 订单报价类型      |  "limit":限价，"opponent":对手价，"post_only":只做maker单,post only下单只受用户持仓数量限制，"lightning":闪电平仓，"optimal_5":最优5档，"optimal_10":最优10档，"optimal_20":最优20档，"fok":FOK订单，"ioc":IOC订单, "opponent_ioc": 对手价-IOC下单，"lightning_ioc": 闪电平仓-IOC下单，"optimal_5_ioc": 最优5档-IOC下单，"optimal_10_ioc": 最优10档-IOC下单，"optimal_20_ioc"：最优20档-IOC下单，"opponent_fok"： 对手价-FOK下单，"lightning_fok"：闪电平仓-FOK下单，"optimal_5_fok"：最优5档-FOK下单，"optimal_10_fok"：最优10档-FOK下单，"optimal_20_fok"：最优20档-FOK下单 |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen           | true | decimal | 冻结保证金       |    |
-| profit                  | true | decimal | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）          |     |
+| profit                  | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）          |     |
 | instrument_price        | true | decimal | 爆仓单合约价格     |     |
 | final_interest          | true | decimal | 爆仓时合约权益     |     |
 | adjust_value            | true | decimal | 爆仓时调整系数     |      |
@@ -7398,7 +7398,7 @@ created_at禁止传0。
 | trade_fee               | true | decimal | 成交手续费       |      |
 | role                    | true | string  | taker或maker |   |
 | created_at              | true | long    | 创建时间        |      |
-| profit                  | true | decimal | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）          |     |
+| profit                  | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）          |     |
 | real_profit | true | decimal | 真实收益（使用开仓均价计算，包含仓位跨结算的已实现盈亏。）  |  |
 | \</trades\>               |      |         |             |     |
 | \</data\>            |      |         |             |         |
@@ -7406,7 +7406,7 @@ created_at禁止传0。
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 只有在2021年1月30日0点后创建的订单，订单级别的真实收益（real_profit）字段才会有值。而成交级别的真实收益（real_profit）在2020年12月10日后就会有值。
  
 
 ## 【逐仓】获取合约当前未成交委托 
@@ -7504,7 +7504,7 @@ fee_asset | true  | string | 手续费币种 | "BTC","ETH"... |
 trade_avg_price  |  true |  decimal    |  成交均价  |    |  
 margin_frozen  |  true  |  decimal    |  冻结保证金  |    | 
 margin_asset   | true   | string | 保证金币种（计价币种）                 |                |
-profit  |  true  |  decimal   | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）  |    |  
+profit  |  true  |  decimal   | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）  |    |  
 status  |  true  |  int  |   订单状态  |  (3未成交 4部分成交 5部分成交已撤单 6全部成交 7已撤单)  |  
 order_source|   true  |  string  |  订单来源| （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发、tpsl:止盈止损触发） |
 liquidation_type|   true  |  string  | 强平类型	 |    |
@@ -7523,7 +7523,7 @@ ts  |    true  |  long  |  时间戳  |    |
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 只有在2021年1月30日0点后创建的订单，真实收益（real_profit）字段才会有值。存量数据均为0。
 
 ## 【全仓】获取合约当前未成交委托
 
@@ -7620,7 +7620,7 @@ ts  |    true  |  long  |  时间戳  |    |
 | trade_avg_price      | true | decimal | 成交均价                                     |                                          |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen        | true | decimal | 冻结保证金                                    |                                          |
-| profit               | true | decimal | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）                                       |                                          |
+| profit               | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）                                       |                                          |
 | status               | true | int     | 订单状态                                     | (3未成交 4部分成交 5部分成交已撤单 6全部成交 7已撤单)         |
 | liquidation_type              | true | string     | 强平类型    |      |
 | canceled_at              | true | long     | 撤单时间        |        |
@@ -7635,7 +7635,7 @@ ts  |    true  |  long  |  时间戳  |    |
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 只有在2021年1月30日0点后创建的订单，真实收益（real_profit）字段才会有值。存量数据均为0。
 
 ## 【逐仓】获取合约历史委托
 
@@ -7730,7 +7730,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | order_price_type       | true | int  | 订单报价类型 | 	1：限价单（limit），2：市价单（market），3：对手价（opponent），4：闪电平仓（lightning），5：计划委托（trigger），6：post_only ，7：最优5档（optimal_5） ，8：最优10档（optimal_10） ，9：最优20档（optimal_20），10：FOK ，11：IOC ，12：对手价_IOC（opponent_ioc），13：闪电平仓_IOC（lightning_ioc），14：最优5档_IOC（optimal_5_ioc），15：最优10档_IOC（optimal_10_ioc），16：最优20档_IOC（optimal_20_ioc），17：对手价_FOK（opponent_fok），18：闪电平仓_FOK（lightning_fok），19：最优5档_FOK（optimal_5_fok），40：最优10档_FOK（optimal_10_fok），41：最优20档_FOK（optimal_20_fok）。    |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen          | true | decimal | 冻结保证金  |   |
-| profit                 | true | decimal | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）     |    |
+| profit                 | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）     |    |
 | trade_volume           | true | decimal | 成交数量   |     |
 | trade_turnover         | true | decimal | 成交总金额，即sum（每一笔成交张数*合约面值*成交价格）  |         |
 | fee                    | true | decimal | 手续费    |      |
@@ -7752,7 +7752,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 只有在2021年1月30日0点后创建的订单，真实收益（real_profit）字段才会有值。存量数据均为0。
 
 ## 【全仓】获取合约历史委托
 
@@ -7847,7 +7847,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | order_price_type       | true | int  | 订单报价类型 | 1：限价单（limit），2：市价单（market），3：对手价（opponent），4：闪电平仓（lightning），5：计划委托（trigger），6：post_only ，7：最优5档（optimal_5） ，8：最优10档（optimal_10） ，9：最优20档（optimal_20），10：FOK ，11：IOC ，12：对手价_IOC（opponent_ioc），13：闪电平仓_IOC（lightning_ioc），14：最优5档_IOC（optimal_5_ioc），15：最优10档_IOC（optimal_10_ioc），16：最优20档_IOC（optimal_20_ioc），17：对手价_FOK（opponent_fok），18：闪电平仓_FOK（lightning_fok），19：最优5档_FOK（optimal_5_fok），40：最优10档_FOK（optimal_10_fok），41：最优20档_FOK（optimal_20_fok）。       |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen          | true | decimal | 冻结保证金  |   |
-| profit                 | true | decimal | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）     |    |
+| profit                 | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）     |    |
 | trade_volume           | true | decimal | 成交数量   |     |
 | trade_turnover         | true | decimal | 成交总金额，即sum（每一笔成交张数*合约面值*成交价格）  |         |
 | fee                    | true | decimal | 手续费    |      |
@@ -7867,7 +7867,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 只有在2021年1月30日0点后创建的订单，真实收益（real_profit）字段才会有值。存量数据均为0。
 
 ## 【逐仓】获取历史成交记录
 
@@ -7962,7 +7962,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 真实收益（real_profit）字段在2020年12月10日后才有值。该时间点之前的存量数据均为0。
 
 ## 【全仓】获取历史成交记录
 
@@ -8056,7 +8056,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 
 #### 备注：
  - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
- - real_profit字段在XXX年XXX月XXX日XX点左右之后才有值，在该时间点之前为空值。
+ - 真实收益（real_profit）字段在2020年12月10日后才有值。该时间点之前的存量数据均为0。
 
 ## 【逐仓】闪电平仓下单
 
@@ -8104,7 +8104,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
 | ts              | true  | long   | 响应生成时间点，单位：毫秒                 |                      |
 | \<data\>        |   true    |   object     |                               | 字典                   |
-| order_id        | true  | long | 订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| order_id        | true  | long | 订单ID[全局唯一] |                      |
 | order_id_str        | true  | string | String类型订单ID |                      |
 | client_order_id | false | Long | 用户自己的订单id                     |                      |
 | \</data\>       |       |        |     |  |
@@ -8166,7 +8166,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
 | ts              | true  | long   | 响应生成时间点，单位：毫秒                 |                      |
 | \<data\>        |   true    |   object     |                               | 字典                   |
-| order_id        | true  | long | 订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| order_id        | true  | long | 订单ID[全局唯一] |                      |
 | order_id_str        | true  | string | String类型订单ID |                      |
 | client_order_id | false | int | 用户自己的订单id                     |                      |
 | \</data\>       |       |        |     |  |
@@ -8241,7 +8241,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | status                     | true         | string   | 请求处理结果               | "ok" , "error" |
 | ts |  true  | long | 时间戳 | |
 | \<data\> |  true  | object | 成功处理返回的数据  | |
-| order_id  |  true  | int | 订单ID : 用户级别的，不同的用户order_id可能相同  | |
+| order_id  |  true  | int | 订单ID : 全局唯一  | |
 | order_id_str |  true  | string | 字符串类型的订单ID   | |
 | \</data\> |   | |  | |
 
@@ -8310,7 +8310,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | status                     | true         | string   | 请求处理结果               | "ok" , "error" |
 | ts |  true  | long | 时间戳 | |
 | \<data\> |  true  | object | 成功处理返回的数据  | |
-| order_id  |  true  | int | 订单ID : 用户级别的，不同的用户order_id可能相同  | |
+| order_id  |  true  | int | 订单ID : 全局唯一  | |
 | order_id_str |  true  | string | 字符串类型的订单ID   | |
 | \</data\> |   | |  | |
 
@@ -9139,7 +9139,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
-| order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| order_id        | true  | string | 止盈止损订单ID[全局唯一] |                      |
 | err_code              | false  | long   | 错误码                |                      |
 | err_msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
@@ -9189,7 +9189,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
-| order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| order_id        | true  | string | 止盈止损订单ID[全局唯一] |                      |
 | err_code              | false  | long   | 错误码                |                      |
 | err_msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
@@ -9233,7 +9233,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
-| order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| order_id        | true  | string | 止盈止损订单ID[全局唯一] |                      |
 | err_code              | false  | long   | 错误码                |                      |
 | err_msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
@@ -9277,7 +9277,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | status          | true  | string | 请求处理结果                        | "ok" :成功, "error"：失败 |
 | \<data\>        |   true    |   object     |                               | 字典                   |
 | \<errors\>        |   true    |   object     |                               | 字典                   |
-| order_id        | true  | string | 止盈止损订单ID[用户级别的，不同的用户order_id可能相同] |                      |
+| order_id        | true  | string | 止盈止损订单ID[全局唯一] |                      |
 | err_code              | false  | long   | 错误码                |                      |
 | err_msg              | false  | string   | 错误信息               |                      |
 | \</errors\>       |       |        |     |  |
@@ -9775,7 +9775,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | fee                  | true | decimal | 手续费    |                                          |
 | trade_avg_price      | true | decimal | 成交均价   |                                          |
 | margin_frozen        | true | decimal | 冻结保证金  |                                          |
-| profit               | true | decimal | 收益     |                                          |
+| profit               | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）   |                                          |
 | status               | true | int     | 订单状态   | (1准备提交 2准备提交 3已提交 4部分成交 5部分成交已撤单 6全部成交 7已撤单 11撤单中) |
 | order_type           | true | int  | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
 | order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
@@ -9919,7 +9919,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | fee                  | true | decimal | 手续费    |                                          |
 | trade_avg_price      | true | decimal | 成交均价   |                                          |
 | margin_frozen        | true | decimal | 冻结保证金  |                                          |
-| profit               | true | decimal | 收益     |                                          |
+| profit               | true | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）   |                                          |
 | status               | true | int     | 订单状态   | (1准备提交 2准备提交 3已提交 4部分成交 5部分成交已撤单 6全部成交 7已撤单 11撤单中) |
 | order_type           | true | int  | 订单类型   | 1:报单 、 2:撤单 、 3:强平、4:交割                  |
 | order_source         | true | string  | 订单来源   | （system:系统、web:用户网页、api:用户API、m:用户M站、risk:风控系统、settlement:交割结算、ios：ios客户端、android：安卓客户端、windows：windows客户端、mac：mac客户端、trigger：计划委托触发） |
@@ -10097,8 +10097,6 @@ message |    true  |   string    |   响应信息	 |   |
 | 读取    |  市场行情接口 | 通用 |  market.$contract_code.detail                           | sub  | 【通用】订阅 Market detail 数据       |       否      |
 | 读取    |  市场行情接口 | 通用 |  market.$contract_code.trade.detail                     | req  | 【通用】请求 Trade detail 数据        |       否      |
 | 读取    |  市场行情接口 | 通用 |  market.$contract_code.trade.detail                     | sub  | 【通用】订阅 Trade Detail 数据        |       否      |
-| 读取    |  市场行情接口 | 通用 |  market.$contract_code.mark_price.$period                    | sub  | 【通用】订阅标记价格 K 线数据              |       否      |
-| 读取    |  市场行情接口 | 通用 |  market.$contract_code.mark_price.$period                    | req  | 【通用】请求标记价格 K 线数据              |       否      |
 | 读取    |  指数与基差接口 |  通用  | market.$contract_code.index.$period                    | sub  | 【通用】订阅指数K线数据                  |       否      |
 | 读取    |  指数与基差接口 |  通用  | market.$contract_code.index.$period                    | req  | 【通用】请求指数K线数据                  |       否      |
 | 读取    |  指数与基差接口 |  通用  | market.$contract_code.basis.$period.$basis_price_type  | sub  | 【通用】订阅基差数据                  |       否      |
@@ -10107,6 +10105,8 @@ message |    true  |   string    |   响应信息	 |   |
 | 读取    |  指数与基差接口 |  通用  | market.$contract_code.premium_index.$period            | req  | 【通用】请求溢价指数K线数据           |       否      |
 | 读取    |  指数与基差接口 |  通用  | market.$contract_code.estimated_rate.$period           | sub  | 【通用】订阅预测资金费率K线数据       |       否      |
 | 读取    |  指数与基差接口 |  通用  | market.$contract_code.estimated_rate.$period           | req  | 【通用】请求预测资金费率K线数据       |       否      |
+| 读取    |  指数与基差接口 | 通用 |  market.$contract_code.mark_price.$period                    | sub  | 【通用】订阅标记价格 K 线数据              |       否      |
+| 读取    |  指数与基差接口 | 通用 |  market.$contract_code.mark_price.$period                    | req  | 【通用】请求标记价格 K 线数据              |       否      |
 | 读取    |  交易接口 |  通用 | public.$contract_code.liquidation_orders               | sub  | 【通用】订阅强平订单数据（免鉴权）    |       否      |
 | 读取    |  交易接口 |  通用 | public.$contract_code.funding_rate                     | sub  | 【通用】订阅资金费率变动数据（免鉴权）|       否      |
 | 读取    |  交易接口 |  通用 | public.$contract_code.contract_info                    | sub  | 【通用】订阅合约信息变动数据（免鉴权）|       否      |
@@ -11259,182 +11259,6 @@ direction  |  true  |  string  |  买卖方向  |   |
  \</tick\>    |               |    |      | 
 
 
-## 【通用】订阅标记价格K线数据
-
-#### 备注：
- - 该接口支持全仓模式和逐仓模式。
-
-### 成功建立和 WebSocket API 的连接之后，向 Server发送如下格式的数据来订阅数据：
-
-  `{`
-  
-  `"sub": "market.$contract_code.mark_price.$period",`
-  
-  `"id": "id generate by client"`
-  
-  `}`
-  
-> 正确订阅请求参数的例子：
-
-```json
-
- {
-    "sub": "market.$contract_code.mark_price.$period",
-    "id": "id1"
- }
-```
-
-### 请求参数
-| 参数名称 | 是否必须   | 类型 | 描述  | 默认值
-| ------ | ------ | ------ | ------ | ------ |
-| sub | true | string | 需要订阅的主题，该接口固定为：market.$contract_code.mark_price.$period，详细参数见sub订阅参数说明	 |  |
-| id | false | string | 选填;Client 请求唯一 ID  |  |
-
-### sub订阅参数说明
-| **参数名称**    | **是否必须** | **类型** | **描述**        | **默认值** | **取值范围**                                 |
-| ----------- | -------- | ------ | ------------- | ------- | ---------------------------------------- |
-| contract_code      | true     | string | 合约代码         |         | "BTC-USDT","ETH-USDT"...                          |
-| period          | true     | string  | K线类型               |         | 1min, 5min, 15min, 30min, 60min,4hour,1day, 1week, 1mon     |
-
-> 当标记价格有更新时，client 会收到数据，例如：
-
-```json
-
-{
- "ch": "market.BTC-USDT.mark_price.1min",
- "ts": 1489474082831,
- "tick": 
-    {
-      "vol": "0",
-      "close": "9800.12",
-      "count": "0",
-      "high": "9800.12",
-      "id": 1529898780,
-      "low": "9800.12",
-      "open": "9800.12",
-      "trade_turnover": "0",
-      "amount": "0"
-    }
-}
-
-```
-
-### 返回参数
-| **参数名称**    | **是否必须** | **类型** | **描述**        | **默认值** | **取值范围**                                 |
-| ----------- | -------- | ------ | ------------- | ------- | ---------------------------------------- |
-| ch     | true | string | 数据所属的 channel，格式： market.period |                | |
-| \<tick\> |   true   |    object array    |               |                | |
-| id     | true | long | k线id        |                | |
-| vol     | true | string | 成交量(张)，数值为0        |                | |
-| count     | true | string | 成交笔数，数值为0        |                | |
-| open     | true | string | 开盘值        |                | |
-| close     | true | string | 收盘值       |                | |
-| low     | true | string | 最低值        |                | |
-| high     | true | string | 最高值       |                | |
-| amount     | true | string | 成交量(币), 数值为0        |                | |
-| trade_turnover     | true | string | 成交额, 数值为0        |                | |
-| \</tick\>            |      |        |               |                | |
-| status | true | string | 请求处理结果                          | "ok" , "error" | |
-| ts     | true | long | 响应生成时间点，单位：毫秒                   |                | |
-
-
-## 【通用】请求标记价格K线数据
-
-#### 备注：
- - 该接口支持全仓模式和逐仓模式。
-
-### 成功建立和 WebSocket API 的连接之后，向Server发送如下格式的数据来请求数据：
-
-  `{`
-  
-  `"req": "market.$contract_code.mark_price.$period",`
-  
-  `"id": "id generated by client",`
-  
-  `"from": " type: long, 2017-07-28T00:00:00+08:00 至2050-01-01T00:00:00+08:00 之间的时间点，单位：秒",`
-  
-  `"to": "type: long, 2017-07-28T00:00:00+08:00 至2050-01-01T00:00:00+08:00 之间的时间点，单位：秒，必须比 from 大"`
-  
-  `}`
-
-> 请求参数的例子：
-
-```json
-
-    {
-    "req": "market.BTC-USDT.mark_price.5min",
-    "id": "id4",
-    "from": 1579247342,
-    "to": 1579247342
-    }
-
-```
-### 请求参数
-
-| 参数名称 | 是否必须   | 类型 | 描述  | 默认值
-| ------ | ------ | ------ | ------ | ------ |
-| req | true | string | 需要订阅的主题，该接口固定为：market.$contract_code.mark_price.$period，详细参数见req请求参数说明	 |  |
-| id | false | string | 选填;Client 请求唯一 ID  |  |
-| from   | true | long  |  开始时间 | | 
-| to     | true | long | 结束时间 | | 
-
-### req请求参数说明
-
-| **参数名称**    | **是否必须** | **类型** | **描述**        | **默认值** | **取值范围**                                 |
-| ----------- | -------- | ------ | ------------- | ------- | ---------------------------------------- |
-| contract_code      | true     | string | 合约代码         |         | "BTC-USDT","ETH-USDT"...                          |
-| period          | true     | string  | K线类型               |         | 1min, 5min, 15min, 30min, 60min,4hour,1day, 1week, 1mon     |
-
-#### 备注
-
- - 一次返回最多2000条数据；
- - from和to都为必填。
-
-> 请求成功返回数据的例子：
-
-```json
-{
- "rep": "market.BTC-USDT.mark_price.1min",
- "status": "ok",
- "id": "id4",
- "wsid": 1231323423,
- "ts": 1579489028884,
- "data": [
-   {
-      "vol": "0",
-      "close": "9800.12",
-      "count": "0",
-      "high": "9800.12",
-      "id": 1529898780,
-      "low": "9800.12",
-      "open": "9800.12",
-      "trade_turnover": "0",
-      "amount": "0"
-   }
- ]
-}
-```
-
-### 返回参数  
-| **参数名称**    | **是否必须** | **类型** | **描述**        | **默认值** | **取值范围**                                 |
-| ----------- | -------- | ------ | ------------- | ------- | ---------------------------------------- |
-| req     | true | string | 数据所属的 channel，格式： market.period |                | |
-| status | true | string | 请求处理结果                          | "ok" , "error" | |
-| id     | true | string | 业务方id       |                | |
-| wsid     | true | long | wsid           |                | |
-| ts     | true | long | 响应生成时间点，单位：毫秒                   |                | |
-| \<data\> |   true   |    object array    |               |                | |
-| id     | true | long | k线id        |                | |
-| vol     | true | string | 成交量(张)，数值为0        |                | |
-| count     | true | string | 成交笔数，数值为0        |                | |
-| open     | true | string | 开盘值        |                | |
-| close     | true | string | 收盘值      |                | |
-| low     | true | string | 最低值        |                | |
-| high     | true | string | 最高值      |                | |
-| amount     | true | string | 成交量(币), 数值为0        |                | |
-| trade_turnover     | true | string | 成交额, 数值为0        |                | |
-| \</data\>            |      |        |               |                | |
-
 
 # WebSocket指数与基差数据接口
 
@@ -12154,6 +11978,183 @@ direction  |  true  |  string  |  买卖方向  |   |
 
 
 
+## 【通用】订阅标记价格K线数据
+
+#### 备注：
+ - 该接口支持全仓模式和逐仓模式。
+
+### 成功建立和 WebSocket API 的连接之后，向 Server发送如下格式的数据来订阅数据：
+
+  `{`
+  
+  `"sub": "market.$contract_code.mark_price.$period",`
+  
+  `"id": "id generate by client"`
+  
+  `}`
+  
+> 正确订阅请求参数的例子：
+
+```json
+
+ {
+    "sub": "market.$contract_code.mark_price.$period",
+    "id": "id1"
+ }
+```
+
+### 请求参数
+| 参数名称 | 是否必须   | 类型 | 描述  | 默认值
+| ------ | ------ | ------ | ------ | ------ |
+| sub | true | string | 需要订阅的主题，该接口固定为：market.$contract_code.mark_price.$period，详细参数见sub订阅参数说明	 |  |
+| id | false | string | 选填;Client 请求唯一 ID  |  |
+
+### sub订阅参数说明
+| **参数名称**    | **是否必须** | **类型** | **描述**        | **默认值** | **取值范围**                                 |
+| ----------- | -------- | ------ | ------------- | ------- | ---------------------------------------- |
+| contract_code      | true     | string | 合约代码         |         | "BTC-USDT","ETH-USDT"...                          |
+| period          | true     | string  | K线类型               |         | 1min, 5min, 15min, 30min, 60min,4hour,1day, 1week, 1mon     |
+
+> 当标记价格有更新时，client 会收到数据，例如：
+
+```json
+
+{
+ "ch": "market.BTC-USDT.mark_price.1min",
+ "ts": 1489474082831,
+ "tick": 
+    {
+      "vol": "0",
+      "close": "9800.12",
+      "count": "0",
+      "high": "9800.12",
+      "id": 1529898780,
+      "low": "9800.12",
+      "open": "9800.12",
+      "trade_turnover": "0",
+      "amount": "0"
+    }
+}
+
+```
+
+### 返回参数
+| **参数名称**    | **是否必须** | **类型** | **描述**        | **默认值** | **取值范围**                                 |
+| ----------- | -------- | ------ | ------------- | ------- | ---------------------------------------- |
+| ch     | true | string | 数据所属的 channel，格式： market.period |                | |
+| \<tick\> |   true   |    object array    |               |                | |
+| id     | true | long | k线id        |                | |
+| vol     | true | string | 成交量(张)，数值为0        |                | |
+| count     | true | string | 成交笔数，数值为0        |                | |
+| open     | true | string | 开盘值        |                | |
+| close     | true | string | 收盘值       |                | |
+| low     | true | string | 最低值        |                | |
+| high     | true | string | 最高值       |                | |
+| amount     | true | string | 成交量(币), 数值为0        |                | |
+| trade_turnover     | true | string | 成交额, 数值为0        |                | |
+| \</tick\>            |      |        |               |                | |
+| status | true | string | 请求处理结果                          | "ok" , "error" | |
+| ts     | true | long | 响应生成时间点，单位：毫秒                   |                | |
+
+
+## 【通用】请求标记价格K线数据
+
+#### 备注：
+ - 该接口支持全仓模式和逐仓模式。
+
+### 成功建立和 WebSocket API 的连接之后，向Server发送如下格式的数据来请求数据：
+
+  `{`
+  
+  `"req": "market.$contract_code.mark_price.$period",`
+  
+  `"id": "id generated by client",`
+  
+  `"from": " type: long, 单位：秒",`
+  
+  `"to": "type: long,单位：秒，必须比 from 大"`
+  
+  `}`
+
+> 请求参数的例子：
+
+```json
+
+    {
+    "req": "market.BTC-USDT.mark_price.5min",
+    "id": "id4",
+    "from": 1579247342,
+    "to": 1579247342
+    }
+
+```
+### 请求参数
+
+| 参数名称 | 是否必须   | 类型 | 描述  | 默认值
+| ------ | ------ | ------ | ------ | ------ |
+| req | true | string | 需要订阅的主题，该接口固定为：market.$contract_code.mark_price.$period，详细参数见req请求参数说明	 |  |
+| id | false | string | 选填;Client 请求唯一 ID  |  |
+| from   | true | long  |  开始时间 | | 
+| to     | true | long | 结束时间 | | 
+
+### req请求参数说明
+
+| **参数名称**    | **是否必须** | **类型** | **描述**        | **默认值** | **取值范围**                                 |
+| ----------- | -------- | ------ | ------------- | ------- | ---------------------------------------- |
+| contract_code      | true     | string | 合约代码         |         | "BTC-USDT","ETH-USDT"...                          |
+| period          | true     | string  | K线类型               |         | 1min, 5min, 15min, 30min, 60min,4hour,1day, 1week, 1mon     |
+
+#### 备注
+
+ - 一次返回最多2000条数据；
+ - from和to都为必填。
+
+> 请求成功返回数据的例子：
+
+```json
+{
+ "rep": "market.BTC-USDT.mark_price.1min",
+ "status": "ok",
+ "id": "id4",
+ "wsid": 1231323423,
+ "ts": 1579489028884,
+ "data": [
+   {
+      "vol": "0",
+      "close": "9800.12",
+      "count": "0",
+      "high": "9800.12",
+      "id": 1529898780,
+      "low": "9800.12",
+      "open": "9800.12",
+      "trade_turnover": "0",
+      "amount": "0"
+   }
+ ]
+}
+```
+
+### 返回参数  
+| **参数名称**    | **是否必须** | **类型** | **描述**        | **默认值** | **取值范围**                                 |
+| ----------- | -------- | ------ | ------------- | ------- | ---------------------------------------- |
+| req     | true | string | 数据所属的 channel，格式： market.period |                | |
+| status | true | string | 请求处理结果                          | "ok" , "error" | |
+| id     | true | string | 业务方id       |                | |
+| wsid     | true | long | wsid           |                | |
+| ts     | true | long | 响应生成时间点，单位：毫秒                   |                | |
+| \<data\> |   true   |    object array    |               |                | |
+| id     | true | long | k线id        |                | |
+| vol     | true | string | 成交量(张)，数值为0        |                | |
+| count     | true | string | 成交笔数，数值为0        |                | |
+| open     | true | string | 开盘值        |                | |
+| close     | true | string | 收盘值      |                | |
+| low     | true | string | 最低值        |                | |
+| high     | true | string | 最高值      |                | |
+| amount     | true | string | 成交量(币), 数值为0        |                | |
+| trade_turnover     | true | string | 成交额, 数值为0        |                | |
+| \</data\>            |      |        |               |                | |
+
+
 # WebSocket订单和用户数据接口
 
 ## 【逐仓】订阅订单成交数据（sub）
@@ -12242,7 +12243,9 @@ direction  |  true  |  string  |  买卖方向  |   |
         "fee_asset": "USDT", 
         "trade_turnover": 34.123, 
         "created_at": 1490759594752, 
-        "role": "maker"
+        "role": "maker",
+        "profit": 2,
+        "real_profit": 0
   }]
 }
 ```
@@ -12276,7 +12279,7 @@ direction  |  true  |  string  |  买卖方向  |   |
 | trade_avg_price   | true | decimal  | 成交均价   |    |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen   | true | decimal  | 冻结保证金   |    |
-| profit   | true | decimal  | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）   |    |
+| profit   | true | decimal  | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）   |    |
 | liquidation_type   | true | decimal  | 强平类型 0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管   |    |
 | canceled_at               | true     | long    | 撤单时间   |  |
 | fee_asset               | true     | string    | 手续费币种          | “USDT” |
@@ -12293,8 +12296,14 @@ direction  |  true  |  string  |  买卖方向  |   |
 | trade_turnover   | true | decimal  | 成交金额（成交数量*合约面值*成交价格 ）    |    |
 | created_at   | true | long  | 成交创建时间    |    |
 | role   | true | string  | taker或maker    |    |
+| real_profit | decimal | 真实收益（使用开仓均价计算，包含仓位跨结算的已实现盈亏。）  |  |
+| profit                  | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）             |
 | fee_asset   | true | string  | 手续费币种   |  “USDT”  |
 | \</trade\>   |  |   |     |
+
+#### 备注：
+ - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
+ - 只有在2021年1月30日0点后创建的订单，订单级别的真实收益（real_profit）字段才会有值。而成交级别的真实收益（real_profit）在2020年12月10日后就会有值。
 
 ## 【逐仓】取消订阅订单成交数据（unsub）
 
@@ -12333,7 +12342,7 @@ direction  |  true  |  string  |  买卖方向  |   |
 | :------- | :----- | :------------------------------------------------- |
 | op       | string | 必填;操作名称，订阅固定值为 unsub;                 |
 | cid      | string | 选填;Client 请求唯一 ID                            |
-| topic    | string | 必填;待取消订阅主题名称:orders.$contract_code，详细主题列列表请参考附录;contract_code支持大小写 |
+| topic    | string | 必填;待取消订阅主题名称:orders.$contract_code，订阅、取消订阅某个合约下的成交订单信息； $contract_code为合约代码（BTC-USDT、ETH-USDT...），如果值为 * 时代表订阅所有合约;  |
 
 
 ### 订阅与取消订阅规则说明
@@ -12424,6 +12433,8 @@ direction  |  true  |  string  |  买卖方向  |   |
             "trade_price":50000,
             "trade_turnover":4000,
             "created_at":1606878438320,
+            "profit":-1866.704,
+            "real_profit": 0,
             "role":"taker"
         }
     ],
@@ -12470,7 +12481,7 @@ direction  |  true  |  string  |  买卖方向  |   |
 | trade_avg_price   | true | decimal  | 成交均价   |    |
 | margin_asset       | true   | string | 保证金币种（计价币种）                 |                |
 | margin_frozen   | true | decimal  | 冻结保证金   |    |
-| profit   | true | decimal  | 收益（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）   |    |
+| profit   | true | decimal  | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）   |    |
 | liquidation_type   | true | decimal  | 强平类型 0:非强平类型，1：多空轧差， 2:部分接管，3：全部接管   |    |
 | canceled_at               | true     | long    | 撤单时间   |  |
 | fee_asset               | true     | string    | 手续费币种          | “USDT” |
@@ -12485,8 +12496,14 @@ direction  |  true  |  string  |  买卖方向  |   |
 | trade_turnover   | true | decimal  | 成交金额（成交数量*合约面值*成交价格 ）    |    |
 | created_at   | true | long  | 成交创建时间    |    |
 | role   | true | string  | taker或maker    |    |
+| real_profit | decimal | 真实收益（使用开仓均价计算，包含仓位跨结算的已实现盈亏。）  |  |
+| profit                  | decimal | 平仓盈亏（使用持仓均价计算，不包含仓位跨结算的已实现盈亏。）             |
 | fee_asset   | true | string  | 手续费币种   |  “USDT”  |
 | \</trade\>   |  |   |     |
+
+#### 备注：
+ - 真实收益为开仓均价和成交价计算得出（订单的真实收益为订单下每笔成交的真实收益之和）。
+ - 只有在2021年1月30日0点后创建的订单，订单级别的真实收益（real_profit）字段才会有值。而成交级别的真实收益（real_profit）在2020年12月10日后就会有值。
 
 ## 【全仓】取消订阅订单成交数据（unsub）
 
@@ -12525,7 +12542,7 @@ direction  |  true  |  string  |  买卖方向  |   |
 | :------- | :----- | :------------------------------------------------- |
 | op       | string | 必填;操作名称，订阅固定值为 unsub;                 |
 | cid      | string | 选填;Client 请求唯一 ID                            |
-| topic    | string | 必填;待取消订阅主题名称:orders_cross.$contract_code，详细主题列列表请参考附录;contract_code支持大小写 |
+| topic    | string | 必填;待取消订阅主题名称:orders_cross.$contract_code，订阅、取消订阅某个合约下的成交订单信息； $contract_code为合约代码（BTC-USDT、ETH-USDT...），如果值为 * 时代表订阅所有合约;  |
 
 
 ### 订阅与取消订阅规则说明
@@ -14393,5 +14410,17 @@ topic    | string | 必填;必填；必填；订阅主题名称，必填 (accoun
 <br>
 <br>
 <br>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
