@@ -2078,38 +2078,60 @@ market.$contract_code.depth.$type是全量数据，market.$contract_code.depth.s
 在正常情况下当期资金费率和实际资金费率是相等的。只有在支付资金费率会导致用户爆仓时，会少收或不收资金费率（少收或不收的资金费率值就是实际资金费率）。当期资金费率不变。
 
 ### Q15: 订阅多个合约代码同一主题时, 需要多个 ws 连接吗?
+
 对于交割合约、币永续、u永续、期权之间, 由于是不同的接口地址, 需要不同的 ws 连接
+
 对于交割合约、币永续、u永续、期权各自里面, 只要接口地址是一样的, 一个 ws 连接即可. 
 
 ### Q16: 是否可以通过 ws 下单和撤单?
+
 目前不支持 ws 下单和撤单
 
 ### Q17: 如何订阅订单状态?
-a. 订单交易成功: ”订阅合约订单撮合数据（matchOrders.$symbol）"或"订阅订单成交数据（orders.$symbol）"
-b. 订单撤单成功: 订阅"资产变动数据（accounts.$symbol）”
 
-### Q18: ”订阅合约订单撮合数据（matchOrders.$symbol）"和"订阅订单成交数据（orders.$symbol）"的区别
-两者推送的数据不一样, 订单成交数据（orders.$symbol）会比订单撮合数据（matchOrders.$symbol）字段多一些
-通常情况下, 撮合完成后的推送(订单撮合数据“matchOrders.$symbol”)要比清算完成后的(订单成交数据“orders.$symbol”)推送快, 但不能保证撮合完成后的推送一定比清算完成后的推送更快;
-强平以及轧差订单不会推送"订单撮合数据（matchOrders.$symbol）”
+a. 订单交易成功: ”订阅合约订单撮合数据（matchOrders.$contract_code）"或"订阅订单成交数据（orders.$contract_code）"
 
-Q19: "订阅 KLine 数据（market.$symbol.kline.$period）”多久推送一次
+b. 订单撤单成功: 订阅"资产变动数据（accounts.$contract_code）”
+
+### Q18: ”订阅合约订单撮合数据（matchOrders.$contract_code）"和"订阅订单成交数据（orders.$contract_code）"的区别？
+
+两者推送的数据不一样, 订单成交数据（orders.$contract_code）会比订单撮合数据（matchOrders.$contract_code）字段多一些
+
+通常情况下, 撮合完成后的推送(订单撮合数据“matchOrders.$contract_code”)要比清算完成后的(订单成交数据“orders.$contract_code”)推送快, 但不能保证撮合完成后的推送一定比清算完成后的推送更快;
+
+强平以及轧差订单不会推送"订单撮合数据（matchOrders.$contract_code）”
+
+### Q19: "订阅 KLine 数据（market.$contract_code.kline.$period）”多久推送一次？
+
 有成交时, 500ms推送一次
+
 无成交时, 根据订阅的周期推送
 
 ### Q20: 如何判断推送是否延迟
 判断是否延迟, 请先同步服务器时间, 同步服务器时间接口为: https://api.hbdm.com/api/v1/timestamp, 返回数据中的 ts 是时间戳（毫秒）, 对应的时区是 UTC+8.
+
 每个推送数据的外层都会有一个推送数据 ts, 这个 ts 是服务器推送数据给客户端那一刻的间戳（毫秒）, 对应的时区是 UTC+8.
+
 当有推送数据到达时, 程序记录此时本地时间 ts. 当发现本地时间 ts 远远大于推送数据 ts 时（本地时间远远晚于推送数据时间）, 可以通过一下方式定位延迟和解决延迟: 
+
 a. 减少订阅时推送的数据. 
+
 b. 查看本地网络和服务器间的稳定性和速度（请把 api.btcgateway.pro 替换为程序使用的域名）
+
 curl -o /dev/null -s -w time_namelookup"(s)":%{time_namelookup}"\n"time_connect"(s)":%{time_connect}"\n"time_starttransfer"(s)":%{time_starttransfer}"\n"time_total"(s)":%{time_total}"\n"speed_download"(B/s)":%{speed_download}"\n" api.btcgateway.pro
+
 收到类似以下数据: 
+
 time_namelookup(s):0.001378
+
 time_connect(s):0.128641
+
 time_starttransfer(s):0.276588
+
 time_total(s):0.276804
+
 speed_download(B/s):2010.000
+
 若连续多次运行以上命令, 每次得到的结果差异很大, 可以: a.选择合适的火币域名, b.优化或者重新选择程序所在网络. 
 
 
@@ -2189,12 +2211,17 @@ WS订阅私有账户，订单，仓位时，请注意也要定时维护好心跳
 交易所系统常见的两种状态: 系统处于结算/交割；停机维护. 当系统处于这两种状态时, 调用 api 接口会返回响应的错误代码和错误信息
 
 a.如何判断是否是结算/交割完成
+
 通过"获取合约信息”接口: /api/v1/contract_order_info
+
 在返回值中的 contract_status 来判断, 如果值为 1 表示已经结算/交割完成, 可以正常交易了
 
 b.如何判断是否是停机维护
+
 通过"查询系统是否可用”接口: https://api.hbdm.com/heartbeat/
+
 或者"订阅系统状态更新”接口: "topic ": "public.$service.heartbeat"
+
 在推送值中的 heartbeat 来判断, 如果值为 1 表示系统为可用, 可以正常连接了
 
 ### Q15: 是否支持双向持仓
@@ -2204,6 +2231,7 @@ b.如何判断是否是停机维护
 ### Q16: 如何保证快速成交
 
 火币合约目前是没有市价的. 为提高成交概率, 可以使用对手价: opponent, 最优5档: optimal_5, 最优10档: optimal_10, 最优20档: optimal_20. 其中最优20档的成交概率最大, 但是滑点也最大. 
+
 需要注意的是, 以上下单价格方式, 不保证 100% 成交的. 系统执行下单时, 是获取当时时刻的对方 N 档价格, 进行下单的. 
 
 ### Q17: api 程序如何更快连接到交易所
@@ -2213,21 +2241,29 @@ b.如何判断是否是停机维护
 ### Q18: 现货与合约之间, 划转报 Abnormal service 错误
 
 a.检查请求地址是否为火币 Global 地址: api.huobi.pro
+
 b.检查币的精度是否不超过 8 位小数
 
 ### Q19: 如何确认是否开仓/平仓成功
 
-"合约下单（/api/v1/contract_order）”接口或者"合约批量下单（/api/v1/contract_batchorder）”接口下单成功后, 不代表已经开仓/平仓成功. 只是意味着服务器已经成功收到你的下单指令
-查询是否开仓/平仓成功，可以使用返回的“order_id” 通过“获取合约订单信息（/api/v1/contract_order_info）” 或 “获取订单明细信息（/api/v1/contract_order_detail）”这两个接口来查询订单状态。当订单已经成交后，接口返回参数中的status 值为 6 （全部成交）。
+"合约下单（/linear-swap-api/v1/swap_order）”接口或者"合约批量下单（/linear-swap-api/v1/swap_batchorder）”接口下单成功后, 不代表已经开仓/平仓成功. 只是意味着服务器已经成功收到你的下单指令
+
+查询是否开仓/平仓成功，可以使用返回的“order_id” 通过“获取合约订单信息（/linear-swap-api/v1/swap_order_info）” 或 “获取订单明细信息（/linear-swap-api/v1/swap_order_detail）”这两个接口来查询订单状态。当订单已经成交后，接口返回参数中的status 值为 6 （全部成交）。
+
 但同时需要注意：
-a.获取合约订单信息（/api/v1/contract_order_info）接口在系统结算或交割后，会把结束状态的订单（5部分成交已撤单 6全部成交 7已撤单）删除掉。
-b.获取订单明细信息（/api/v1/contract_order_detail）接口存在延迟情况，所以查询时最好带上：created_at（下单时间戳）和 order_type(订单类型，默认填1)，会直接查询数据库，查询结果会更及时。
+
+a.获取合约订单信息（/linear-swap-api/v1/swap_order_info）接口在系统结算或交割后，会把结束状态的订单（5部分成交已撤单 6全部成交 7已撤单）删除掉。
+
+b.获取订单明细信息（/linear-swap-api/v1/swap_order_detail）接口存在延迟情况，所以查询时最好带上：created_at（下单时间戳）和 order_type(订单类型，默认填1)，会直接查询数据库，查询结果会更及时。
 
 ### Q20: 为什么系统自动撤单了?
 
 下单时 order_price_type 为: IOC, FOK, Maker（post_only） 当盘口不满足条件时, 会自动撤单
+
 post_only, 只做Maker（Post only）订单, 不会立刻在市场上成交, 如果委托会立即与已有委托成交, 那么该委托会被取消, 保证用户始终为Maker. 
+
 IOC 订单, 若不能在市场上立即成交, 则未成交的部分立即取消. 
+
 FOK 订单, 若不能全部成交则立即全部取消. 
 
 ### Q21: 如何获取用户当前资产最大可开张数？
@@ -2237,43 +2273,54 @@ FOK 订单, 若不能全部成交则立即全部取消.
 ### Q22: order_id 和 order_id_str 是一样的吗?
 
 order_id_str 是 order_id 的字符串格式, 两者的值是一样的
+
 对于 18 位的 order_id, 在 nodejs 和 javascript 的 JSON.parse 默认是 int, 解析会有问题, 因此推荐使用 order_id_str
 
 ### Q23: 如何获取成交数据中的主买/主卖数量
 
-"获取市场最近成交记录（/market/trade）”接口或"sub": "market.$contract_code.trade.detail"订阅, 可以获取此数据, 其中: 
+"获取市场最近成交记录（/linear-swap-ex/market/trade）”接口或"sub": "market.$contract_code.trade.detail"订阅, 可以获取此数据, 其中: 
+
 amount: 成交量(张), 买卖双边成交量之和
+
 direction: 主动成交方向
 
-### Q24: 获取K线数据时, from 和 to 的时间间隔是 2000*period, 为什么获取的 data 为[]?
+### Q24: 获取K线数据(/linear-swap-ex/market/history/kline)时, from 和 to 的时间间隔是 2000*period, 为什么获取的 data 为[]?
 
 获取 K 线时, from 和 to 两个时间点是全都包含在内的, 因此是 2001 条数据. 此时数量超出了最大条数 2000. 所以返回 []
+
 另外，当 from 和 to 的时间超过 2 年，返回的数据也会是 []
 
 ### Q25: 如何获取合约最新价格
 
-a.调用"获取K线数据”接口, 任意 period, 返回数据的最后一条数据的 close 就是最新价. 
-b.调用"获取市场最近成交记录”接口, 返回数据的 price 就是最新价
+a.调用"获取K线数据(/linear-swap-ex/market/history/kline)”接口, 任意 period, 返回数据的最后一条数据的 close 就是最新价. 
+
+b.调用"获取市场最近成交记录(/linear-swap-ex/market/trade)”接口, 返回数据的 price 就是最新价
 
 ### Q26: 如何获取最新指数价?
 
 有两种方式获取最新指数价: 
-a.通过调用"获取合约指数信息（/api/v1/contract_index）”接口, 返回数据中的 index_price 就是最新指数价
-b.通过订阅"指数K线数据（market.$symbol.index.$period）”websocket, 返回数据的最后一条k线的 close 就是最新指数价
+
+a.通过调用"获取合约指数信息（/linear-swap-api/v1/swap_index）”接口, 返回数据中的 index_price 就是最新指数价
+
+b.通过订阅"指数K线数据（market.$contract_code.index.$period）”websocket, 返回数据的最后一条k线的 close 就是最新指数价
 
 ### Q27: API 升级会影响程序的运行吗?
 
 一般情况, API 升级会部分影响 ws 断连, 请做好 ws 重连逻辑. 升级内容可以订阅升级公告: 
+
 交割: https://status-dm.huobigroup.com/
+
 币本位永续: https://status-swap.huobigroup.com/
+
 USDT本位永续: https://status-linear-swap.huobigroup.com/
 
-### Q28: "获取用户账户信息（/api/v1/contract_account_info）"中 margin_balance 是指什么?
+### Q28: "获取用户账户信息（/linear-swap-api/v1/swap_account_info）"中 margin_balance 是指什么?
 
 margin_balance 是指账户权益
-margin_balance(账户权益	) = margin_position(持仓保证金) + margin_frozen(冻结保证金) + margin_available(可用保证金)
 
-### Q29: 获取用户账户信息（/api/v1/contract_account_info）中的risk_rate "保证金率”和WEB端的"担保资产率”是一样的吗?
+margin_balance(账户权益) = margin_position(持仓保证金) + margin_frozen(冻结保证金) + margin_available(可用保证金)
+
+### Q29: 获取用户账户信息（/linear-swap-api/v1/swap_account_info）中的risk_rate "保证金率”和WEB端的"担保资产率”是一样的吗?
 
 是一样的.
 当 risk_rate <= 0 时, 用户的仓位将会被系统强平.
@@ -2288,8 +2335,11 @@ margin_balance(账户权益	) = margin_position(持仓保证金) + margin_frozen
 ### Q2: 1048错误是什么原因？
 
 如果您出现{'index': 1, 'err_code': 1048, 'err_msg': 'Insufficient close amount available. '}类似错误，说明此时可平仓量不足，您平仓时需查询目前已有的仓位张数再去平仓。
+
 1、检查平仓的张数是否过大（当有平仓的限价挂单时, 会占用可平仓位的张数, 建议您撤销这些挂单后再去重试）. 
+
 2、检查仓位方向和开平方向（平多: 卖出平多(direction用sell、offset用close)、平空: 买入平空(direction用buy、offset用close)、闪电平仓只需传: direction（平多:sell、平空: buy））. 
+
 3、止盈止损的挂单和计划委托的挂单, 不会占仓位数. 
 
 ### Q3: API返回1032错误码是什么原因？
