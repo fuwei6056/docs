@@ -12832,7 +12832,7 @@ sort_by | false  | string | 排序字段（降序），不填默认按照create_
 | ts              | true  | long   | 响应生成时间点，单位：毫秒                 |     |
 
 
-## 【全仓】查询跟踪委托订单当前委托
+## 【全仓】跟踪委托订单当前委托
 
  - POST `/linear-swap-api/v1/swap_cross_track_openorders`
 
